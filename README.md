@@ -5,6 +5,7 @@ Master: [![Build Status](https://api.travis-ci.org/zendframework/zf1.png?branch=
 
 Linksammlung
 =================
+[Zend learn guide](http://framework.zend.com/manual/1.12/de/learning.html)
 
 [Zend tool Übersicht](http://richardjh.org/files/richardjh_zend-tool.pdf) (Erstellen von Controllern, Views, Config-Modes setzen, etc....)
 
