@@ -12,3 +12,6 @@ Linksammlung
 [Vagraooo setup](https://github.com/sadeq89/smoothieme/blob/master/DEVELOPMENT_README.md)
 
 [ZF Installation](https://github.com/sadeq89/smoothieme/blob/master/INSTALL.md)
+### Bei Vagrant-Problemen...
+Trat gerade bei mir auf, war zu lösen (wenn auch unlogisch, hätte nicht zum Erfolg führen dürfen)
+[https://github.com/puphpet/puphpet/issues/456]
