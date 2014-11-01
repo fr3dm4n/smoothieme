@@ -63,6 +63,9 @@ com_crashlytics_export_strings.xml
 
 ### Vagrant ###
 .vagrant/
+# wir gehen davon aus, dass sich die VM-Config nicht mehr ändern wird
+puphpet/
+Vagrantfile
 
 
 ### NetBeans ###
