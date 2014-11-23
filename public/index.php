@@ -1,5 +1,3 @@
-1231523
-
 <?php
 
 // Define path to application directory

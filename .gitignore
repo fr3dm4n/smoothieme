@@ -131,3 +131,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+
+public/.sass-cache

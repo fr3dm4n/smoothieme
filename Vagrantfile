@@ -93,7 +93,7 @@ Vagrant.configure('2') do |config|
           rsync__args: rsync_args, rsync__exclude: rsync_exclude, rsync__auto: rsync_auto, type: 'rsync'
       else
         config.vm.synced_folder "#{folder['source']}", "#{folder['target']}", id: "#{i}",
-          group: 'www-data', owner: 'www-data', mount_options: ['dmode=775', 'fmode=764']
+          group: 'www-data', owner: 'www-data', mount_options: ['dmode=775', 'fmode=775']
       end
     end
   end

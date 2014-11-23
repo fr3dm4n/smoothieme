@@ -1,0 +1,22 @@
+{
+  "name": "smoothieme",
+  "version": "0.0.1",
+  "description": "## Setup your own public repository",
+  "main": "public/index.php",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sadeq89/smoothieme.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/sadeq89/smoothieme/issues"
+  }
+}

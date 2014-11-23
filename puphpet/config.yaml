@@ -4,18 +4,21 @@ vagrantfile-local:
         box: puphpet/ubuntu1404-x64
         box_url: puphpet/ubuntu1404-x64
         hostname: ''
-        memory: '512'
+        memory: '1024'
         cpus: '1'
         chosen_provider: virtualbox
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                aSDL0E6gcwd3:
+                dTWHekvHrT3D:
                     host: '8990'
                     guest: '22'
-                kLmar2VYda10:
+                S8KZK57SegYa:
                     host: '8081'
                     guest: '80'
+                SqxOr6MtQG5P:
+                    host: '35729'
+                    guest: '35729'
         post_up_message: ''
         provider:
             virtualbox:
@@ -35,7 +38,7 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            DdKQgkSRdmPO:
+            UemLXyx7RUu6:
                 source: ./
                 target: /var/www
                 sync_type: default
@@ -81,12 +84,12 @@ apache:
     modules:
         - rewrite
     vhosts:
-        QASQ8kZCbMln:
+        ie7mKL1ciSWy:
             servername: smoothieme.dev
             docroot: /var/www/public
             port: '80'
             setenv:
-                - 'APP_ENV dev'
+                - 'APPLICATION_ENV development'
             override:
                 - All
             options:
@@ -107,7 +110,7 @@ nginx:
         proxy_buffer_size: 128k
         proxy_buffers: '4 256k'
     vhosts:
-        ueLYDsrczjua:
+        ZuIO8ZTihMsW:
             server_name: awesome.dev
             server_aliases:
                 - www.awesome.dev
@@ -171,7 +174,7 @@ drush:
 ruby:
     install: '1'
     versions:
-        2tjkqQwanm7K:
+        hPdN8qPOqR9x:
             version: ''
 nodejs:
     install: '0'
@@ -180,21 +183,22 @@ python:
     install: '1'
     packages: {  }
     versions:
-        yL1rE0x3naLb:
+        TsXU5j45Icdm:
             version: ''
 mysql:
     install: '1'
+    override_options: {  }
     root_password: '123'
     adminer: 0
     databases:
-        ntE5tRD4VSmu:
+        bvmH0TppaeUN:
             grant:
                 - ALL
             name: dbsmoothieme
             host: localhost
             user: dbuser
             password: '123'
-            sql_file: ''
+            sql_file: /vagrant/puphpet/files/smoothieme.sql
 postgresql:
     install: '0'
     settings:
@@ -206,6 +210,7 @@ postgresql:
     adminer: 0
 mariadb:
     install: '0'
+    override_options: {  }
     root_password: '123'
     adminer: 0
     databases: {  }

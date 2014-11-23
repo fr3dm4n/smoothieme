@@ -1,0 +1,28 @@
+<?php echo $this->doctype() ?>
+
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>DOCUMENT-TITLE</title>
+    <?php echo $this->headScript() ?>
+
+    <?php echo $this->headLink() ?>
+
+</head>
+<body>
+<header>
+    <nav>
+        <?php
+        echo $this->action("index","navigation") ?>
+    </nav>
+</header>
+<main>
+    <?php echo $this->layout()->content; ?>
+
+</main>
+<footer>
+
+</footer>
+
+</body>
+</html>

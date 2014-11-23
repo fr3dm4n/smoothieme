@@ -1,0 +1,7 @@
+#!/bin/bash
+cd public
+while true
+do
+compass compile;
+sleep 1;
+done;
