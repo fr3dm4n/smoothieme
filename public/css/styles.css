@@ -370,8 +370,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?1416693430);
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?&1416693430#iefix) format("embedded-opentype"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff?1416693430) format("woff"), url(/fonts/bootstrap/glyphicons-halflings-regular.ttf?1416693430) format("truetype"), url(/fonts/bootstrap/glyphicons-halflings-regular.svg?1416693430#glyphicons_halflingsregular) format("svg");
+  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?1416765775);
+  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?&1416765775#iefix) format("embedded-opentype"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff?1416765775) format("woff"), url(/fonts/bootstrap/glyphicons-halflings-regular.ttf?1416765775) format("truetype"), url(/fonts/bootstrap/glyphicons-halflings-regular.svg?1416765775#glyphicons_halflingsregular) format("svg");
 }
 /* line 21, ../../../../usr/local/rvm/gems/ruby-1.9.3-p547@global/gems/bootstrap-sass-3.3.1.0/assets/stylesheets/bootstrap/_glyphicons.scss */
 .glyphicon {
@@ -8144,9 +8144,36 @@ button.close {
     display: none !important;
   }
 }
-/* line 1, ../sass/_navigation.scss */
-nav {
-  background-color: green;
-  color: black;
-  border: 1px solid blue;
+/* line 2, ../sass/_navigation.scss */
+nav .logo_small {
+  padding-top: 15px;
+  padding-left: 16px;
+}
+
+/*.navbar {
+ */
+ /* background-color: transparent;
+background: transparent;*/
+                           /*
+*/
+/* border: none;*/
+                    /*
+*/
+ /* -webkit-box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);
+-moz-box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);
+box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);*/
+                                                     /*
+  padding-bottom: 17px;
+
+}*/
+/* line 20, ../sass/_navigation.scss */
+.navbar li {
+  display: inline;
+  font-size: 17px;
+  padding-top: 9px;
+}
+
+/* line 25, ../sass/_navigation.scss */
+.navbar-right {
+  padding-right: 10px;
 }

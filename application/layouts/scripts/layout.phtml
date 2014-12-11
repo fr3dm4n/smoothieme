@@ -3,7 +3,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>DOCUMENT-TITLE</title>
+    <title>SmoothieMe</title>
     <?php echo $this->headScript() ?>
 
     <?php echo $this->headLink() ?>
@@ -12,15 +12,16 @@
 <body>
 <header>
     <nav>
-        <?php
-        echo $this->action("index","navigation") ?>
+        <?php echo $this->action("index","navigation") ?>
+<!--        --><?php //echo $this->action("admin","navigation")?>
+<!--        --><?php //echo $this->action("user","navigation")?>
     </nav>
 </header>
 <main>
-    <?php echo $this->layout()->content; ?>
-
+        <?php echo $this->layout()->content; ?>
 </main>
 <footer>
+
 
 </footer>
 

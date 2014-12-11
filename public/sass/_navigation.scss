@@ -1,5 +1,28 @@
 nav{
-   background-color: green;
-   color: black;
-   border: 1px solid blue;
+    .logo_small{
+      padding-top: 15px;
+      padding-left: 16px;
+  }
+
 }
+
+/*.navbar {
+ *//* background-color: transparent;
+  background: transparent;*//*
+ *//* border: none;*//*
+ *//* -webkit-box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);
+  box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);*//*
+  padding-bottom: 17px;
+
+}*/
+
+.navbar  li{
+  display:       inline;
+  font-size:     17px;
+  padding-top:    9px;
+}
+.navbar-right{
+  padding-right: 10px;
+}
+

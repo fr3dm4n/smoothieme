@@ -13,6 +13,14 @@ class NavigationController extends Zend_Controller_Action
         // action body
     }
 
+    public function adminAction()
+    {
+        // action body
+    }
+    public function userAction()
+    {
+        // action body
+    }
 
 }
 
