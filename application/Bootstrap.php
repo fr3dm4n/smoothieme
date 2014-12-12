@@ -10,10 +10,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 
         $view->headLink()
+            ->appendStylesheet("/css/bootstrap.css")
             ->appendStylesheet("/css/styles.css");
         $view->headScript()
-            ->appendFile("/js/jquery-2.1.1.min.js")
-            ->appendFile("/js/bootstrap.js");
+            ->appendFile("/js/dist/vendors.min.js")
+            ->appendFile("/js/dist/basic.min.js");
 
     }
 

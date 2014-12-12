@@ -1,0 +1,35 @@
+{
+  "name": "smoothieme",
+  "version": "1.0.0",
+  "description": "Smoothieme - exemplarischer Smoothie-Mix-Shop (Studienprojekt)",
+  "main": "public/index.php",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sadeq89/smoothieme.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/sadeq89/smoothieme/issues"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.2",
+    "gulp-debug": "^1.0.1",
+    "gulp-filter": "^1.0.2",
+    "gulp-if": "^1.2.5",
+    "gulp-livereload": "^2.1.1",
+    "gulp-plumber": "^0.6.6",
+    "gulp-rename": "^1.2.0",
+    "gulp-run": "^1.6.4",
+    "gulp-sourcemaps": "^1.2.8",
+    "gulp-uglify": "^1.0.2"
+  }
+}

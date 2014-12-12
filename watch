@@ -1,3 +1,14 @@
 #!/bin/bash
-cd public
-guard -i --latency=0 -p
+cd /var/www
+if [ ! -e node_modules ]; then
+    figlet "Einmalige Installation!"
+    echo "-----------------------"
+    echo "bei Problemen bitte melden"
+    echo "-----------------------"
+    #npm install
+    sudo npm install -g gulp
+    sudo chmod -R 0777 /home/vagrant/.npm/
+    npm install
+    clear
+fi
+gulp --gulpfile=smoothieme/gulpfile.js --cwd smoothieme watch

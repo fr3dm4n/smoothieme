@@ -40,7 +40,7 @@ vagrantfile-local:
         synced_folder:
             UemLXyx7RUu6:
                 source: ./
-                target: /var/www
+                target: /var/www/smoothieme
                 sync_type: default
                 rsync:
                     args:
@@ -86,7 +86,7 @@ apache:
     vhosts:
         ie7mKL1ciSWy:
             servername: smoothieme.dev
-            docroot: /var/www/public
+            docroot: /var/www/smoothieme/public
             port: '80'
             setenv:
                 - 'APPLICATION_ENV development'
