@@ -1,9 +1,19 @@
 nav{
     .logo_small{
-      padding-top: 15px;
-      padding-left: 16px;
+      padding: 7px 0 0 10px;
   }
 
+  .usermenu, .adminmenu, .loginmenu {
+    padding-right: 50px;
+  }
+
+  .menu, .usermenu, .adminmenu .loginmenu{
+    display: inline;
+    font-size: 17px;
+    }
+  .menu{
+     padding-left: 25px;
+  }
 }
 
 /*.navbar {
@@ -17,6 +27,8 @@ nav{
 
 }*/
 
+
+/*
 .navbar  li{
   display:       inline;
   font-size:     17px;
@@ -26,3 +38,4 @@ nav{
   padding-right: 10px;
 }
 
+*/
