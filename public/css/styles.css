@@ -1,7 +1,19 @@
 /* line 2, ../sass/_navigation.scss */
 nav .logo_small {
-  padding-top: 15px;
-  padding-left: 16px;
+  padding: 7px 0 0 10px;
+}
+/* line 6, ../sass/_navigation.scss */
+nav .usermenu, nav .adminmenu, nav .loginmenu {
+  padding-right: 50px;
+}
+/* line 10, ../sass/_navigation.scss */
+nav .menu, nav .usermenu, nav .adminmenu .loginmenu {
+  display: inline;
+  font-size: 17px;
+}
+/* line 14, ../sass/_navigation.scss */
+nav .menu {
+  padding-left: 25px;
 }
 
 /*.navbar {
@@ -20,14 +32,14 @@ box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);*/
   padding-bottom: 17px;
 
 }*/
-/* line 20, ../sass/_navigation.scss */
-.navbar li {
-  display: inline;
-  font-size: 17px;
-  padding-top: 9px;
+/*
+.navbar  li{
+  display:       inline;
+  font-size:     17px;
+  padding-top:    9px;
 }
-
-/* line 25, ../sass/_navigation.scss */
-.navbar-right {
+.navbar-right{
   padding-right: 10px;
 }
+
+*/

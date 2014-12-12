@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="menu navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse"
                 data-target="#example-navbar-collapse">
@@ -15,23 +15,7 @@
             <li><a href="#">Mix It</a></li>
             <li><a href="#">Fertige Smoothies</a> </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href=""><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-            <li data-toggle="modal" data-target="#myModal"><a href="#"><b>Login</b></a></li>
-            <li ><a href="#"><b>Registrieren</b></a></li>
-        </ul>
-    </div>
+        <?php require_once "login.phtml" ?>
+     </div>
+
  </nav>
-<?php
-    switch($this->status){
-        case"":
-            require "user.phtml";
-            break;
-        case "login":
-        default:
-            require "login.phtml";
-    };
-
-
-
-?>

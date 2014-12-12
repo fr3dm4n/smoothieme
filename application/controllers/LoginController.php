@@ -1,6 +1,6 @@
 <?php
 
-class NavigationController extends Zend_Controller_Action
+class LoginController extends Zend_Controller_Action
 {
 
     public function init()
@@ -11,8 +11,6 @@ class NavigationController extends Zend_Controller_Action
     public function indexAction()
     {
         // action body
-
-        $this->view->status="login";
     }
 
 
