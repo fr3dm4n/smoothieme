@@ -10,6 +10,7 @@ tests/TestConfiguration.php
 /vendor/*
 composer.lock
 bin/dbunit
+bin/phpunit
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
