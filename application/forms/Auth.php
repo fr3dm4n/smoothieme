@@ -19,14 +19,14 @@ class Application_Form_Auth extends Twitter_Bootstrap_Form
                 'size' => 30
             )
         );
-
+        //zf configure db-adapter "adapter=Pdo_Mysql&username=dbuser&passwor123&dbname=dbsmoothieme"
         $this->addElement('password', 'password', array(
                 'placeholder' => 'Passwort',
                 'required' => true,
                 'size' => 30            )
         );
 
-        $this->addElement('submit', 'submit', array(
+        $this->addElement('button', 'submit', array(
                 'ignore' => true,
                 'label' => 'Einlogen',
                 'buttonType'    => 'primary',
