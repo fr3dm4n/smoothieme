@@ -5,7 +5,9 @@ main, header{
    @extend .container
 }
 nav{
+   font-size: 17px;
    @extend .navbar;
    @extend .navbar-default;
    @extend .navbar-fixed-top;
+
 }
