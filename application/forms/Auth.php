@@ -7,6 +7,7 @@ class Application_Form_Auth extends Twitter_Bootstrap_Form
     {
         /* Form Elements & Other Definitions Here ... */
 
+        $this->setName("login");
         $this->setIsArray(true);
         $this->setElementsBelongTo('bootstrap');
 
@@ -15,18 +16,23 @@ class Application_Form_Auth extends Twitter_Bootstrap_Form
         $this->addElement('text', 'username', array(
                 'placeholder' => 'Benutzername',
                 'required' => true,
-                'filters' => array('StringTrim'),
+                'filters' => array('StringTrim','StringToLower'),
+                'validators' => array(array('Stringlength',false,array(0,50))),
                 'size' => 30
             )
         );
-        //zf configure db-adapter "adapter=Pdo_Mysql&username=dbuser&passwor123&dbname=dbsmoothieme"
+
         $this->addElement('password', 'password', array(
                 'placeholder' => 'Passwort',
+                'filters' => array('StringTrim'),
+                'validators' => array(
+                    array('StringLength', false, array(0, 50)),
+                ),
                 'required' => true,
                 'size' => 30            )
         );
 
-        $this->addElement('button', 'submit', array(
+        $this->addElement('submit', 'login', array(
                 'ignore' => true,
                 'label' => 'Einlogen',
                 'buttonType'    => 'primary',

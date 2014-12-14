@@ -51,13 +51,13 @@ class Application_Model_AccountMapper
     }
 
     /**
-     * Returns a Application_Model_Benutzer with the given login name
+     * Returns a Application_Model_Account with the given login name
      * or null if no result found
      *
-     * @param $loginName login name from benutzer
-     * @return Application_Model_Benutzer|null
+     * @param $loginName login name from user
+     * @return Application_Model_Account|null
      */
-    public function getBenutzerByLoginName($loginName)
+    public function getUserByLoginName($loginName)
     {
         $select = $this->getDbTable()->select()->where('login_name = ?', $loginName);
         $row = $this->getDbTable()->fetchRow($select);
