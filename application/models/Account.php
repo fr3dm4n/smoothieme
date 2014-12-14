@@ -44,6 +44,8 @@ class Application_Model_Account
         return $this;
     }
 
+    
+
     /**
      * @return mixed
      */
@@ -54,6 +56,7 @@ class Application_Model_Account
 
     /**
      * @param mixed $account_id
+     * @return $this
      */
     public function setAccountId($account_id)
     {
@@ -72,6 +75,7 @@ class Application_Model_Account
 
     /**
      * @param mixed $name
+     * @return $this
      */
     public function setName($name)
     {
@@ -89,6 +93,7 @@ class Application_Model_Account
 
     /**
      * @param mixed $password
+     * @return $this
      */
     public function setPassword($password)
     {
@@ -106,6 +111,7 @@ class Application_Model_Account
 
     /**
      * @param mixed $role
+     * @return $this
      */
     public function setRole($role)
     {

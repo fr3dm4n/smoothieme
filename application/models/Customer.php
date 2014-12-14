@@ -73,6 +73,8 @@ class Application_Model_Customer
 
     /**
      * @param mixed $birthdate
+     *
+     * @return $this
      */
     public function setBirthdate($birthdate)
     {
@@ -90,6 +92,7 @@ class Application_Model_Customer
 
     /**
      * @param mixed $email
+     * @return $this
      */
     public function setEmail($email)
     {
@@ -107,6 +110,7 @@ class Application_Model_Customer
 
     /**
      * @param mixed $gender
+     * @return $this
      */
     public function setGender($gender)
     {
@@ -124,11 +128,12 @@ class Application_Model_Customer
 
     /**
      * @param mixed $customer_id
+     * @return $this
      */
     public function setCustomerId($customer_id)
     {
         $this->customer_id = $customer_id;
-        return this;
+        return $this;
     }
 
 
@@ -143,6 +148,7 @@ class Application_Model_Customer
 
     /**
      * @param mixed $lastname
+     * @return $this
      */
     public function setLastname($lastname)
     {
@@ -160,6 +166,7 @@ class Application_Model_Customer
 
     /**
      * @param mixed $surname
+     * @return $this
      */
     public function setSurname($surname)
     {
@@ -177,6 +184,7 @@ class Application_Model_Customer
 
     /**
      * @param mixed $telephone
+     * @return $this
      */
     public function setTelephone($telephone)
     {
