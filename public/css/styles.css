@@ -43,3 +43,7 @@ box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);*/
 }
 
 */
+/* line 6, ../sass/styles.scss */
+body {
+  padding-top: 70px;
+}

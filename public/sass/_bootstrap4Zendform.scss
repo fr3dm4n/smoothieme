@@ -1,0 +1,11 @@
+dd>input[type="text"][name^="bootstrap"], dd>input[type="password"][name^="bootstrap"]{
+   @extend .form-control
+}
+main, header{
+   @extend .container
+}
+nav{
+   @extend .navbar;
+   @extend .navbar-default;
+   @extend .navbar-fixed-top;
+}
