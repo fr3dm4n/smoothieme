@@ -1,13 +1,62 @@
-<ul class="usermenu nav navbar-nav navbar-right">
-    <li><a href=""><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-    <li><a href="#"><b>Logout</b></a></li>
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><b>Meine
-                Einstellungen</b><span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Meine Bestellungen</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Profileinstellungen</a></li>
-        </ul>
-    </li>
-</ul>
+<div class="row">
+    <div class="col-sm-6">
+        <h1>Profil</h1>
+        <h3>Persönliches</h3>
+        <form role="form">
+            <div class="form-group">
+                <label for="surname">Vorname</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="lastname">Nachname</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="gender">Geschlecht</label>
+                <input type="text" class="form-control">
+            </div>
+            <br>
+            <h3>Passwort ändern</h3>
+            <div class="form-group">
+                <label for="password">Aktuelles Passwort</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Neues Passwort</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Neues Passwort wiederholen</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-default">Ändern</button>
+            <br><br><br>
+            <h3>Adresse</h3>
+                <div class="form-group">
+                    <label for="street">Straße</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="zip">Postleitzahl</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="city">Ort</label>
+                    <input type="text" class="form-control">
+                </div>
+            </form>
+            <br>
+            <h3>Bestellungen</h3>
+        <br>
+        <p>noch keine Bestellungen vorhanden</p>
+        <br><br><br><br><br><br><br><br><br>
+    </div>
+</div>
