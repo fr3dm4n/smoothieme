@@ -9,9 +9,8 @@ nav .usermenu, nav .adminmenu, nav .loginmenu {
 /* line 10, ../sass/_navigation.scss */
 nav .menu, nav .usermenu, nav .adminmenu .loginmenu {
   display: inline;
-  font-size: 17px;
 }
-/* line 14, ../sass/_navigation.scss */
+/* line 13, ../sass/_navigation.scss */
 nav .menu {
   padding-left: 25px;
 }
