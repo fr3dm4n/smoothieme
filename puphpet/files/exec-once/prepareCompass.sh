@@ -28,7 +28,7 @@ cp /var/www/smoothieme/package.json /var/www/package.json &&
 sudo rm -rf /var/www/html
 sudo rm -rf /var/www/default
 ## add zf tool
-sudo ln -s /var/www/bin/zf.sh /usr/local/bin/zf
+sudo ln -s /var/www/smoothieme/bin/zf.sh /usr/local/bin/zf
 #chown vagrant:vagrant /usr/local/bin/zf
 sudo gem install sass compass
 

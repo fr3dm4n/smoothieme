@@ -4,14 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>SmoothieMe</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
     <?php echo $this->headScript() ?>
 
     <?php echo $this->headLink() ?>
 
+    <base href="//<?php echo $_SERVER["SERVER_NAME"] ?>" />
 </head>
 <body>
 <header>
-    <nav>
+    <nav class="menu" role="navigation">
         <?php echo $this->action("index","navigation") ?>
     </nav>
 </header>
