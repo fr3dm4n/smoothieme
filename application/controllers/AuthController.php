@@ -12,6 +12,14 @@ class AuthController extends Zend_Controller_Action
     {
         $loginForm = new Application_Form_Auth();
 
+        $this->view->isAjax = false;
+
+        if ($this->getRequest()->isXmlHttpRequest()) {
+            // Falls es über "ajax" aufgerufen wird, soll nicht als antwort die ganze seite (layout) übertrag werden
+            $this->_helper->layout->disableLayout();
+            $this->view->isAjax = true;
+        }
+
         $request = $this->getRequest();
         if ($request->isPost()) {
             if ($loginForm->isValid($request->getPost())) {
