@@ -14,7 +14,20 @@
             <li><a href="#">Mix It</a></li>
             <li><a href="<?php echo $this->url(array('controller' => "smoothies")) ?>">Fertige Smoothies</a> </li>
         </ul>
-        <?php require_once "login.phtml" ?>
+        <?php
+            if (Zend_Auth::getInstance()->hasIdentity()){
+                if (Zend_Auth::getInstance()->getIdentity()->role === 'admin') {
+                    require "admin.phtml";
+                }
+                else {
+                    require "user.phtml";
+                }
+            }
+            else {
+                require "login.phtml";
+            }
+
+        ?>
      </div>
 
 
