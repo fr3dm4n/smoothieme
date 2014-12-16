@@ -27,3 +27,8 @@ nav .menu {
 body {
   padding-top: 70px;
 }
+
+/* line 11, ../sass/styles.scss */
+.carousel_style {
+  padding-bottom: 10px;
+}
