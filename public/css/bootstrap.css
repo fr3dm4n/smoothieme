@@ -8236,7 +8236,12 @@ button.close {
     display: none !important;
   }
 }
-/* line 7, ../sass/_bootstrap4Zendform.scss */
+/* line 4, ../sass/_bootstrap4Zendform.scss */
+dt > label {
+  margin: 7px 0 -3px 0;
+}
+
+/* line 10, ../sass/_bootstrap4Zendform.scss */
 nav {
   font-size: 17px;
 }
