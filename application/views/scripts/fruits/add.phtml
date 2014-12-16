@@ -2,11 +2,12 @@
 
 $form = $this->fruitsForm;
 
-var_dump($this->fruitsForm->getMessages())
 
-
+echo "<pre>";
+echo $form;
+echo "</pre>";
 ?>
-<form enctype="application/x-www-form-urlencoded" action="<?php echo $form->getAttribs()["method"] ?>" name="<?php echo $form->getAttribs()["name"] ?>" id="<?php echo $form->getAttribs()["name"] ?>">
+<form enctype="application/x-www-form-urlencoded" method="<?php echo $form->getAttribs()["method"] ?>" name="<?php echo $form->getAttribs()["name"] ?>" id="<?php echo $form->getAttribs()["name"] ?>">
 <?php if ($this->isAjax) {
     ?>
     <div class="modal-header">
@@ -26,6 +27,9 @@ var_dump($this->fruitsForm->getMessages())
             <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->color; ?></div>
             <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->price; ?></div>
             <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->kcal; ?></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12"><?php  echo $form->fruitphoto;  ?></div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12"><?php  echo $form->desc;  ?></div>

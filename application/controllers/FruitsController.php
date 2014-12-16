@@ -18,12 +18,11 @@ class FruitsController extends Zend_Controller_Action
         $fruitsForm->setName("fruits")
             ->setMethod("post");
 
-
         $this->view->fruitsForm = $fruitsForm;
     }
 
     /**
-     * Deaktiviere layout wenn nötig
+     * Deaktiviere layout wenn Ajax-request
      */
     public function preDispatch(){
         $request=new Zend_Controller_Request_Http();
