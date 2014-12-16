@@ -1,6 +1,6 @@
 <?php
 
-class RegisterController extends Zend_Controller_Action
+class UserController extends Zend_Controller_Action
 {
 
     public function init()
@@ -19,14 +19,20 @@ class RegisterController extends Zend_Controller_Action
         if ($this->getRequest()->isPost()) {
             if ($form->isValid($request->getPost())) {
                 $comment = new Application_Model_Guestbook($form->getValues());
-                $mapper  = new Application_Model_GuestbookMapper();
+                $mapper = new Application_Model_GuestbookMapper();
                 $mapper->save($comment);
                 return $this->_helper->redirector('index');
             }
         }
+    }
 
+    public function changeAction()
+    {
+        // action body
     }
 
 
 }
+
+
 

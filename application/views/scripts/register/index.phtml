@@ -1,26 +1,28 @@
-<div class="container">
-    <div  class="register-head">
+<?php
+$form = $this->registerForm;
+?>
+
+<form enctype="application/x-www-form-urlencoded" method="
+<?php echo $form->getAttribs()["method"] ?>" name="
+<?php echo $form->getAttribs()["name"] ?>" id="
+<?php echo $form->getAttribs()["name"] ?>">
+
+    <div class="container">
         <h1>Registerungsformular</h1>
         <p>Hier können sie sich ganz einfach kostenlos registerieren</p>
-    </div>
-    <div class="row">
-        <div class="col-md-5">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-            ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-            magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-            sanctus est Lorem ipsum dolor sit amet.
-        </div>
-        <div class="col-md-7">
-            <form class=form-horizontal" role="form">
-                <?php
-                $this->form->setAction($this->url());
-                echo $this->form;
-                ?>
-            </form>
-            <p>*) Pflichtfelder</p>
-
+        <class="row">
+            <img class="col-md-5 col-xs-2" src="img/smoothieglas.png" alt="" style="margin-left:-100px">
+            <div class="col-md-8">
+                <div class="col-md-4"><?php echo $form->surname; ?></div>
+                <div class="col-md-4"><?php echo $form->lastname; ?></div>
+                <div class="col-md-8"><?php echo $form->email; ?></div>
+                <div class="col-md-8"><?php echo $form->telephone; ?></div>
+                <div class="col-md-8"><?php echo $form->gender; ?></div>
+                <div class="col-md-8"><?php echo $form->password; ?></div>
+                <div class="col-md-8"><?php echo $form->password2; ?></div>
+                <div class="col-md-8"><?php echo $form->captcha; ?></div>
+                <div class="col-md-8"><?php echo $form->submit; ?></div>
+            </div>
         </div>
     </div>
-</div>
-
+</form>

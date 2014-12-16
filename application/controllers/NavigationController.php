@@ -12,8 +12,9 @@ class NavigationController extends Zend_Controller_Action
     {
         // action body
 
-        $this->view->status="login";
     }
+
+
 
 
 }

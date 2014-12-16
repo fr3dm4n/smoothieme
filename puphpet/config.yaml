@@ -19,6 +19,9 @@ vagrantfile-local:
                 SqxOr6MtQG5P:
                     host: '35729'
                     guest: '35729'
+                xdebug:
+                    host: '19999'
+                    guest: '9000'
         post_up_message: ''
         provider:
             virtualbox:

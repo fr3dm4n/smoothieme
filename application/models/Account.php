@@ -9,6 +9,7 @@ class Application_Model_Account
     protected $role;
     protected $name;
     protected $password;
+    protected $salt;
 
 
     public function __construct(array $options = null) {
@@ -41,6 +42,24 @@ class Application_Model_Account
                 $this->$method ( $value );
             }
         }
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * @param mixed $salt
+     * @return $this
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
         return $this;
     }
 

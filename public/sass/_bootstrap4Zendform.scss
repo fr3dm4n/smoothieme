@@ -1,5 +1,8 @@
-dd>input[type="text"][name^="bootstrap"], dd>input[type="password"][name^="bootstrap"]{
+dd>input[type="text"], dd>input[type="password"],  dd>textarea{
    @extend .form-control
+}
+dt>label{
+   margin: 7px 0 -3px 0
 }
 main, header{
    @extend .container

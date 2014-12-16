@@ -21,6 +21,12 @@ class ErrorController extends Zend_Controller_Action
                 $priority = Zend_Log::NOTICE;
                 $this->view->message = 'Page not found';
                 break;
+            case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_OTHER:
+                if ($errors->exception instanceof Smoothieme_Exception_Unauthorized) {
+                    $this->getResponse()->setHttpResponseCode(403);
+                    $this->view->message = "Nicht authorisiert";
+                    break;
+                }
             default:
                 // application error
                 $this->getResponse()->setHttpResponseCode(500);

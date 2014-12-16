@@ -12,11 +12,17 @@ class AuthController extends Zend_Controller_Action
     {
         $loginForm = new Application_Form_Auth();
 
+        $this->view->isAjax = false;
+
+        if ($this->getRequest()->isXmlHttpRequest()) {
+            $this->_helper->layout->disableLayout();
+            $this->view->isAjax = true;
+        }
+
         $request = $this->getRequest();
         if ($request->isPost()) {
             if ($loginForm->isValid($request->getPost())) {
-                if ($this->_process($loginForm->getValues())) {
-                    // We're authenticated! Redirect to the home page
+                if ($this->_process($loginForm->getValues()['login'])) {
                     $this->_helper->redirector('index', 'index');
                 }
             }
@@ -59,7 +65,7 @@ class AuthController extends Zend_Controller_Action
     public function logoutAction()
     {
         Zend_Auth::getInstance()->clearIdentity();
-        $this->_helper->redirector('index'); // back to login page
+        $this->_helper->redirector('index','index'); // back to login page
     }
 
 

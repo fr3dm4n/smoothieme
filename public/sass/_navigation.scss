@@ -3,38 +3,18 @@ nav{
       padding: 7px 0 0 10px;
   }
 
+  -webkit-box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);
+  box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);
+  padding: 0 300px;
+  margin: 0 -300px;
+
+
   .usermenu, .adminmenu, .loginmenu {
-    padding-right: 50px;
+    padding-right: 20px;
   }
 
-  .menu, .usermenu, .adminmenu .loginmenu{
-    display: inline;
-  }
   .menu{
      padding-left: 25px;
-  }
+   }
 }
-
-/*.navbar {
- *//* background-color: transparent;
-  background: transparent;*//*
- *//* border: none;*//*
- *//* -webkit-box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);
-  -moz-box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);
-  box-shadow: -3px 14px 15px -7px rgba(0,0,0,0.75);*//*
-  padding-bottom: 17px;
-
-}*/
-
-
-/*
-.navbar  li{
-  display:       inline;
-  font-size:     17px;
-  padding-top:    9px;
-}
-.navbar-right{
-  padding-right: 10px;
-}
-
-*/

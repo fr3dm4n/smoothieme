@@ -1,11 +1,11 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 12. Nov 2014 um 22:06
--- Server Version: 5.5.40-0ubuntu0.14.04.1
--- PHP-Version: 5.5.9-1ubuntu4.5
+-- Generation Time: Dec 15, 2014 at 11:13 PM
+-- Server version: 5.5.40-0ubuntu0.14.04.1
+-- PHP Version: 5.6.3-1+deb.sury.org~trusty+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,27 +17,36 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Datenbank: `smoothieme`
+-- Database: `dbsmoothieme`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `accounts`
+-- Table structure for table `accounts`
 --
 
 CREATE TABLE IF NOT EXISTS `accounts` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `role` enum('admin','password') NOT NULL,
+  `role` enum('admin','user') NOT NULL,
   `name` varchar(45) NOT NULL,
   `password` text NOT NULL,
+  `salt` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`ID`, `role`, `name`, `password`, `salt`) VALUES
+(1, 'admin', 'admin', 'ed1c972305635e5be40aa72f6c0c1bd84cb0a8d1', 'saltsaltsalt'),
+(13, 'user', 'user', 'ed1c972305635e5be40aa72f6c0c1bd84cb0a8d1', 'saltsaltsalt');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `addresses`
+-- Table structure for table `addresses`
 --
 
 CREATE TABLE IF NOT EXISTS `addresses` (
@@ -51,12 +60,12 @@ CREATE TABLE IF NOT EXISTS `addresses` (
   `delivery_notes` text,
   PRIMARY KEY (`ID`),
   KEY `customer_ID` (`customer_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `customer`
+-- Table structure for table `customer`
 --
 
 CREATE TABLE IF NOT EXISTS `customer` (
@@ -70,12 +79,20 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `birthdate` date DEFAULT NULL,
   PRIMARY KEY (`ID`,`accounts_ID`),
   KEY `fk_customer_accounts1_idx` (`accounts_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`ID`, `accounts_ID`, `surname`, `lastname`, `email`, `gender`, `tel`, `birthdate`) VALUES
+(4, 1, 'S', 'A', 's@b.com', 'm', '123123', NULL),
+(5, 13, 'Franz', 'Müller', 'bla@blub.de', 'm', '12124124', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `fruits`
+-- Table structure for table `fruits`
 --
 
 CREATE TABLE IF NOT EXISTS `fruits` (
@@ -85,14 +102,13 @@ CREATE TABLE IF NOT EXISTS `fruits` (
   `price` decimal(14,7) NOT NULL COMMENT 'je 100 ml',
   `description` text NOT NULL,
   `kcal` int(11) NOT NULL,
-  `origin` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE IF NOT EXISTS `orders` (
@@ -110,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `smoothies`
+-- Table structure for table `smoothies`
 --
 
 CREATE TABLE IF NOT EXISTS `smoothies` (
@@ -125,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `smoothies` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `smoothies_has_fruits`
+-- Table structure for table `smoothies_has_fruits`
 --
 
 CREATE TABLE IF NOT EXISTS `smoothies_has_fruits` (
@@ -140,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `smoothies_has_fruits` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `smoothies_has_orders`
+-- Table structure for table `smoothies_has_orders`
 --
 
 CREATE TABLE IF NOT EXISTS `smoothies_has_orders` (
@@ -153,43 +169,43 @@ CREATE TABLE IF NOT EXISTS `smoothies_has_orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Constraints der exportierten Tabellen
+-- Constraints for dumped tables
 --
 
 --
--- Constraints der Tabelle `accounts`
+-- Constraints for table `accounts`
 --
 ALTER TABLE `accounts`
   ADD CONSTRAINT `accounts_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `customer` (`accounts_ID`) ON DELETE CASCADE;
 
 --
--- Constraints der Tabelle `addresses`
+-- Constraints for table `addresses`
 --
 ALTER TABLE `addresses`
   ADD CONSTRAINT `addresses_ibfk_1` FOREIGN KEY (`customer_ID`) REFERENCES `customer` (`ID`) ON DELETE CASCADE;
 
 --
--- Constraints der Tabelle `orders`
+-- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `send-bill-to` FOREIGN KEY (`invoice_address`) REFERENCES `addresses` (`ID`) ON UPDATE CASCADE,
   ADD CONSTRAINT `send-packet-to` FOREIGN KEY (`delivery_address`) REFERENCES `addresses` (`ID`) ON UPDATE CASCADE;
 
 --
--- Constraints der Tabelle `smoothies`
+-- Constraints for table `smoothies`
 --
 ALTER TABLE `smoothies`
   ADD CONSTRAINT `smoothie_ibfk_2` FOREIGN KEY (`customer_ID`) REFERENCES `customer` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints der Tabelle `smoothies_has_fruits`
+-- Constraints for table `smoothies_has_fruits`
 --
 ALTER TABLE `smoothies_has_fruits`
   ADD CONSTRAINT `fk_smoothie_has_fruits_fruits1` FOREIGN KEY (`fruit_ID`) REFERENCES `fruits` (`ID`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_smoothie_has_fruits_smoothie1` FOREIGN KEY (`smoothie_ID`) REFERENCES `smoothies` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
--- Constraints der Tabelle `smoothies_has_orders`
+-- Constraints for table `smoothies_has_orders`
 --
 ALTER TABLE `smoothies_has_orders`
   ADD CONSTRAINT `fk_smoothies_has_orders_orders1` FOREIGN KEY (`orders_ID`) REFERENCES `orders` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION,

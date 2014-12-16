@@ -1,7 +1,8 @@
 <?php
 
-class Application_Form_Register extends Twitter_Form
+class Application_Form_Register extends Zend_Form
 {
+
     public function init()
     {
         // Set the method for the display form to POST
@@ -9,9 +10,9 @@ class Application_Form_Register extends Twitter_Form
 
         // surname
         $this->addElement('text', 'surname', array(
-            'label'      => '* Vorname:',
             'required'   => true,
-            'placeholder'=> 'Vorname eingeben',
+            'class' => 'form-control',
+            'placeholder'=> 'Vorname',
             'filters'    => array('StringTrim'),
             'validators' => array(
                 'surname',
@@ -20,20 +21,31 @@ class Application_Form_Register extends Twitter_Form
 
         // lastname
         $this->addElement('text', 'lastname', array(
-            'label'      => '* Nachname:',
             'required'   => true,
-            'placeholder'=> 'Nachname eingeben',
+            'class' => 'form-control',
+            'placeholder'=> 'Nachname',
             'filters'    => array('StringTrim'),
             'validators' => array(
                 'lastname',
             )
         ));
 
-        // Email
+        // email
         $this->addElement('text', 'email', array(
-            'label'      => '* E-Mail:',
             'required'   => true,
-            'placeholder'=> 'E-Mail Adresse eingeben',
+            'class' => 'form-control',
+            'placeholder'=> 'E-Mail Adresse',
+            'filters'    => array('StringTrim'),
+            'validators' => array(
+                'email',
+            )
+        ));
+
+        // telephone
+        $this->addElement('text', 'telephone', array(
+            'required'   => true,
+            'class' => 'form-control',
+            'placeholder'=> 'Telefonnummer',
             'filters'    => array('StringTrim'),
             'validators' => array(
                 'email',
@@ -42,38 +54,37 @@ class Application_Form_Register extends Twitter_Form
 
         // gender
         $this->addElement('radio', 'gender', array(
-            'label'      => 'Geschlecht:',
-            'required'   => false,
+            'required'   => true,
             'filters'    => array('StringTrim'),
             'validators' => array(
                 'gender',
             ),
             'MultiOptions' => array(
-                'male' => 'männlich',
-                'female' => 'weiblich'
+                'male'   => ' männlich     ',
+                'female' => ' weiblich'
             ),
-            'Separator' => ' '
+            'Separator'  => ' '
         ));
 
         // birthdate
-        $this->addElement('select', 'birthdate', array(
-            'label'      => '* Geburtsdatum:',
-            'required'   => true,
-            'filters'    => array('StringTrim'),
-            'validators' => array(
-                'birthdate',
-            ),
-            'MultiOptions' => array(
-                'US' => 'United States',
-                'UK' => 'United Kingdom'
-            )
-        ));
+//        $this->addElement('select', 'birthdate', array(
+//            'required'   => true,
+//            'class' => 'form-control',
+//            'filters'    => array('StringTrim'),
+//            'validators' => array(
+//                'birthdate',
+//            ),
+//            'MultiOptions' => array(
+//                'a' => '01.01.2000',
+//                'b' => '31.12.2999'
+//            )
+//        ));
 
         // password
         $this->addElement('password', 'password', array(
-            'label'      => '* Passwort:',
             'required'   => true,
-            'placeholder'=> 'Passwort eingeben',
+            'class' => 'form-control',
+            'placeholder'=> 'Passwort',
             'filters'    => array('StringTrim'),
             'validators' => array(
                 'password',
@@ -82,8 +93,8 @@ class Application_Form_Register extends Twitter_Form
 
         // password #2
         $this->addElement('password', 'password2', array(
-            'label'      => '* Passwort:',
             'required'   => true,
+            'class' => 'form-control',
             'placeholder'=> 'Passwort wiederholen',
             'filters'    => array('StringTrim'),
             'validators' => array(
@@ -93,8 +104,9 @@ class Application_Form_Register extends Twitter_Form
 
         // Add a captcha
         $this->addElement('captcha', 'captcha', array(
-            'label'      => 'Bitte die fünf angezeigten Buchstaben unten eingeben:',
             'required'   => true,
+            'class' => 'form-control',
+            'placeholder' => 'captcha',
             'captcha'    => array(
                 'captcha' => 'Figlet',
                 'wordLen' => 5,
@@ -115,8 +127,3 @@ class Application_Form_Register extends Twitter_Form
     }
 }
 
-/**
- * <form action="page.php" method="post">
- *  <input type="text" name="bla" />
- * </form>
- */

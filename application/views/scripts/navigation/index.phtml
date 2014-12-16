@@ -6,15 +6,26 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <img class="logo_small" src="/img/smoothiemelogo_small.png" alt="SMOOTHIEME">
+        <a href="<?php echo $this->url(array('controller' => "index", 'action'=> "index")) ?>"><img class="logo_small" src="/img/smoothiemelogo_small.png"></a>
     </div>
     <div class="collapse navbar-collapse" id="example-navbar-collapse">
         <ul class="nav navbar-nav">
-            <li ><a href="<?php echo $this->url(array('controller' => "index")) ?>">Start</a></li>
             <li><a href="#">Mix It</a></li>
-            <li><a href="<?php echo $this->url(array('controller' => "smoothies")) ?>">Fertige Smoothies</a> </li>
+            <li><a href="<?php echo $this->url(array('controller' => "smoothies", 'action' => "index")) ?>">Fertige Smoothies</a> </li>
         </ul>
-        <?php require_once "login.phtml" ?>
+        <?php
+           if (Zend_Auth::getInstance()->hasIdentity()){
+                if (Zend_Auth::getInstance()->getIdentity()->role === 'admin') {
+                    require "admin.phtml";
+                }
+                else {
+                    require "user.phtml";
+                }
+            }
+            else {
+                require "login.phtml";
+            }
+        ?>
      </div>
 
 
