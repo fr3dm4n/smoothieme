@@ -29,6 +29,7 @@ class Application_Model_AccountMapper
             'name' => $account->getName (),
             'rolle' => $account->getRole(),
             'passwort' => $account->getPassword(),
+            'salt'=> $account->getSalt()
         );
 
         if (null === ($id = $account->getAccountId())) {
@@ -47,7 +48,7 @@ class Application_Model_AccountMapper
             return;
         }
         $row = $result->current ();
-        $account->setAccountId ($row->account_nr)->setName ( $row->name )->setRole ( $row->rolle )->setPassword ( $row->passwort );
+        $account->setAccountId ($row->account_nr)->setName ( $row->name )->setRole ( $row->role )->setPassword ( $row->password )->setSalt($row->salt);
     }
 
     /**
@@ -68,9 +69,10 @@ class Application_Model_AccountMapper
 
         $user = new Application_Model_Account();
         $user->setAccountId($row->account_id)
-            ->setRole($row->Rolle)
-            ->setName($row->Benutzername)
-            ->setPassword($row->Passwort);
+            ->setRole($row->role)
+            ->setName($row->name)
+            ->setPassword($row->password)
+            ->setSalt($row->salt);
 
         return $user;
     }

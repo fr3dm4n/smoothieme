@@ -2,7 +2,11 @@
 
 class RegisterController extends Zend_Controller_Action
 {
-    // snipping indexAction()...
+
+    public function init()
+    {
+        /* Initialize action controller here */
+    }
 
     public function indexAction()
     {
@@ -20,4 +24,7 @@ class RegisterController extends Zend_Controller_Action
 
         $this->view->form = $form;
     }
+
+
 }
+
