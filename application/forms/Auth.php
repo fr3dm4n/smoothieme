@@ -9,6 +9,7 @@ class Application_Form_Auth extends Twitter_Bootstrap_Form
 
         $this->setName("login");
         $this->setIsArray(true);
+        $this->setAction("/auth");
 
 
         $this->setMethod('post');
@@ -36,7 +37,7 @@ class Application_Form_Auth extends Twitter_Bootstrap_Form
 
         $this->addElement('submit', 'login', array(
                 'ignore' => true,
-                'label' => 'Einlogen',
+                'label' => 'Anmelden',
                 'buttonType'    => 'primary',
                 'icon'          => 'ok',
                 'escape' => false

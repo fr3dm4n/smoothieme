@@ -16,6 +16,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             ->appendFile("/js/dist/vendors.min.js")
             ->appendFile("/js/dist/basic.min.js");
 
+
+        //save Configfile in Registry 4 later
+        Zend_Registry::set("config",new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini', APPLICATION_ENV));
+
     }
 
 }
