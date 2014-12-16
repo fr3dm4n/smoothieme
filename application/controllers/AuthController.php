@@ -15,7 +15,6 @@ class AuthController extends Zend_Controller_Action
         $this->view->isAjax = false;
 
         if ($this->getRequest()->isXmlHttpRequest()) {
-            // Falls es über "ajax" aufgerufen wird, soll nicht als antwort die ganze seite (layout) übertrag werden
             $this->_helper->layout->disableLayout();
             $this->view->isAjax = true;
         }
@@ -24,7 +23,6 @@ class AuthController extends Zend_Controller_Action
         if ($request->isPost()) {
             if ($loginForm->isValid($request->getPost())) {
                 if ($this->_process($loginForm->getValues()['login'])) {
-                    // We're authenticated! Redirect to the home page
                     $this->_helper->redirector('index', 'index');
                 }
             }

@@ -1,21 +1,9 @@
-
-dd>input[type="text"], dd>input[type="password"],  dd>textarea{
+dd>input[type="text"][name^="bootstrap"], dd>input[type="password"][name^="bootstrap"]{
    @extend .form-control
 }
-form dt{
-   @extend label;
-   margin: 7px 0 -3px 0;
-}
-form #submit-label{
-   display: none;
-}
-
-
 main, header{
    @extend .container
 }
-
-
 nav{
    font-size: 17px;
    @extend .navbar;
