@@ -1,10 +1,15 @@
 <?php
 
+$this->headScript()->appendFile("/js/dist/backend.min.js");
+$this->headLink()
+    ->appendStylesheet("/css/dropzone.css");
+
+
 $form = $this->fruitsForm;
 
 ?>
-<form enctype="application/x-www-form-urlencoded" method="<?php echo $form->getAttribs()["method"] ?>" name="<?php echo $form->getAttribs()["name"] ?>" id="<?php echo $form->getAttribs()["name"] ?>">
-<?php if ($this->isAjax) {
+<form class="dropzone" enctype="application/x-www-form-urlencoded" action="<?php echo $form->getAttribs()["action"] ?>" method="<?php echo $form->getAttribs()["method"] ?>" name="<?php echo $form->getAttribs()["name"] ?>" id="<?php echo $form->getAttribs()["name"] ?>">
+    <?php if ($this->isAjax) {
     ?>
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -12,34 +17,56 @@ $form = $this->fruitsForm;
     </div>
     <div class="modal-body ">
         <div class="panel-body">
-<?php } ?>
-    <p>Bitte tragen Sie hier Ihre neuen Früchte ein</p>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <?php echo $form->name; ?>
+            <?php } ?>
+            <h1>Bitte tragen Sie hier Ihre neuen Früchte ein</h1>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <?php echo $form->name; ?>
+                </div>
+                <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->color; ?></div>
+                <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->price; ?></div>
+                <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->kcal; ?></div>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->color; ?></div>
-            <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->price; ?></div>
-            <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->kcal; ?></div>
+            <style rel="stylesheet">
+                .dz-default{
+                    background-size: 100%;
+                    left: 50px !important;
+                    margin:0 !important;
+                    width: 270px !important;
+                    height: 77px !important;
+                }
+                .dz-preview{
+                    margin-top: -280px !important;
+                }
+            </style>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <?php //echo $form->fruitphoto;  ?>
+                    <dt><label>Fruchtabbildung</label></dt>
+                    <div  style="min-height: 200px"></div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+
+                </div>
+            </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12"><?php  echo $form->fruitphoto;  ?></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12"><?php  echo $form->desc;  ?></div>
+            <div class="col-xs-12 col-sm-12 col-md-12"><?php echo $form->desc; ?></div>
         </div>
 
 
-<?php
+        <?php
 
-if ($this->isAjax) { ?>
-        </div>
+        if ($this->isAjax) { ?>
     </div>
-    <div class="modal-footer right" >
-        <?php echo preg_replace("?<dt[^>]+</dt>?smi","",$form->submit) ?>
+
+
+<?php echo preg_replace("?<dt[^>]+</dt>?smi", "", $form->submit) ?>
     </div>
 <?php
-}else{
-    echo $form->submit;
+} else {
+
+    echo '<div class="pull-right">' . $form->submit . "</div>";
 } ?>
 </form>

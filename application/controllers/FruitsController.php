@@ -16,9 +16,11 @@ class FruitsController extends Zend_Controller_Action
     {
         $fruitsForm=new Application_Form_Fruits();
         $fruitsForm->setName("fruits")
-            ->setMethod("post");
+            ->setMethod("post")
+            ->setAction("/Fruits/add");
 
         $this->view->fruitsForm = $fruitsForm;
+
     }
 
     /**

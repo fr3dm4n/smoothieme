@@ -15,7 +15,6 @@ class Application_Form_Fruits extends Twitter_Bootstrap_Form {
      */
     public function init() {
 
-
         $this->setName("fruits");
 
         $this->addElement("text", "name", array(
