@@ -1,0 +1,47 @@
+<?php
+
+$form = $this->fruitsForm;
+
+var_dump($this->fruitsForm->getMessages())
+
+
+?>
+<form enctype="application/x-www-form-urlencoded" action="<?php echo $form->getAttribs()["method"] ?>" name="<?php echo $form->getAttribs()["name"] ?>" id="<?php echo $form->getAttribs()["name"] ?>">
+<?php if ($this->isAjax) {
+    ?>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Neue Frucht anlegen</h4>
+    </div>
+    <div class="modal-body ">
+        <div class="panel-body">
+<?php } ?>
+    <p>Bitte tragen Sie hier Ihre neuen Früchte ein</p>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <?php echo $form->name; ?>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->color; ?></div>
+            <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->price; ?></div>
+            <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->kcal; ?></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12"><?php  echo $form->desc;  ?></div>
+        </div>
+
+
+<?php
+
+if ($this->isAjax) { ?>
+        </div>
+    </div>
+    <div class="modal-footer right" >
+        <?php echo preg_replace("?<dt[^>]+</dt>?smi","",$form->submit) ?>
+    </div>
+<?php
+}else{
+    echo $form->submit;
+} ?>
+</form>
