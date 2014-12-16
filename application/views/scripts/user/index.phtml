@@ -1,59 +1,77 @@
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 col-sm-offset-1">
         <h1>Profil</h1>
         <h3>Persönliches</h3>
         <form role="form">
             <div class="form-group">
                 <label for="surname">Vorname</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" value="Max" readonly>
             </div>
             <div class="form-group">
                 <label for="lastname">Nachname</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" value="Mustermann" readonly>
             </div>
             <div class="form-group">
                 <label for="email">E-Mail</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control"value="Max@Mustermann.de" readonly>
             </div>
             <div class="form-group">
                 <label for="gender">Geschlecht</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control"value="männlich" readonly>
             </div>
-            <br>
+            <div class="form-group">
+                <label for="birthdate">Geburtsdatum</label>
+                <input type="text" class="form-control"value="01.01.1970" readonly>
+            </div>
+            <br><br>
             <h3>Passwort ändern</h3>
             <div class="form-group">
                 <label for="password">Aktuelles Passwort</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" class="form-control">
             </div>
 
             <div class="form-group">
                 <label for="password">Neues Passwort</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" class="form-control">
             </div>
 
             <div class="form-group">
-                <label for="password">Neues Passwort wiederholen</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label for="password">Neues Passwort (wiederholen)</label>
+                <input type="password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-default">Ändern</button>
+            <button type="submit" class="btn btn-default"><a href="user/change">Passwort ändern</a></button>
             <br><br><br>
             <h3>Adresse</h3>
-                <div class="form-group">
-                    <label for="street">Straße</label>
-                    <input type="text" class="form-control">
+            <div class="row">
+                <div class="col-md-10 col-sm-9 col-xs-9">
+                    <div class="form-group">
+                        <label for="street">Straße</label>
+                        <input type="text" class="form-control" value="Musterstraße" readonly>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="zip">Postleitzahl</label>
-                    <input type="text" class="form-control">
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="form-group">
+                        <label for="street">Nr.</label>
+                        <input type="text" class="form-control" value="1" readonly>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="city">Ort</label>
-                    <input type="text" class="form-control">
+                <br>
+                <div class="col-xs-4">
+                    <div class="form-group">
+                        <label for="zip">Postleitzahl</label>
+                        <input type="text" class="form-control" value="123456" readonly>
+                    </div>
                 </div>
+                <div class="col-xs-8">
+                    <div class="form-group">
+                        <label for="city">Ort</label>
+                        <input type="text" class="form-control" value="Musterstadt" readonly>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default"><a href="../address/index">Neue Adresse</a></button>
             </form>
-            <br>
+            <br><br>
             <h3>Bestellungen</h3>
         <br>
         <p>noch keine Bestellungen vorhanden</p>
