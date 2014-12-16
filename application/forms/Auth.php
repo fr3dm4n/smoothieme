@@ -11,7 +11,6 @@ class Application_Form_Auth extends Twitter_Bootstrap_Form
         $this->setIsArray(true);
         $this->setAction("/auth");
 
-
         $this->setMethod('post');
 
         $this->addElement('text', 'username', array(
@@ -19,7 +18,7 @@ class Application_Form_Auth extends Twitter_Bootstrap_Form
                 'required' => true,
                 'class'=> 'form-control',
                 'filters' => array('StringTrim','StringToLower'),
-                'validators' => array(array('Stringlength',false,array(0,50))),
+                'validators' => array(array('StringLength',false,array(0,50))),
                 'size' => 30
             )
         );
