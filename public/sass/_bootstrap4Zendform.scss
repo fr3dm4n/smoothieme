@@ -1,4 +1,4 @@
-dd>input[type="text"][name^="bootstrap"], dd>input[type="password"][name^="bootstrap"]{
+dd>input[type="text"], dd>input[type="password"],  dd>textarea{
    @extend .form-control
 }
 main, header{
