@@ -3,20 +3,22 @@ nav {
   -webkit-box-shadow: -3px 14px 15px -7px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -3px 14px 15px -7px rgba(0, 0, 0, 0.75);
   box-shadow: -3px 14px 15px -7px rgba(0, 0, 0, 0.75);
+  padding: 0 300px;
+  margin: 0 -300px;
 }
 /* line 2, ../sass/_navigation.scss */
 nav .logo_small {
   padding: 7px 0 0 10px;
 }
-/* line 11, ../sass/_navigation.scss */
+/* line 13, ../sass/_navigation.scss */
 nav .usermenu, nav .adminmenu, nav .loginmenu {
   padding-right: 50px;
 }
-/* line 15, ../sass/_navigation.scss */
+/* line 17, ../sass/_navigation.scss */
 nav .menu, nav .usermenu, nav .adminmenu .loginmenu {
   display: inline;
 }
-/* line 18, ../sass/_navigation.scss */
+/* line 20, ../sass/_navigation.scss */
 nav .menu {
   padding-left: 25px;
 }
@@ -40,4 +42,9 @@ footer {
   font-size: 10pt;
   line-height: 1.2;
   text-align: center;
+}
+
+/* line 11, ../sass/styles.scss */
+.carousel_style {
+  padding-bottom: 10px;
 }

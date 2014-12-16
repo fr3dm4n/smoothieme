@@ -60,25 +60,25 @@ class Application_Form_Register extends Zend_Form
                 'gender',
             ),
             'MultiOptions' => array(
-                'male' => ' männlich     ',
+                'male'   => ' männlich     ',
                 'female' => ' weiblich'
             ),
-            'Separator' => ' '
+            'Separator'  => ' '
         ));
 
         // birthdate
-        $this->addElement('select', 'birthdate', array(
-            'required'   => true,
-            'class' => 'form-control',
-            'filters'    => array('StringTrim'),
-            'validators' => array(
-                'birthdate',
-            ),
-            'MultiOptions' => array(
-                'a' => '01.01.2000',
-                'b' => '31.12.2999'
-            )
-        ));
+//        $this->addElement('select', 'birthdate', array(
+//            'required'   => true,
+//            'class' => 'form-control',
+//            'filters'    => array('StringTrim'),
+//            'validators' => array(
+//                'birthdate',
+//            ),
+//            'MultiOptions' => array(
+//                'a' => '01.01.2000',
+//                'b' => '31.12.2999'
+//            )
+//        ));
 
         // password
         $this->addElement('password', 'password', array(
@@ -106,6 +106,7 @@ class Application_Form_Register extends Zend_Form
         $this->addElement('captcha', 'captcha', array(
             'required'   => true,
             'class' => 'form-control',
+            'placeholder' => 'captcha',
             'captcha'    => array(
                 'captcha' => 'Figlet',
                 'wordLen' => 5,

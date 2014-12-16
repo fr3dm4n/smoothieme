@@ -10,8 +10,11 @@ class RegisterController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $request = $this->getRequest();
-        $form    = new Application_Form_Register();
+        $registerForm = new Application_Form_Register();
+        $registerForm->setName("register")
+            ->setMethod("post");
+
+        $this->view->registerForm = $registerForm;
 
         if ($this->getRequest()->isPost()) {
             if ($form->isValid($request->getPost())) {
@@ -22,7 +25,6 @@ class RegisterController extends Zend_Controller_Action
             }
         }
 
-        $this->view->form = $form;
     }
 
 
