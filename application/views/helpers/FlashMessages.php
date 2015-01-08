@@ -30,7 +30,7 @@ class Zend_View_Helper_FlashMessages extends Zend_View_Helper_Abstract {
 
         foreach([$errMess, $warnMess, $sucMess] as $msgTypes){ // Je Nachrichtentyp
             $flashMessenger->setNamespace($msgTypes["ns"]);
-            if($flashMessenger->hasMessages()===false){
+            if($flashMessenger->hasMessages()===false && $flashMessenger->hasCurrentMessages()===false){
                 continue;
             }
             if($currentMessages===true){
