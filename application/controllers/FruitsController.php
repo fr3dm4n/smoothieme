@@ -37,8 +37,11 @@ class FruitsController extends Zend_Controller_Action
         }
         // Validiere Zugang
         if (Zend_Auth::getInstance()->hasIdentity()!="admin") {
-            require("Smoothieme/Exception/Unauthorized.php");
-            throw new Smoothieme_Exception_Unauthorized("Keine Authorisation");
+            $this->_helper->flashMessenger
+                ->setNamespace("warning")
+                ->addMessage("Ihre Sitzung ist abgelaufen");
+            $this->redirect(array('controller' => "index","action" => "index"));
+            exit();
         }
 
     }

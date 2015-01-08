@@ -1,4 +1,9 @@
-
+<?php
+//Nicht ausgegebene Ereignisse des Letzten Requests
+echo $this->flashMessages();
+//Nicht ausgegebene Ereignisse des aktuellen Requests
+echo $this->flashMessages(true);
+?>
     <div class="row carousel_style">
         <div class="container">
             <div id="carousel_smoothieme" class="carousel slide" data-ride="carousel">
