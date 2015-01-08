@@ -6,6 +6,7 @@
 //Configuration
 var cssFiles = 'public/css/**/*.css';
 var jsFiles =  'public/js/src/*.js';
+var viewFiles =  'application/views/**/*.phtml';
 var jsVendorFiles = 'public/js/vendors/*.js';
 var production = false;
 
@@ -92,6 +93,7 @@ gulp.task('watch', function () {
 
     // Watch any files in dist/, reload on change
     gulp.watch(cssFiles, refresh);
+    gulp.watch(viewFiles, refresh);
     gulp.watch(jsFiles, ["jsPrepare"]);
     gulp.watch(jsVendorFiles, ["concatJSvendors"]);
 
