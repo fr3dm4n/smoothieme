@@ -2,9 +2,6 @@
 
 class Application_Model_Account
 {
-    const ROLE_ACCOUNT_ADMIN = 'ACCOUNT_ADMIN';
-    const ROLE_ACCOUNT_USER = 'ACCOUNT_USER';
-
     protected $account_id;
     protected $role;
     protected $name;
@@ -21,7 +18,7 @@ class Application_Model_Account
     public function __set($name, $value) {
         $method = 'set' . $name;
         if (('mapper' == $name) || ! method_exists ( $this, $method )) {
-            throw new Exception ( 'Invalid article property' );
+            throw new Exception ( 'Invalid account property' );
         }
         $this->$method ( $value );
     }
@@ -29,7 +26,7 @@ class Application_Model_Account
     public function __get($name) {
         $method = 'get' . $name;
         if (('mapper' == $name) || ! method_exists ( $this, $method )) {
-            throw new Exception ( 'Invalid article property' );
+            throw new Exception ( 'Invalid account property' );
         }
         return $this->$method ();
     }
@@ -59,7 +56,12 @@ class Application_Model_Account
      */
     public function setSalt($salt)
     {
-        $this->salt = $salt;
+
+        if($salt != null) {
+            $this->salt = $salt;
+        }
+        else
+            $this->salt = 'saltsaltsalt';
         return $this;
     }
 
@@ -79,7 +81,11 @@ class Application_Model_Account
      */
     public function setAccountId($account_id)
     {
-        $this->account_id = $account_id;
+        if($account_id > 1 && $account_id != null && is_integer($account_id)) {
+            $this->account_id = $account_id;
+        }
+        else
+            echo "AccountID must be greater 0 or notNull!";
         return $this;
     }
 
@@ -93,12 +99,16 @@ class Application_Model_Account
     }
 
     /**
-     * @param mixed $name
+     * @param String $name
      * @return $this
      */
     public function setName($name)
     {
-        $this->name = $name;
+        if($name != null && is_string($name)) {
+            $this->name = $name;
+        }
+        else
+            echo 'Name must be varchar and notNull!';
         return $this;
     }
 
@@ -116,12 +126,16 @@ class Application_Model_Account
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        if($password != null) {
+            $this->password = $password;
+        }
+        else
+            echo 'Password must be set!';
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return String
      */
     public function getRole()
     {
@@ -129,7 +143,7 @@ class Application_Model_Account
     }
 
     /**
-     * @param mixed $role
+     * @param String $role
      * @return $this
      */
     public function setRole($role)

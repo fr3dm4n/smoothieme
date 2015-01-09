@@ -46,7 +46,7 @@ class Application_Model_Customer
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getAccountsId()
     {
@@ -54,12 +54,16 @@ class Application_Model_Customer
     }
 
     /**
-     * @param mixed $accounts_id
-     * @return mixed
+     * @param int $accounts_id
+     * @return int
      */
     public function setAccountsId($accounts_id)
     {
-        $this->accounts_id = $accounts_id;
+        if($accounts_id != null && $accounts_id > 0 && is_integer($accounts_id)) {
+            $this->accounts_id = $accounts_id;
+        }
+        else
+            echo 'AccountId cannot be null and must be greater than 0!';
         return $this;
     }
 
@@ -78,12 +82,16 @@ class Application_Model_Customer
      */
     public function setBirthdate($birthdate)
     {
-        $this->birthdate = $birthdate;
+        if($birthdate != null){
+            $this->birthdate = $birthdate;
+        }
+        else
+            echo 'Birthdate cannot be null';
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return String
      */
     public function getEmail()
     {
@@ -91,12 +99,16 @@ class Application_Model_Customer
     }
 
     /**
-     * @param mixed $email
+     * @param String $email
      * @return $this
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        if($email != null && is_string($email)) {
+            $this->email = $email;
+        }
+        else
+            echo 'Email cannot be null';
         return $this;
     }
 
@@ -127,19 +139,23 @@ class Application_Model_Customer
     }
 
     /**
-     * @param mixed $customer_id
+     * @param int $customer_id
      * @return $this
      */
     public function setCustomerId($customer_id)
     {
-        $this->customer_id = $customer_id;
+        if($customer_id != null && is_integer($customer_id)) {
+            $this->customer_id = $customer_id;
+        }
+        else
+            echo 'CustomerId cannot be null';
         return $this;
     }
 
 
 
     /**
-     * @return mixed
+     * @return String
      */
     public function getLastname()
     {
@@ -147,7 +163,7 @@ class Application_Model_Customer
     }
 
     /**
-     * @param mixed $lastname
+     * @param String $lastname
      * @return $this
      */
     public function setLastname($lastname)
@@ -157,7 +173,7 @@ class Application_Model_Customer
     }
 
     /**
-     * @return mixed
+     * @return String
      */
     public function getSurname()
     {
@@ -165,7 +181,7 @@ class Application_Model_Customer
     }
 
     /**
-     * @param mixed $surname
+     * @param String $surname
      * @return $this
      */
     public function setSurname($surname)
@@ -175,7 +191,7 @@ class Application_Model_Customer
     }
 
     /**
-     * @return mixed
+     * @return String
      */
     public function getTelephone()
     {
@@ -183,7 +199,7 @@ class Application_Model_Customer
     }
 
     /**
-     * @param mixed $telephone
+     * @param String $telephone
      * @return $this
      */
     public function setTelephone($telephone)
@@ -191,8 +207,5 @@ class Application_Model_Customer
         $this->telephone = $telephone;
         return $this;
     }
-
-
-
 }
 
