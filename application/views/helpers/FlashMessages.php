@@ -35,6 +35,7 @@ class Zend_View_Helper_FlashMessages extends Zend_View_Helper_Abstract {
             }
             if($currentMessages===true){
                 $msgs=$flashMessenger->getCurrentMessages();
+                $flashMessenger->clearCurrentMessages();
             }else{
                 $msgs=$flashMessenger->getMessages();
             }

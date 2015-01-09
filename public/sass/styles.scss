@@ -1,13 +1,13 @@
-
 @import "navigation";
 @import "fruits";
 
 // Allgemeine Styles
 
-body{
+body {
    padding: 70px 0;
 }
-footer{
+
+footer {
    position: fixed;
    bottom: 0;
    left: 0;
@@ -22,6 +22,6 @@ footer{
    text-align: center;
 }
 
-.carousel_style{
-  padding-bottom: 10px;
+.carousel_style {
+   padding-bottom: 10px;
 }

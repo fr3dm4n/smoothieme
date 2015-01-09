@@ -52,7 +52,7 @@ class Application_Form_Fruits extends Twitter_Bootstrap_Form {
 
 
         $this->addElement("text", "price", array(
-            'label'      => 'Preis (je 100 ml)',
+            'label'      => 'Preis',
             'filters'    => array(
                 'StringTrim',
                 'StripTags'
@@ -68,7 +68,7 @@ class Application_Form_Fruits extends Twitter_Bootstrap_Form {
         ));
 
         $this->addElement("text", "kcal", array(
-            'label'      => 'Kcal (je 100ml)',
+            'label'      => 'Kalorien',
             'filters'    => array(
                 'StringTrim',
                 'StripTags'
@@ -86,7 +86,7 @@ class Application_Form_Fruits extends Twitter_Bootstrap_Form {
 
         $this->addElement("textarea", "desc", array(
             'label'      => 'Beschreibung',
-            'rows'       => 4,
+            'rows'       => 9,
             'filters'    => array(
                 'StringTrim',
                 'StripTags'
@@ -102,26 +102,23 @@ class Application_Form_Fruits extends Twitter_Bootstrap_Form {
         ));
 
         // FILE_UPLOAD
-
-        $fruitPhoto = new Zend_Form_Element_File('fruitphoto');
+        $fruitPhoto = new Zend_Form_Element_File('fruitphoto', array("data-directupload"=>"btn","accept"=>"image/*"));
         $fruitPhoto->setLabel('Frucht-Icon');
-        try {
-            $fruitPhoto->setDestination(Zend_Registry::get('config')->backend->paths->tmpdir);
-        } catch (Exception $e) {
-            $this->addErrorMessages(array("Verzeichnis <pre>" . Zend_Registry::get('config')->backend->paths->tmpdir . "</pre> entweder nicht beschreibbar oder existiert nicht"));
-        }
-        // ensure only one file
+
+        // nur eine Datei
         $fruitPhoto->addValidator('Count', false, 1);
         // max 2MB
         $postMax = self::getPhpDateSizeInByte(ini_get("post_max_size"));
-
         $uploadMax = self::getPhpDateSizeInByte(ini_get("upload_max_filesize"));
+
+        //Multi-Part-post und Put-request wird damit abgedeckt
         $uploadLimit = min($uploadMax, $postMax);
 
         $fruitPhoto->addValidator('Size', false, $uploadLimit)->setMaxFileSize($uploadLimit);
         // only JPEG, PNG, or GIF
-        $fruitPhoto->addValidator('Extension', false, 'jpg');
+        $fruitPhoto->addValidator('Extension', false, 'jpg,png,jpeg,gif');
         $fruitPhoto->setValueDisabled(true);
+
         $this->addElement($fruitPhoto, 'fruitphoto');
 
         $this->addElement('submit', 'submit', array(

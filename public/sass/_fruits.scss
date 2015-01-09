@@ -1,3 +1,9 @@
 form#fruits{
-
+   // Abstand nach oben, für einige Elemente
+   .top-buffer {
+      margin-top: 20px;
+   }
+   #fruitphoto-label, #fruitphoto-element{
+      display:none;
+   }
 }

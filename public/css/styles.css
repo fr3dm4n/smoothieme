@@ -19,7 +19,16 @@ nav .menu {
   padding-left: 25px;
 }
 
-/* line 7, ../sass/styles.scss */
+/* line 3, ../sass/_fruits.scss */
+form#fruits .top-buffer {
+  margin-top: 20px;
+}
+/* line 6, ../sass/_fruits.scss */
+form#fruits #fruitphoto-label, form#fruits #fruitphoto-element {
+  display: none;
+}
+
+/* line 6, ../sass/styles.scss */
 body {
   padding: 70px 0;
 }

@@ -1,72 +1,71 @@
 <?php
 
 $this->headScript()->appendFile("/js/dist/backend.min.js");
-$this->headLink()
-    ->appendStylesheet("/css/dropzone.css");
-
 
 $form = $this->fruitsForm;
 
+//Nicht ausgegebene Ereignisse des aktuellen Requests
+if ($this->unfullfilledRequiredments) {
+    echo $this->flashMessages(true);
+} else {
+    echo $this->flashMessages();
+}
 ?>
 <form class="dropzone" enctype="application/x-www-form-urlencoded" action="<?php echo $form->getAttribs()["action"] ?>" method="<?php echo $form->getAttribs()["method"] ?>" name="<?php echo $form->getAttribs()["name"] ?>" id="<?php echo $form->getAttribs()["name"] ?>">
     <?php if ($this->isAjax) {
     ?>
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Neue Frucht anlegen</h4>
     </div>
     <div class="modal-body ">
         <div class="panel-body">
             <?php } ?>
-            <h1>Bitte tragen Sie hier Ihre neuen Früchte ein</h1>
-
+            <?php if (!$this->isAjax) { ?>
+                <h1>Neue Frucht</h1>
+            <?php } ?>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <?php echo $form->name; ?>
                 </div>
-                <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->color; ?></div>
-                <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->price; ?></div>
-                <div class="col-xs-6 col-sm-4 col-md-4"><?php echo $form->kcal; ?></div>
+                <div class="col-xs-12 col-sm-4 col-md-4"><?php echo $form->color; ?></div>
+                <div class="col-xs-12 col-sm-4 col-md-4">
+
+                    <dt id="<?php echo $form->price->getName() ?>-label"><label for="<?php echo $form->price->getName() ?>"><?php echo $form->price->getLabel() ?></label></dt>
+                    <dd id="<?php echo $form->price->getName() ?>-element" class="input-group">
+                        <input name="<?php echo $form->price->getName() ?>" id="<?php echo $form->price->getName() ?>"  class="form-control" >
+                        <div class="input-group-addon">&euro; á 100ml</div>
+                    </dd>
+
+
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <dt id="<?php echo $form->kcal->getName() ?>-label"><label for="<?php echo $form->kcal->getName() ?>"><?php echo $form->kcal->getLabel() ?></label></dt>
+                    <dd id="<?php echo $form->kcal->getName() ?>-element" class="input-group">
+                        <input name="<?php echo $form->kcal->getName() ?>" id="<?php echo $form->kcal->getName() ?>"  class="form-control" >
+                        <div class="input-group-addon">kcal á 100ml</div>
+                    </dd>
+                </div>
             </div>
-            <style rel="stylesheet">
-                .dz-default{
-                    background-size: 100%;
-                    left: 50px !important;
-                    margin:0 !important;
-                    width: 270px !important;
-                    height: 77px !important;
-                }
-                .dz-preview{
-                    margin-top: -280px !important;
-                }
-            </style>
             <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="col-xs-5 col-sm-4 col-md-4">
                     <?php //echo $form->fruitphoto;  ?>
                     <dt><label>Fruchtabbildung</label></dt>
-                    <div  style="min-height: 200px"></div>
+                    <dd class="text-center"><img id="fruit_label" src="/img/fruits/_default.jpg" height="128" width="128"></dd>
+                    <button type="button" id="newFruitPhoto" class="top-buffer btn btn-block">&auml;ndern</button>
+                    <?php echo $form->fruitphoto ?>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-
+                <div class="col-xs-7 col-sm-8 col-md-8">
+                    <?php echo $form->desc; ?>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12"><?php echo $form->desc; ?></div>
-        </div>
-
-
         <?php
-
         if ($this->isAjax) { ?>
-    </div>
 
-
-<?php echo preg_replace("?<dt[^>]+</dt>?smi", "", $form->submit) ?>
-    </div>
-<?php
+    <div class="pull-right"><?php echo $form->submit ?></div>
+            </div>
+    <?php
 } else {
-
     echo '<div class="pull-right">' . $form->submit . "</div>";
 } ?>
 </form>

@@ -1,4 +1,65 @@
 <br /><br />
 <div id="view-content">
-	<p>View script for controller <b>Fruits</b> and script/action name <b>index</b></p>
+<style>
+.align-right{
+	float:right;
+}
+.colorme{
+	height:30px;
+	width: 30px;
+	display: block;
+	border-radius: 3px;
+}
+.green{background-color:green}
+.red{background-color:red}
+.yellow{background-color:yellow}
+</style>
+<h1>Alle frechen Früchtchen</h1>
+	<p>Verwaltungsort für kleinpüriertes, cremiges Obst mit Möglichkeit zur neu Anlegung frischer Sorten.</p>
+	<div class="table-responsive">
+  <table class="table table-striped">
+	<button class="btn btn-success align-right" type="submit" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Neu</button>
+    <thead>
+		<tr>
+			<th>Fruchtname</th>
+			<th>Bild</th>
+			<th>Beschreibung</th>
+			<th>KCal/100ml</th>
+			<th>Farbe</th>
+			<th class="text-right">Preis</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Banana</td>
+			<td><img src="..." alt="..." class="img-rounded">Insert Pic here:)</td>
+			<td>Cremig und leckäää </td>
+			<td>90 kcal</td>
+			<td><span class="colorme yellow"></span></td>
+			<td class="text-right">2,90 €</td>
+			<td class="text-right"><button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> L&ouml;schen</button></td>
+		</tr>
+		<tr>
+			<td>Erdbeer</td>
+			<td><img src="..." alt="..." class="img-rounded">Bild!</td>
+			<td>Rot und fruchtig</td>
+			<td>32 kcal</td>
+			<td><span class="colorme red"></span></td>
+			<td class="text-right">0,90 €</td>
+			<td class="text-right"><button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> L&ouml;schen</button></td>
+		</tr>
+		<tr>
+			<td>Kiwi</td>
+			<td><img src="..." alt="..." class="img-rounded">Image</td>
+			<td>Sauer und Spritzig</td>
+			<td>54 kcal</td>
+			<td><span class="colorme green"></span></td>
+			<td class="text-right">1,20 €</td>
+			<td class="text-right"><button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> L&ouml;schen</button></td>
+		</tr>
+	</tbody>
+  </table>
+</div>
+	
 </div>
