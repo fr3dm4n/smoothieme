@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 15, 2014 at 11:13 PM
--- Server version: 5.5.40-0ubuntu0.14.04.1
--- PHP Version: 5.6.3-1+deb.sury.org~trusty+1
+-- Erstellungszeit: 09. Jan 2015 um 22:40
+-- Server Version: 5.5.40-0ubuntu0.14.04.1
+-- PHP-Version: 5.6.3-1+deb.sury.org~trusty+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `dbsmoothieme`
+-- Datenbank: `dbsmoothieme`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accounts`
+-- Tabellenstruktur für Tabelle `accounts`
 --
 
 CREATE TABLE IF NOT EXISTS `accounts` (
@@ -32,21 +32,22 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `name` varchar(45) NOT NULL,
   `password` text NOT NULL,
   `salt` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
--- Dumping data for table `accounts`
+-- Daten für Tabelle `accounts`
 --
 
-INSERT INTO `accounts` (`ID`, `role`, `name`, `password`, `salt`) VALUES
-(1, 'admin', 'admin', 'ed1c972305635e5be40aa72f6c0c1bd84cb0a8d1', 'saltsaltsalt'),
-(13, 'user', 'user', 'ed1c972305635e5be40aa72f6c0c1bd84cb0a8d1', 'saltsaltsalt');
+INSERT INTO `accounts` (`ID`, `role`, `name`, `password`, `salt`, `email`) VALUES
+(1, 'admin', 'admin', 'ed1c972305635e5be40aa72f6c0c1bd84cb0a8d1', 'saltsaltsalt', 'sadeq1989@gmail.com'),
+(13, 'user', 'user', 'ed1c972305635e5be40aa72f6c0c1bd84cb0a8d1', 'saltsaltsalt', 'sadeq1989@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `addresses`
+-- Tabellenstruktur für Tabelle `addresses`
 --
 
 CREATE TABLE IF NOT EXISTS `addresses` (
@@ -65,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `addresses` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Tabellenstruktur für Tabelle `customer`
 --
 
 CREATE TABLE IF NOT EXISTS `customer` (
@@ -73,7 +74,6 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `accounts_ID` bigint(20) unsigned NOT NULL,
   `surname` varchar(70) NOT NULL,
   `lastname` varchar(70) NOT NULL,
-  `email` varchar(70) NOT NULL,
   `gender` enum('f','m') NOT NULL,
   `tel` varchar(70) NOT NULL,
   `birthdate` date DEFAULT NULL,
@@ -82,17 +82,17 @@ CREATE TABLE IF NOT EXISTS `customer` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `customer`
+-- Daten für Tabelle `customer`
 --
 
-INSERT INTO `customer` (`ID`, `accounts_ID`, `surname`, `lastname`, `email`, `gender`, `tel`, `birthdate`) VALUES
-(4, 1, 'S', 'A', 's@b.com', 'm', '123123', NULL),
-(5, 13, 'Franz', 'Müller', 'bla@blub.de', 'm', '12124124', NULL);
+INSERT INTO `customer` (`ID`, `accounts_ID`, `surname`, `lastname`, `gender`, `tel`, `birthdate`) VALUES
+(4, 1, 'S', 'A', 'm', '123123', NULL),
+(5, 13, 'Franz', 'Müller', 'm', '12124124', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fruits`
+-- Tabellenstruktur für Tabelle `fruits`
 --
 
 CREATE TABLE IF NOT EXISTS `fruits` (
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `fruits` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Tabellenstruktur für Tabelle `orders`
 --
 
 CREATE TABLE IF NOT EXISTS `orders` (
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `smoothies`
+-- Tabellenstruktur für Tabelle `smoothies`
 --
 
 CREATE TABLE IF NOT EXISTS `smoothies` (
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `smoothies` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `smoothies_has_fruits`
+-- Tabellenstruktur für Tabelle `smoothies_has_fruits`
 --
 
 CREATE TABLE IF NOT EXISTS `smoothies_has_fruits` (
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `smoothies_has_fruits` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `smoothies_has_orders`
+-- Tabellenstruktur für Tabelle `smoothies_has_orders`
 --
 
 CREATE TABLE IF NOT EXISTS `smoothies_has_orders` (
@@ -169,43 +169,43 @@ CREATE TABLE IF NOT EXISTS `smoothies_has_orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Constraints for dumped tables
+-- Constraints der exportierten Tabellen
 --
 
 --
--- Constraints for table `accounts`
+-- Constraints der Tabelle `accounts`
 --
 ALTER TABLE `accounts`
   ADD CONSTRAINT `accounts_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `customer` (`accounts_ID`) ON DELETE CASCADE;
 
 --
--- Constraints for table `addresses`
+-- Constraints der Tabelle `addresses`
 --
 ALTER TABLE `addresses`
   ADD CONSTRAINT `addresses_ibfk_1` FOREIGN KEY (`customer_ID`) REFERENCES `customer` (`ID`) ON DELETE CASCADE;
 
 --
--- Constraints for table `orders`
+-- Constraints der Tabelle `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `send-bill-to` FOREIGN KEY (`invoice_address`) REFERENCES `addresses` (`ID`) ON UPDATE CASCADE,
   ADD CONSTRAINT `send-packet-to` FOREIGN KEY (`delivery_address`) REFERENCES `addresses` (`ID`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `smoothies`
+-- Constraints der Tabelle `smoothies`
 --
 ALTER TABLE `smoothies`
   ADD CONSTRAINT `smoothie_ibfk_2` FOREIGN KEY (`customer_ID`) REFERENCES `customer` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `smoothies_has_fruits`
+-- Constraints der Tabelle `smoothies_has_fruits`
 --
 ALTER TABLE `smoothies_has_fruits`
   ADD CONSTRAINT `fk_smoothie_has_fruits_fruits1` FOREIGN KEY (`fruit_ID`) REFERENCES `fruits` (`ID`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_smoothie_has_fruits_smoothie1` FOREIGN KEY (`smoothie_ID`) REFERENCES `smoothies` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
--- Constraints for table `smoothies_has_orders`
+-- Constraints der Tabelle `smoothies_has_orders`
 --
 ALTER TABLE `smoothies_has_orders`
   ADD CONSTRAINT `fk_smoothies_has_orders_orders1` FOREIGN KEY (`orders_ID`) REFERENCES `orders` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION,

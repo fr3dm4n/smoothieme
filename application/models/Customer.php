@@ -7,7 +7,6 @@ class Application_Model_Customer
     protected $accounts_id;
     protected $surname;
     protected $lastname;
-    protected $email;
     protected $gender;
     protected $telephone;
     protected $birthdate;
@@ -90,27 +89,6 @@ class Application_Model_Customer
         return $this;
     }
 
-    /**
-     * @return String
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param String $email
-     * @return $this
-     */
-    public function setEmail($email)
-    {
-        if($email != null && is_string($email)) {
-            $this->email = $email;
-        }
-        else
-            echo 'Email cannot be null';
-        return $this;
-    }
 
     /**
      * @return mixed

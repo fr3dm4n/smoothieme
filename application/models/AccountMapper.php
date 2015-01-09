@@ -29,7 +29,8 @@ class Application_Model_AccountMapper
             'name' => $account->getName (),
             'rolle' => $account->getRole(),
             'passwort' => $account->getPassword(),
-            'salt'=> $account->getSalt()
+            'salt'=> $account->getSalt(),
+            'email'=>$account->getEmail()
         );
 
         if (null === ($id = $account->getAccountId())) {
@@ -48,7 +49,7 @@ class Application_Model_AccountMapper
             return;
         }
         $row = $result->current ();
-        $account->setAccountId ($row->account_nr)->setName ( $row->name )->setRole ( $row->role )->setPassword ( $row->password )->setSalt($row->salt);
+        $account->setAccountId ($row->account_nr)->setName ( $row->name )->setRole ( $row->role )->setPassword ( $row->password )->setSalt($row->salt)->setEmail($row->email);
     }
 
     /**
@@ -60,7 +61,7 @@ class Application_Model_AccountMapper
      */
     public function getUserByLoginName($loginName)
     {
-        $select = $this->getDbTable()->select()->where('login_name = ?', $loginName);
+        $select = $this->getDbTable()->select()->where('name = ?', $loginName);
         $row = $this->getDbTable()->fetchRow($select);
 
         if ($row === null) {
@@ -68,11 +69,12 @@ class Application_Model_AccountMapper
         }
 
         $user = new Application_Model_Account();
-        $user->setAccountId($row->account_id)
+        $user->setId($row->ID)
             ->setRole($row->role)
             ->setName($row->name)
             ->setPassword($row->password)
-            ->setSalt($row->salt);
+            ->setSalt($row->salt)
+            ->setEmail($row->email);
 
         return $user;
     }

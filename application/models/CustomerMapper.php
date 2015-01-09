@@ -29,7 +29,6 @@ class Application_Model_CustomerMapper
             'accounts_id' => $customer->getAccountsId(),
             'surname' => $customer->getSurname(),
             'lastname' => $customer->getLastname(),
-            'email' => $customer->getEmail(),
             'gender' => $customer->getGender(),
             'tel' => $customer->getTelephone(),
             'birthdate' => $customer->getBirthdate(),
@@ -51,9 +50,9 @@ class Application_Model_CustomerMapper
             return;
         }
         $row = $result->current ();
-        $customer->setCustomerId ( $row->kundennr )->setAccountsId($row->account_nr)->setSurname
-            ( $row->nachname )->setLastname ( $row->nachname)->setEmail ( $row->Email )->setGender
-                ( $row->Geschlecht )-> setTelephone($row->Telefon)->setBirthdate($row->Geburtsdatum);
+        $customer->setCustomerId ( $row->kundennr )->setAccountsId($row->account_nr)
+            ->setSurname( $row->vorname )->setLastname ( $row->nachname)->setGender( $row->Geschlecht )
+            -> setTelephone($row->Telefon)->setBirthdate($row->Geburtsdatum);
     }
 
 

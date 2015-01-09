@@ -2,11 +2,12 @@
 
 class Application_Model_Account
 {
-    protected $account_id;
+    protected $id;
     protected $role;
     protected $name;
     protected $password;
     protected $salt;
+    protected $email;
 
 
     public function __construct(array $options = null) {
@@ -70,19 +71,19 @@ class Application_Model_Account
     /**
      * @return mixed
      */
-    public function getAccountId()
+    public function getId()
     {
-        return $this->account_id;
+        return $this->id;
     }
 
     /**
      * @param mixed $account_id
      * @return $this
      */
-    public function setAccountId($account_id)
+    public function setId($account_id)
     {
         if($account_id > 1 && $account_id != null && is_integer($account_id)) {
-            $this->account_id = $account_id;
+            $this->id = $account_id;
         }
         else
             echo "AccountID must be greater 0 or notNull!";
@@ -152,6 +153,27 @@ class Application_Model_Account
         return $this;
     }
 
+    /**
+     * @return String
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param String $email
+     * @return $this
+     */
+    public function setEmail($email)
+    {
+        if($email != null && is_string($email)) {
+            $this->email = $email;
+        }
+        else
+            echo 'Email cannot be null';
+        return $this;
+    }
 
 
 }
