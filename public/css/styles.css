@@ -37,6 +37,14 @@ form#fruits #price, form#fruits #kcal {
   text-align: right;
 }
 
+/* line 23, ../sass/_fruits.scss */
+.fruit-color {
+  height: 30px;
+  width: 30px;
+  display: block;
+  border-radius: 3px;
+}
+
 /* line 7, ../sass/styles.scss */
 body {
   padding: 70px 0;
