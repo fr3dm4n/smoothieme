@@ -27,13 +27,22 @@ form#fruits .top-buffer {
 form#fruits #fruitphoto-label, form#fruits #fruitphoto-element {
   display: none;
 }
+/* line 9, ../sass/_fruits.scss */
+form#fruits #color {
+  text-shadow: white 0 0 8px, white 0 0 8px, white 0 0 8px, white 0 0 8px, white 0 0 8px;
+  text-align: center;
+}
+/* line 19, ../sass/_fruits.scss */
+form#fruits #price, form#fruits #kcal {
+  text-align: right;
+}
 
-/* line 6, ../sass/styles.scss */
+/* line 7, ../sass/styles.scss */
 body {
   padding: 70px 0;
 }
 
-/* line 10, ../sass/styles.scss */
+/* line 11, ../sass/styles.scss */
 footer {
   position: fixed;
   bottom: 0;
@@ -49,7 +58,7 @@ footer {
   text-align: center;
 }
 
-/* line 25, ../sass/styles.scss */
+/* line 26, ../sass/styles.scss */
 .carousel_style {
   padding-bottom: 10px;
 }

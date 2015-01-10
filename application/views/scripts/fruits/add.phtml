@@ -1,7 +1,5 @@
 <?php
 
-$this->headScript()->appendFile("/js/dist/backend.min.js");
-
 $form = $this->fruitsForm;
 
 //Nicht ausgegebene Ereignisse des aktuellen Requests
@@ -10,13 +8,15 @@ if ($this->unfullfilledRequiredments) {
 } else {
     echo $this->flashMessages();
 }
+
+
 ?>
-<form class="dropzone" enctype="application/x-www-form-urlencoded" action="<?php echo $form->getAttribs()["action"] ?>" method="<?php echo $form->getAttribs()["method"] ?>" name="<?php echo $form->getAttribs()["name"] ?>" id="<?php echo $form->getAttribs()["name"] ?>">
+<form enctype="application/x-www-form-urlencoded" action="<?php echo $form->getAttribs()["action"] ?>" method="<?php echo $form->getAttribs()["method"] ?>" name="<?php echo $form->getAttribs()["name"] ?>" id="<?php echo $form->getAttribs()["name"] ?>">
     <?php if ($this->isAjax) {
     ?>
     <div class="modal-header">
         <button class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Neue Frucht anlegen</h4>
+        <h4 class="modal-title"> Neue Frucht anlegen</h4>
     </div>
     <div class="modal-body ">
         <div class="panel-body">
@@ -25,38 +25,64 @@ if ($this->unfullfilledRequiredments) {
                 <h1>Neue Frucht</h1>
             <?php } ?>
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="col-xs-12 col-sm-12 col-md-12 <?php echo $form->name->hasErrors()?"has-error":null; ?>">
                     <?php echo $form->name; ?>
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-4"><?php echo $form->color; ?></div>
-                <div class="col-xs-12 col-sm-4 col-md-4">
-
+                <div class="col-xs-12 col-sm-4 col-md-4 <?php echo $form->color->hasErrors()?"has-error":null; ?>"><?php echo $form->color; ?></div>
+                <div class="col-xs-12 col-sm-4 col-md-4 <?php echo $form->price->hasErrors()?"has-error":null; ?>">
                     <dt id="<?php echo $form->price->getName() ?>-label"><label for="<?php echo $form->price->getName() ?>"><?php echo $form->price->getLabel() ?></label></dt>
-                    <dd id="<?php echo $form->price->getName() ?>-element" class="input-group">
-                        <input name="<?php echo $form->price->getName() ?>" id="<?php echo $form->price->getName() ?>"  class="form-control" >
-                        <div class="input-group-addon">&euro; á 100ml</div>
+                    <dd id="<?php echo $form->price->getName() ?>-element">
+                        <div  class="input-group">
+                            <input name="<?php echo $form->price->getName() ?>" id="<?php echo $form->price->getName() ?>" class="form-control" value="<?php echo $form->price->getValue() ?>"  >
+                            <div class="input-group-addon">&euro; á 100ml</div>
+                        </div>
+
+                        <?php
+                        $priceErrors=$form->price->getMessages();
+                        if(!empty($priceErrors)){
+                            echo '<ul class="errors">';
+                            foreach($priceErrors as $msg){
+                                echo "<li>".$msg."</li>";
+                            }
+                            echo '</ul>';
+                        }
+                        ?>
                     </dd>
-
-
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-4">
+                <div class="col-xs-12 col-sm-4 col-md-4 <?php echo $form->kcal->hasErrors()?"has-error":null; ?>">
                     <dt id="<?php echo $form->kcal->getName() ?>-label"><label for="<?php echo $form->kcal->getName() ?>"><?php echo $form->kcal->getLabel() ?></label></dt>
-                    <dd id="<?php echo $form->kcal->getName() ?>-element" class="input-group">
-                        <input name="<?php echo $form->kcal->getName() ?>" id="<?php echo $form->kcal->getName() ?>"  class="form-control" >
-                        <div class="input-group-addon">kcal á 100ml</div>
+                    <dd id="<?php echo $form->kcal->getName() ?>-element">
+                        <div  class="input-group">
+                            <input name="<?php echo $form->kcal->getName() ?>" id="<?php echo $form->kcal->getName() ?>" class="form-control" value="<?php echo $form->kcal->getValue() ?>" >
+                            <div class="input-group-addon">kcal á 100ml</div>
+                        </div>
+                        <?php
+                        $kcalErrors=$form->kcal->getMessages();
+                        if(!empty($kcalErrors)){
+                            echo '<ul class="errors">';
+                            foreach($kcalErrors as $msg){
+                                echo "<li>".$msg."</li>";
+                            }
+                            echo '</ul>';
+                        }
+                        ?>
                     </dd>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-xs-5 col-sm-4 col-md-4">
-                    <?php //echo $form->fruitphoto;  ?>
                     <dt><label>Fruchtabbildung</label></dt>
-                    <dd class="text-center"><img id="fruit_label" src="/img/fruits/_default.jpg" height="128" width="128"></dd>
-                    <button type="button" id="newFruitPhoto" class="top-buffer btn btn-block">&auml;ndern</button>
-                    <?php echo $form->fruitphoto ?>
+                    <dd class="text-center top-buffer"><img id="fruit_label" src="/img/fruits/_default.jpg" height="96" width="96"></dd>
+                    <button type="button" id="newFruitPhoto" class="top-buffer btn btn-block">&auml;ndern (max. <?php echo $this->uploadLimitHR; ?>)</button>
+                    <dt id="fruitphoto-label"><label for="fruitphoto" class="optional">Frucht-Icon</label></dt>
+                    <dd id="fruitphoto-element">
+                        <input type="hidden" name="token" id="token" />
+                        <input type="file" name="fruitphoto" id="fruitphoto" accept="image/*" class="input-file">
+                    </dd>
                 </div>
-                <div class="col-xs-7 col-sm-8 col-md-8">
-                    <?php echo $form->desc; ?>
+                <div class="col-xs-7 col-sm-8 col-md-8 <?php echo $form->description->hasErrors()?"has-error":null; ?>">
+                    <?php echo $form->description; ?>
                 </div>
             </div>
         <?php

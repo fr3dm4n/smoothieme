@@ -14,8 +14,7 @@ class Application_Form_Fruits extends Twitter_Bootstrap_Form {
      * @throws Zend_Form_Exception
      */
     public function init() {
-
-        $this->setName("fruits");
+        $this->setName("fruits")->setMethod("post");
 
         $this->addElement("text", "name", array(
             'label'      => "Name",
@@ -26,9 +25,9 @@ class Application_Form_Fruits extends Twitter_Bootstrap_Form {
             ),
             'validators' => array(
                 array(
-                    'Stringlength',
+                    'StringLength',
                     false,
-                    [10, 70]
+                    [3, 70]
                 )
             ),
         ));
@@ -43,11 +42,20 @@ class Application_Form_Fruits extends Twitter_Bootstrap_Form {
                 array(
                     'StringLength',
                     false,
-                    [6, 6]
+                    [4, 7]
                 ),
+                array(
+                    'regex',
+                    false,
+                    array(
+                        'pattern'  => '/#[A-Fa-f0-9]{3,6}/i',
+                        'messages' => 'Muss ein Hex-Farbe im Format #333000 sein'
+                    )
+                )
             ),
+            'value'=>"#10ae00", // grün
             'required'   => true,
-            'size'       => 6,
+            'size'       => 7,
         ));
 
 
@@ -55,7 +63,11 @@ class Application_Form_Fruits extends Twitter_Bootstrap_Form {
             'label'      => 'Preis',
             'filters'    => array(
                 'StringTrim',
-                'StripTags'
+                'StripTags',
+                array('PregReplace',
+                      array('match' => '/,/',
+                            'replace' => '.')
+                )
             ),
             'validators' => array(
                 array(
@@ -63,7 +75,16 @@ class Application_Form_Fruits extends Twitter_Bootstrap_Form {
                     false,
                     [1, 14]
                 ),
+                array(
+                    'validator' => "Regex",
+                    'options'=>array(
+                        'pattern' =>'/^[0-9]+(.[0-9]{1,2})?$/',
+                        'messages' =>'Der Preis muss das Format 123 bzw. 123.99 haben'
+                    ),
+                ),
+
             ),
+            'value' => "1,00",
             'required'   => true,
         ));
 
@@ -79,47 +100,51 @@ class Application_Form_Fruits extends Twitter_Bootstrap_Form {
                     false,
                     [1, 5]
                 ),
+                array(
+                    'validator' => "Regex",
+                    'options'=>array(
+                        'pattern' =>'/^[0-9]+$/',
+                        'messages' =>'Nur ganzzahlige Werte aus Ziffern'
+                    ),
+                ),
             ),
-            'prepend'    => "kcal",
             'required'   => true,
         ));
 
-        $this->addElement("textarea", "desc", array(
+        $this->addElement("textarea", "description", array(
             'label'      => 'Beschreibung',
             'rows'       => 9,
             'filters'    => array(
                 'StringTrim',
-                'StripTags'
+                'StripTags',
             ),
             'validators' => array(
                 array(
                     'StringLength',
                     false,
-                    [1, 5]
+                    [1, 50]
                 ),
             ),
             'required'   => false,
         ));
 
-        // FILE_UPLOAD
-        $fruitPhoto = new Zend_Form_Element_File('fruitphoto', array("data-directupload"=>"btn","accept"=>"image/*"));
-        $fruitPhoto->setLabel('Frucht-Icon');
+        //Wird später den Token bzw. zur Datei enthalten
+        $this->addElement("hidden","token",array(
+            'validators' => array(
+                array(
+                    'StringLength',
+                    false,
+                    32
+                ),
+                array(
+                    'Alnum',
+                    false
+                ),
+            ),
 
-        // nur eine Datei
-        $fruitPhoto->addValidator('Count', false, 1);
-        // max 2MB
-        $postMax = self::getPhpDateSizeInByte(ini_get("post_max_size"));
-        $uploadMax = self::getPhpDateSizeInByte(ini_get("upload_max_filesize"));
+            'required'   => false,
+        ));
 
-        //Multi-Part-post und Put-request wird damit abgedeckt
-        $uploadLimit = min($uploadMax, $postMax);
-
-        $fruitPhoto->addValidator('Size', false, $uploadLimit)->setMaxFileSize($uploadLimit);
-        // only JPEG, PNG, or GIF
-        $fruitPhoto->addValidator('Extension', false, 'jpg,png,jpeg,gif');
-        $fruitPhoto->setValueDisabled(true);
-
-        $this->addElement($fruitPhoto, 'fruitphoto');
 
         $this->addElement('submit', 'submit', array(
             'buttonType' => Twitter_Bootstrap_Form_Element_Submit::BUTTON_PRIMARY,
@@ -127,26 +152,7 @@ class Application_Form_Fruits extends Twitter_Bootstrap_Form {
         ));
     }
 
-    /**
-     * Rechnet Dateigrößen von 20M zu 20*1024^2 Byte um
-     * @param $val
-     * @return int|string
-     */
-    private static function getPhpDateSizeInByte($val) {
-        $val = trim($val);
-        $last = strtolower($val[strlen($val) - 1]);
-        switch ($last) {
-            // The 'G' modifier is available since PHP 5.1.0
-            case 'g':
-                $val *= 1024;
-            case 'm':
-                $val *= 1024;
-            case 'k':
-                $val *= 1024;
-        }
 
-        return $val;
-    }
 
 }
 

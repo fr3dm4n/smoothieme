@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Funktionen für die Bildbearbeitung
+ * Class Smoothieme_Thumbnail
  */
 class Smoothieme_Thumbnail {
     private $imagePath = null;
@@ -19,11 +19,7 @@ class Smoothieme_Thumbnail {
     public static function isImage($filePath) {
         $info = getimagesize($filePath);
         $image_type = $info[2];
-
-        if (in_array($image_type, array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_BMP))) {
-            return true;
-        }
-        return false;
+        return in_array($image_type, array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_BMP));
     }
 
     /**
@@ -55,9 +51,9 @@ class Smoothieme_Thumbnail {
 
     /**
      * Ändere Bildgröße
-     * @param $width int width obf image
-     * @param $height int height of image
-     * @param bool $crop crops image zu a square
+     * @param $width int Breite des neuen Bildes
+     * @param $height int Height des neuen Bildes
+     * @param bool $crop Beschneidet das Bild um die längsten überstehenden Kanten
      */
     public function resize($width, $height, $crop = true) {
 

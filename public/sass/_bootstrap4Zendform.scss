@@ -12,5 +12,17 @@ nav{
    @extend .navbar;
    @extend .navbar-default;
    @extend .navbar-fixed-top;
+}
+//Fehler-Nachrichten
 
+form ul.errors{
+   padding: 0 5px;
+   margin:0;
+   li{
+      font-size: small;
+      font-weight: bold;
+      padding: 0;
+      color: $brand-danger;
+      list-style: none;
+   }
 }

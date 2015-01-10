@@ -1,65 +1,73 @@
-<br /><br />
+<?php
+echo $this->flashMessages();
+?>
+
+<br/><br/>
 <div id="view-content">
-<style>
-.align-right{
-	float:right;
-}
-.colorme{
-	height:30px;
-	width: 30px;
-	display: block;
-	border-radius: 3px;
-}
-.green{background-color:green}
-.red{background-color:red}
-.yellow{background-color:yellow}
-</style>
-<h1>Alle frechen Früchtchen</h1>
-	<p>Verwaltungsort für kleinpüriertes, cremiges Obst mit Möglichkeit zur neu Anlegung frischer Sorten.</p>
-	<div class="table-responsive">
-  <table class="table table-striped">
-	<button class="btn btn-success align-right" type="submit" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Neu</button>
-    <thead>
-		<tr>
-			<th>Fruchtname</th>
-			<th>Bild</th>
-			<th>Beschreibung</th>
-			<th>KCal/100ml</th>
-			<th>Farbe</th>
-			<th class="text-right">Preis</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Banana</td>
-			<td><img src="..." alt="..." class="img-rounded">Insert Pic here:)</td>
-			<td>Cremig und leckäää </td>
-			<td>90 kcal</td>
-			<td><span class="colorme yellow"></span></td>
-			<td class="text-right">2,90 €</td>
-			<td class="text-right"><button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> L&ouml;schen</button></td>
-		</tr>
-		<tr>
-			<td>Erdbeer</td>
-			<td><img src="..." alt="..." class="img-rounded">Bild!</td>
-			<td>Rot und fruchtig</td>
-			<td>32 kcal</td>
-			<td><span class="colorme red"></span></td>
-			<td class="text-right">0,90 €</td>
-			<td class="text-right"><button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> L&ouml;schen</button></td>
-		</tr>
-		<tr>
-			<td>Kiwi</td>
-			<td><img src="..." alt="..." class="img-rounded">Image</td>
-			<td>Sauer und Spritzig</td>
-			<td>54 kcal</td>
-			<td><span class="colorme green"></span></td>
-			<td class="text-right">1,20 €</td>
-			<td class="text-right"><button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> L&ouml;schen</button></td>
-		</tr>
-	</tbody>
-  </table>
-</div>
-	
+    <style>
+        .colorme {
+            height: 30px;
+            width: 30px;
+            display: block;
+            border-radius: 3px;
+        }
+    </style>
+    <h1>Frucht Übersicht</h1>
+
+    <div class="table-responsive">
+        <a href="<?php echo $this->url(array(
+            'controller' => "Fruits",
+            "action"     => "add"
+        )) ?>" data-target="#newFruit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            Neue Frucht</a>
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Fruchtname</th>
+                <th class="text-center">Bild</th>
+                <th>Beschreibung</th>
+                <th class="text-right" data-toggle="tooltip" data-placement="top" title="Tooltip on left">Kalorien</th>
+                <th>Farbe</th>
+                <th class="text-right">Preis</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+
+            if (count($this->allFruits) < 1) {
+                ?>
+                <tr>
+                    <td colspan="7">Keine Früchte vorhanden</td>
+                </tr>
+            <?php
+            }
+
+            foreach ($this->allFruits as $fruit) { ?>
+                <tr>
+                    <td><?php echo $fruit->getName() ?></td>
+                    <td class="text-center"><img src="<?php echo $fruit->getPicture() ?>" alt="" width="48" height="48">
+                    </td>
+                    <td><?php echo $fruit->getDescription() ?></td>
+                    <td class="text-right"><?php echo $fruit->getKcal() ?> kcal</td>
+                    <td><span class="colorme" style="background-color:<?php echo $fruit->getColor() ?>"></span></td>
+                    <td class="text-right">&euro; <?php echo number_format($fruit->getPrice(), 2, ",", ".") ?></td>
+                    <td class="text-right">
+                        <form action="<?php echo $this->url(array(
+                            "controller" => "fruits",
+                            "action"     => "delete"
+                        )) ?>" method="post">
+                            <button name="id" data-btn-ok-label="Ja" data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Nein" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" data-btn-cancel-class="btn-danger" value="<?php echo $fruit->getId() ?>" class="btn btn-danger fruit-delete" type="submit">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> L&ouml;schen
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
 </div>

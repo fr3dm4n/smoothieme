@@ -1,17 +1,29 @@
 <?php
 
-class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
-{
+class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
+    protected function _initTranslation() {
+        $translator = new Zend_Translate(
+            array(
+                'adapter' => 'array',
+                'content' => APPLICATION_PATH . '/../resources/languages',
+                'locale' => 'de_DE',
+                'scan' => Zend_Translate::LOCALE_DIRECTORY
+            )
+        );
+        Zend_Validate_Abstract::setDefaultTranslator($translator);
+    }
+
+
     protected function _initDocType() {
         $this->bootstrap('view');
 
         $view = $this->getResource('view');
         $view->doctype('HTML5');
 
-
         $view->headLink()
             ->appendStylesheet("/css/bootstrap.css")
             ->appendStylesheet("/css/styles.css");
+
         $view->headScript()
             ->appendFile("/js/dist/vendors.min.js")
             ->appendFile("/js/dist/basic.min.js");

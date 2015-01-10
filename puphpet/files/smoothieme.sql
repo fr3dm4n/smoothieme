@@ -1,11 +1,11 @@
-﻿-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 09. Jan 2015 um 22:40
+-- Erstellungszeit: 10. Jan 2015 um 01:56
 -- Server Version: 5.5.40-0ubuntu0.14.04.1
--- PHP-Version: 5.6.3-1+deb.sury.org~trusty+1
+-- PHP-Version: 5.5.9-1ubuntu4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -98,7 +98,7 @@ INSERT INTO `customer` (`ID`, `accounts_ID`, `surname`, `lastname`, `gender`, `t
 CREATE TABLE IF NOT EXISTS `fruits` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(70) NOT NULL,
-  `color` char(6) NOT NULL,
+  `color` char(7) NOT NULL,
   `price` decimal(14,7) NOT NULL COMMENT 'je 100 ml',
   `description` text NOT NULL,
   `kcal` int(11) NOT NULL,

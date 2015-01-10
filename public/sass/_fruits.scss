@@ -6,4 +6,18 @@ form#fruits{
    #fruitphoto-label, #fruitphoto-element{
       display:none;
    }
+   #color{
+      @include text-shadow(
+            white 0 0 8px,
+            white 0 0 8px,
+            white 0 0 8px,
+            white 0 0 8px,
+            white 0 0 8px
+      );
+      text-align: center;
+   }
+   #price,#kcal{
+      text-align: right;
+   }
+
 }
