@@ -1,6 +1,18 @@
 <?php
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
+    /**
+     * Initialisiert Warenkorb-Instanz
+     */
+    protected function _initCart(){
+        $cart=new Smoothieme_Cart();
+        Zend_Registry::set('cart', $cart);
+    }
+
+    /**
+     * Übersetzung der Validations-Nachrichten
+     * @throws Zend_Validate_Exception
+     */
     protected function _initTranslation() {
         $translator = new Zend_Translate(
             array(
@@ -13,8 +25,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         Zend_Validate_Abstract::setDefaultTranslator($translator);
     }
 
-
-    protected function _initDocType() {
+    /**
+     * Initialisiert den HTML-Kopf
+     */
+    protected function _initHtmlHead() {
         $this->bootstrap('view');
 
         $view = $this->getResource('view');
