@@ -2,13 +2,15 @@
 echo $this->flashMessages();
 ?>
 <div id="view-content">
-    <h1>Frucht Übersicht <a href="<?php echo $this->url(array(
-            'controller' => "Fruits",
-            "action"     => "add"
-        )) ?>" data-target="#newFruit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            Neue Frucht</a></h1>
+
 
     <div class="panel panel-default">
+        <div class="panel-heading"><h1 >Frucht Übersicht <a href="<?php echo $this->url(array(
+                'controller' => "Fruits",
+                "action"     => "add"
+            )) ?>" data-target="#newFruit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Neue Frucht</a></h1>
+        </div>
         <div class="panel-body">
             <div class="table-responsive">
                 <table class="table table-striped">

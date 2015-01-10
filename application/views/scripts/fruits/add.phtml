@@ -11,10 +11,11 @@ if ($this->unfullfilledRequiredments) {
 
 
 ?>
-<?php if (!$this->isAjax) { ?>
-    <h1>Neue Frucht</h1>
-<?php } ?>
+
 <div class="panel panel-default">
+    <?php if (!$this->isAjax) { ?>
+    <div class="panel-heading"><h1>Neue Frucht</h1></div>
+    <?php } ?>
     <div class="panel-body">
 <form enctype="application/x-www-form-urlencoded" action="<?php echo $form->getAttribs()["action"] ?>" method="<?php echo $form->getAttribs()["method"] ?>" name="<?php echo $form->getAttribs()["name"] ?>" id="<?php echo $form->getAttribs()["name"] ?>">
     <?php if ($this->isAjax) {
