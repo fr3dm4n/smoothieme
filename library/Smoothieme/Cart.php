@@ -125,4 +125,17 @@ class Smoothieme_Cart {
     public function getCartContents() {
         return $this->articles;
     }
+
+    /**
+     * Liefert Anzahl der Artikel im Warenkorb.
+     *
+     * @return int    Anzahl Artikel
+     */
+    public function getAmount(){
+        $result = 0;
+        foreach($this->articles as $count){
+            $result += $count;
+        }
+        return $result;
+    }
 }

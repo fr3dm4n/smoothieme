@@ -1,5 +1,5 @@
 <ul class="loginmenu nav navbar-nav navbar-right">
-    <li><a href=""><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+    <li><a href=""><span class="glyphicon glyphicon-shopping-cart"></span><?php echo Zend_Registry::get("cart")->getAmount();?></a></li>
     <li data-toggle="modal" data-target="#modalwindow"><a href="#"><b>Anmelden</b></a></li>
     <li><a href="/register"><b>Registrieren</b></a></li>
 </ul>

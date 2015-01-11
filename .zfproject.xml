@@ -49,6 +49,9 @@
           <actionMethod actionName="index"/>
           <actionMethod actionName="sendMail"/>
         </controllerFile>
+        <controllerFile controllerName="SmoothiesUser">
+          <actionMethod actionName="index"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Auth"/>
@@ -147,7 +150,10 @@
           <viewControllerScriptsDirectory forControllerName="Register">
             <viewScriptFile forActionName="register"/>
           </viewControllerScriptsDirectory>
-        </viewScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="SmoothiesUser">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          </viewScriptsDirectory>
         <viewHelpersDirectory/>
         <viewFiltersDirectory enabled="false"/>
       </viewsDirectory>
