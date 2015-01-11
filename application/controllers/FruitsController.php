@@ -310,14 +310,20 @@ class FruitsController extends Zend_Controller_Action {
         $mapper = new Application_Model_FruitMapper();
         $mapper->find($id,$fruit);
         $name=$fruit->getName();
+        //Frucht in Verwendung?
+        if($fruit->isUsed()===true){
+            $this->_helper->flashMessenger->setNamespace("error")->addMessage("Frucht wird noch verwendet!");
+            $this->redirect($this->view->url(array('controller' => "Fruits", "action" => "index")));
+            return;
+        }
+
         //Lösche aus Datenbank
         $DBdelete=0;
         if(!empty($name)){
             $DBdelete=$mapper->delete($id);
-
         }else{
             $this->_helper->flashMessenger->setNamespace("error")->addMessage("Ungültige Parameter!");
-            $this->redirect(array('controller' => "Fruits", "action" => "index"));
+            $this->redirect($this->view->url(array('controller' => "Fruits", "action" => "index")));
             return;
         }
         //Lösche Bild

@@ -13,7 +13,7 @@ echo $this->flashMessages();
             )) ?>" class="hidden-xs btn btn-default"></span>
                 Früchte bearbeiten</a>
             <a href="<?php echo $this->url(array(
-                'controller' => "Fruits",
+                'controller' => "Smoothies",
                 "action"     => "add"
             )) ?>" class="btn btn-success "><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 <span class="hidden-xs">Neuer Smoothie</span></a>
@@ -48,7 +48,6 @@ echo $this->flashMessages();
                 <td class="text-left">
                     <ul class="fruits-of-smoothie">
                         <?php foreach ($smoothie->getFruits() as $fruit) {
-                            var_dump($fruit["fruit"]->isUsed());
                             ?>
                             <li><img src="<?php echo $fruit["fruit"]->getPicture() ?>"/>
                                 <span>

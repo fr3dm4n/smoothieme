@@ -11,10 +11,6 @@ class Application_Model_Row_Fruit extends Zend_Db_Table_Row_Abstract {
      * @return bool
      */
     public function isUsed() {
-
-            $this->fruits = $this->findManyToManyRowset('Application_Model_DbTable_Fruit',   // match table
-                'Application_Model_DbTable_SmoothieHasFruits');  // join table
-
-        return $this->fruits;
+        return $smoothies=$this->findDependentRowset('Application_Model_DbTable_SmoothieHasFruits')->count()>0;
     }
 }

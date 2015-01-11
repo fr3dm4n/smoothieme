@@ -10,9 +10,15 @@ class Application_Model_Fruit {
     protected $kcal;
 
     /**
+     * @var bool Frucht in Smoothie benutzt?
+     */
+    private $used;
+
+    /**
      * Standard-Bild
      */
     const DEFAULT_PIC="_default.jpg";
+
 
     /**
      * @param array $options
@@ -176,7 +182,19 @@ class Application_Model_Fruit {
      */
     public function isUsed() {
         $mapper=new Application_Model_FruitMapper();
-        return $mapper->isUsed($this);
+        $mapper->isUsed($this);
+        return $this->used;
+    }
+
+    /**
+     * @param $isUsed
+     */
+    public function setUsed($isUsed) {
+        if($isUsed===true){
+            $this->used=true;
+        }else{
+            $this->used=false;
+        }
     }
 
 }

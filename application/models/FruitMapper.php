@@ -107,10 +107,19 @@ class Application_Model_FruitMapper
     /**
      * Prüft pob Frucht verwendet wird
      * @param Application_Model_Fruit $fruit
+     * @throws ErrorException
      */
     public function isUsed(Application_Model_Fruit $fruit) {
-//        $this->find($fruit->getID(),$f)
+        $result = $this->getDbTable()->find($fruit->getID());
+        if (count($result)==0) {
+            $fruit->setUsed(false);
+        }
 
+        if(count($result)>1){
+            throw new ErrorException("There are ambigous fruits under the same ID");
+        }
+
+        $fruit->setUsed($result->current()->isUsed());
 
     }
 
