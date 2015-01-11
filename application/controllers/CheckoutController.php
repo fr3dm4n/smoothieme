@@ -32,8 +32,20 @@ class CheckoutController extends Zend_Controller_Action
     public function indexAction()
     {
         // action body
+
         $cart = Zend_Registry::get("cart");
-        $cart->getCartContents();
+        Zend_Debug::dump($cart);
+        $result= $cart->getCartContents();
+        $mapper = new Application_Model_SmoothieMapper();
+        $smoothies = new Application_Model_Smoothie();
+        foreach($result as $id => $amount){
+            $smoo = $mapper->find($id,$smoothies);
+            $menge = $amount;
+            $name =  $smoothies->getName();
+            var_dump($name);
+        }
+
+
 
     }
 

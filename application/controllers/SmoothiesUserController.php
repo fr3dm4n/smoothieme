@@ -26,7 +26,13 @@ class SmoothiesUserController extends Zend_Controller_Action
         $this->cart=Zend_Registry::get("cart");
         $this->cart->addItem($id);
 
+
         $this->cart->__destruct();
+
+
+        $this->_helper->flashMessenger
+            ->setNamespace("success")
+            ->addMessage("Ihr Smoothie wurde in den Warenkorb gelegt.");
         $this->redirect('/smoothies-user');
     }
 
