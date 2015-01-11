@@ -58,7 +58,7 @@
     }
     .fruitcolor:nth-last-of-type(1) .fruitwave {
         height:30%;
-        margin:0 28% 0 0;
+        margin:0 24% 0 0;
     }
     #mixer {
         position: absolute;
@@ -225,7 +225,23 @@
 <p>Erstellen sie einen neuen Smoothie</p>
 <div class="clearfix">
     <div class="pull-left smoothie-config">
-        
+        <div class="dropdown">
+        <p>Wählen Sie eine Größe die der Smoothie haben soll:</p>
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                Größe
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">S (100 ml)</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">M (250 ml)</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">L (750 ml)</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">XL (1 l)</a></li>
+            </ul>
+        </div>
+        <p>Fügen Sie Früchte zu Ihrem Smoothie hinzu:</p>
+        <button type="button" class="btn btn-success btn-lg">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Frucht
+        </button>
 
     </div>
     <div class="pull-right" id="mixerwrapper">
