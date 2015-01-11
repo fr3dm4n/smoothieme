@@ -83,3 +83,4 @@ $RECYCLE.BIN/
 html
 node-module
 .sass-cache
+public/img/fruits
