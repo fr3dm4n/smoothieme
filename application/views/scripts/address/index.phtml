@@ -1,96 +1,157 @@
-<div class="row">
-    <div class="col-md-7">
-        <h3>Adresse ändern</h3>
-        <div class="row">
-            <div class="col-md-8 col-sm-7 col-xs-6">
-                <div class="form-group">
-                    <label for="street">Straße</label>
-                    <input type="text" class="form-control" value="Musterstraße">
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-3 col-xs-2">
-                <div class="form-group">
-                    <label for="street">Nr.</label>
-                    <input type="text" class="form-control" value="1">
-                </div>
-            </div>
-            <br>
-            <div class="col-xs-3">
-                <div class="form-group">
-                    <label for="zip">Postleitzahl</label>
-                    <input type="text" class="form-control" value="123456">
-                </div>
-            </div>
-            <div class="col-xs-7">
-                <div class="form-group">
-                    <label for="city">Ort</label>
-                    <input type="text" class="form-control" value="Musterstadt">
-                </div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-default">Adresse ändern</button>
-        <br><br><br>
+<?php
+echo $this->flashMessages();
+?>
+<div id="view-content">
 
-        <h3>Neue Adresse anlegen</h3>
-        <div class="row">
-            <div class="col-md-8 col-sm-7 col-xs-6">
-                <div class="form-group">
-                    <label for="street">Straße</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-3 col-xs-2">
-                <div class="form-group">
-                    <label for="street">Nr.</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <br>
-            <div class="col-xs-3">
-                <div class="form-group">
-                    <label for="zip">Postleitzahl</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="col-xs-7">
-                <div class="form-group">
-                    <label for="city">Ort</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-default">Neue Adresse anlegen</button>
-        <br><br><br>
 
-        <h3>Bestehende Adresse löschen</h3>
-        <div class="row">
-            <div class="col-md-8 col-sm-7 col-xs-6">
-                <div class="form-group">
-                    <label for="street">Straße</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-3 col-xs-2">
-                <div class="form-group">
-                    <label for="street">Nr.</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <br>
-            <div class="col-xs-3">
-                <div class="form-group">
-                    <label for="zip">Postleitzahl</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="col-xs-7">
-                <div class="form-group">
-                    <label for="city">Ort</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
+    <div class="panel panel-default">
+        <div class="panel-heading"><h1>Meine Adressen<a href="<?php echo $this->url(array(
+                    'controller' => "Address",
+                    "action"     => "add"
+                )) ?>" data-target="#newAddress" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    Neue Adresse</a></h1>
         </div>
-    <button type="submit" class="btn btn-default">Adresse löschen</button>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Straße</th>
+                <th class="text-center">Nummer</th>
+                <th>Postleitzahl</th>
+                <th class="text-right" data-toggle="tooltip" data-placement="top" title="Tooltip on left">
+                    Ort
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+
+            if (count($this->allAdresses) < 1) {
+                ?>
+                <tr>
+                    <td colspan="7">Keine Adressen vorhanden</td>
+                </tr>
+            <?php
+            }
+
+            foreach ($this->allAddresses as $address) { ?>
+                <tr>
+                    <td><?php echo $address->getStreet() ?></td>
+                    <td><?php echo $address->getNumber() ?></td>
+                    <td class="text-right"><?php echo $address->getZip() ?></td>
+                    <td><?php echo $address->getCountry() ?></td>
+
+                        <form action="<?php echo $this->url(array(
+                            "controller" => "Address",
+                            "action"     => "delete"
+                        )) ?>" method="post">
+                            <button name="id" data-btn-ok-label="Ja" data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Nein" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" data-btn-cancel-class="btn-danger" value="<?php echo $fruit->getId() ?>" class="btn btn-danger fruit-delete" type="submit">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> L&ouml;schen
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
     </div>
+
 </div>
-<br><br><br>
+
+<!--<div class="row">-->
+<!--    <div class="col-md-7">-->
+<!--        <h3>Adresse ändern</h3>-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-8 col-sm-7 col-xs-6">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="street">Straße</label>-->
+<!--                    <input type="text" class="form-control" value="Musterstraße">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-2 col-sm-3 col-xs-2">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="street">Nr.</label>-->
+<!--                    <input type="text" class="form-control" value="1">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <br>-->
+<!--            <div class="col-xs-3">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="zip">Postleitzahl</label>-->
+<!--                    <input type="text" class="form-control" value="123456">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-7">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="city">Ort</label>-->
+<!--                    <input type="text" class="form-control" value="Musterstadt">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-default">Adresse ändern</button>-->
+<!--        <br><br><br>-->
+<!---->
+<!--        <h3>Neue Adresse anlegen</h3>-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-8 col-sm-7 col-xs-6">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="street">Straße</label>-->
+<!--                    <input type="text" class="form-control">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-2 col-sm-3 col-xs-2">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="street">Nr.</label>-->
+<!--                    <input type="text" class="form-control">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <br>-->
+<!--            <div class="col-xs-3">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="zip">Postleitzahl</label>-->
+<!--                    <input type="text" class="form-control">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-7">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="city">Ort</label>-->
+<!--                    <input type="text" class="form-control">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-default">Neue Adresse anlegen</button>-->
+<!--        <br><br><br>-->
+<!---->
+<!--        <h3>Bestehende Adresse löschen</h3>-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-8 col-sm-7 col-xs-6">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="street">Straße</label>-->
+<!--                    <input type="text" class="form-control">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-2 col-sm-3 col-xs-2">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="street">Nr.</label>-->
+<!--                    <input type="text" class="form-control">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <br>-->
+<!--            <div class="col-xs-3">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="zip">Postleitzahl</label>-->
+<!--                    <input type="text" class="form-control">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-7">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="city">Ort</label>-->
+<!--                    <input type="text" class="form-control">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    <button type="submit" class="btn btn-default">Adresse löschen</button>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<br><br><br>-->

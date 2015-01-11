@@ -13,10 +13,17 @@ class Application_Form_Register extends Zend_Form
             'required'   => true,
             'class' => 'form-control',
             'placeholder'=> 'Vorname',
-            'filters'    => array('StringTrim'),
+            'filters'    => array(
+                'StringTrim',
+                'StripTags'
+            ),
             'validators' => array(
-                'surname',
-            )
+                array(
+                    'StringLength',
+                    false,
+                    [3,50]
+                )
+            ),
         ));
 
         // lastname
@@ -24,10 +31,17 @@ class Application_Form_Register extends Zend_Form
             'required'   => true,
             'class' => 'form-control',
             'placeholder'=> 'Nachname',
-            'filters'    => array('StringTrim'),
+            'filters'    => array(
+                'StringTrim',
+                'StripTags'
+            ),
             'validators' => array(
-                'lastname',
-            )
+                array(
+                    'StringLength',
+                    false,
+                    [3,50]
+                )
+            ),
         ));
 
         // email
@@ -37,7 +51,10 @@ class Application_Form_Register extends Zend_Form
             'placeholder'=> 'E-Mail Adresse',
             'filters'    => array('StringTrim'),
             'validators' => array(
-                'email',
+                'emailAddress',
+                array(
+                    'massage' => 'Bitte gültige E-Mail eingeben'
+                )
             )
         ));
 
@@ -116,8 +133,8 @@ class Application_Form_Register extends Zend_Form
 
         // Add the submit button
         $this->addElement('submit', 'submit', array(
-            'ignore'   => true,
-            'label'    => 'Registrieren',
+            'buttonType' => Twitter_Bootstrap_Form_Element_Submit::BUTTON_PRIMARY,
+            'label'      => 'Registrieren',
         ));
 
         // And finally add some CSRF protection
