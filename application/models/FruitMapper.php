@@ -6,7 +6,7 @@ class Application_Model_FruitMapper
 
 
     /**
-     * Speichert/Ändert Artikel
+     * Speichert/Ändert Frucht
      * @param Application_Model_Fruit $fruit
      */
     public function save(Application_Model_Fruit $fruit) {
@@ -18,7 +18,7 @@ class Application_Model_FruitMapper
             'kcal' => $fruit->getKcal()
         );
 
-        $id=$fruit->getId();
+        $id=$fruit->getID();
 
         if (is_null($id)) {
             return $this->getDbTable()->insert($data);
@@ -28,7 +28,7 @@ class Application_Model_FruitMapper
     }
 
     /**
-     * Select Artikel
+     * Select Frucht
      * @param                          $id
      * @param Application_Model_Fruit $fruit
      */
@@ -39,7 +39,7 @@ class Application_Model_FruitMapper
         }
         $row = $result->current();
 
-        $fruit->setId($row->ID)
+        $fruit->setID($row->ID)
             ->setName($row->name)
             ->setColor($row->color)
             ->setDescription($row->description)
@@ -48,7 +48,7 @@ class Application_Model_FruitMapper
     }
 
     /**
-     * Gibt alle Artikel aus
+     * Gibt alle Früchte aus
      * @return array
      */
     public function fetchAll() {
@@ -56,7 +56,7 @@ class Application_Model_FruitMapper
         $entries = array();
         foreach ($resultSet as $row) {
             $fruit = new Application_Model_Fruit();
-            $fruit->setId($row->ID)
+            $fruit->setID($row->ID)
                 ->setName($row->name)
                 ->setColor($row->color)
                 ->setDescription($row->description)
@@ -102,6 +102,16 @@ class Application_Model_FruitMapper
      */
     public function delete($id) {
         return $this->getDbTable()->delete(array('ID = ?' => $id));
+    }
+
+    /**
+     * Prüft pob Frucht verwendet wird
+     * @param Application_Model_Fruit $fruit
+     */
+    public function isUsed(Application_Model_Fruit $fruit) {
+//        $this->find($fruit->getID(),$f)
+
+
     }
 
 

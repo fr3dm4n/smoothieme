@@ -2,7 +2,7 @@
 
 class Application_Model_Fruit {
 
-    protected $id;
+    protected $ID;
     protected $name;
     protected $color;
     protected $price;
@@ -41,16 +41,16 @@ class Application_Model_Fruit {
     /**
      * @return mixed
      */
-    public function getId() {
-        return $this->id;
+    public function getID() {
+        return $this->ID;
     }
 
     /**
      * @param mixed $id
      * @return $this
      */
-    public function setId($id) {
-        $this->id = $id;
+    public function setID($id) {
+        $this->ID = $id;
         return $this;
     }
 
@@ -170,5 +170,14 @@ class Application_Model_Fruit {
             return null;
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function isUsed() {
+        $mapper=new Application_Model_FruitMapper();
+        return $mapper->isUsed($this);
+    }
+
 }
 

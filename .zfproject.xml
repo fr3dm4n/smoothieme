@@ -29,6 +29,7 @@
         <controllerFile controllerName="Smoothies">
           <actionMethod actionName="index"/>
           <actionMethod actionName="add"/>
+          <actionMethod actionName="delete"/>
         </controllerFile>
         <controllerFile controllerName="Register">
           <actionMethod actionName="index"/>
@@ -64,11 +65,13 @@
           <dbTableFile dbTableName="Account"/>
           <dbTableFile dbTableName="Customer"/>
           <dbTableFile dbTableName="Fruits"/>
+          <dbTableFile dbTableName="SmoothieHasFruits"/>
         </dbTableDirectory>
         <modelFile modelName="SmoothieMapper"/>
         <modelFile modelName="Smoothie"/>
         <modelFile modelName="FruitMapper"/>
         <modelFile modelName="Fruit"/>
+        <modelFile modelName="SmoothieHasFruitsMapper"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <viewsDirectory>
@@ -131,6 +134,9 @@
             <viewScriptFile forActionName="sendMail"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Fruits">
+            <viewScriptFile forActionName="delete"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Smoothies">
             <viewScriptFile forActionName="delete"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>

@@ -1,4 +1,91 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Smoothies</b> and script/action name <b>index</b></p>
+<?php
+echo $this->flashMessages();
+?>
+<div class="panel panel-default " id="smoothies-index">
+    <div class="panel-heading clearfix ">
+        <h1 class="pull-left ">Smoothies Übersicht
+        </h1>
+
+        <div class="btn-group pull-right " role="group" aria-label="...">
+            <a href="<?php echo $this->url(array(
+                'controller' => "Fruits",
+                "action"     => "index"
+            )) ?>" class="hidden-xs btn btn-default"></span>
+                Früchte bearbeiten</a>
+            <a href="<?php echo $this->url(array(
+                'controller' => "Fruits",
+                "action"     => "add"
+            )) ?>" class="btn btn-success "><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                <span class="hidden-xs">Neuer Smoothie</span></a>
+
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Früchte</th>
+            <th class="text-right">Preis</th>
+            <th>Erstellt von</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+
+        if (count($this->smoothies) < 1) {
+            ?>
+            <tr>
+                <td colspan="5">Keine Smoothies vorhanden</td>
+            </tr>
+        <?php
+        }
+
+        foreach ($this->smoothies as $smoothie) {
+            ?>
+            <tr>
+                <td><?php echo $smoothie->getName() ?></td>
+                <td class="text-left">
+                    <ul class="fruits-of-smoothie">
+                        <?php foreach ($smoothie->getFruits() as $fruit) {
+                            var_dump($fruit["fruit"]->isUsed());
+                            ?>
+                            <li><img src="<?php echo $fruit["fruit"]->getPicture() ?>"/>
+                                <span>
+                                    <b><?php echo $fruit["fruit"]->getName() ?></b>
+                                    <small>(<?php echo $fruit["amount"] ?>ml)</small>
+                            </span></li>
+                        <?php } ?>
+                    </ul>
+                </td>
+                <td class="text-right vcenter">&euro; <?php echo number_format($smoothie->getPrice(), 2, ".", ","); ?></td>
+                <td>
+                    <?php
+                    if(is_null($smoothie->getCustomer())){
+                        echo "- öffentlicher Smoothie -";
+                    }else{
+                        echo $smoothie->getCustomer()->getSurname()." ".$smoothie->getCustomer()->getLastname();
+                    }
+                    ?>
+                </td>
+                <td class="text-right">
+                    <!--                    <button type="button" class="btn btn-info pull-right"> <span-->
+                    <!--                            class="glyphicon glyphicon-edit" aria-hidden="true"></span>-->
+                    <!--                        <span class="hidden-xs">bearbeiten</span>-->
+                    <!--                    </button>-->
+                    <form action="<?php echo $this->url(array(
+                        "controller" => "smoothies",
+                        "action"     => "delete"
+                    )) ?>" method="post">
+                        <button data-toggle="confirmation" name="id" data-btn-ok-label="Ja" data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Nein" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" data-btn-cancel-class="btn-danger" value="<?php echo $smoothie->getId()?>" class="btn btn-danger fruit-delete" type="submit">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            <span class="hidden-xs">L&ouml;schen</span>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
 </div>
+

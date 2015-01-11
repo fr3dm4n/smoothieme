@@ -97,8 +97,8 @@ $(document).ready(function () {
             $(this).css({backgroundColor: clr});
         }).trigger("changeColor");
     });
-    //Lösche Frucht
-    $(".fruit-delete").confirmation({
+    //confirm
+    $('[data-toggle="confirmation"]').confirmation({
             title: "Sind Sie sicher?",
             singleton: true
         }

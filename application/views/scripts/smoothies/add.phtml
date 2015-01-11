@@ -1,4 +1,254 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Smoothies</b> and script/action name <b>add</b></p>
+<script>
+    $(document).ready(function () {
+        var img = $("#mixer");
+        console.log(img.width(), img.height());
+        $('#mixerwrapper').css({
+            width: img.width(),
+            height: (img.height() / 2)
+        });
+
+    });
+</script>
+<style>
+    #mixerwrapper {
+        width: 50%;
+
+        padding-top: 10%;
+        position: relative;
+
+    }
+
+    .fruitcolor {
+        height: 20%; /* setzt der Hase*/
+        display: block;
+        position: absolute;
+        bottom:0;
+        right:0;
+        width:100%;
+        overflow: hidden;
+    }
+    .fruitcolor:nth-of-type(1){height:calc(100% * .77)}/*31%*/
+    .fruitcolor:nth-of-type(2){height:calc(69% * .77)} /*19%*/
+    .fruitcolor:nth-of-type(3){height:calc(50% * .77)}/*14%*/
+    .fruitcolor:nth-of-type(4){height:calc(36% * .77)}/*16%*/
+                                                        /*20%*/
+
+    .fruitcolor .fruitbody {
+        height: 80%
+    }
+
+    .fruitcolor .fruitwave {
+        -webkit-box-shadow: inset 0px 5px 5px 0px rgba(224,224,224,0.2);
+        -moz-box-shadow: inset 0px 5px 5px 0px rgba(224,224,224,0.2);
+        box-shadow: inset 0px 5px 5px 0px rgba(224,224,224,0.2);
+        height: 20%;
+        -moz-border-top-left-radius: 50% 90%;
+        -webkit-border-top-left-radius: 40% 90%;
+        border-top-left-radius: 60% 100%;
+        -moz-border-top-right-radius: 50% 90%;
+        -webkit-border-top-right-radius: 40% 90%;
+        border-top-right-radius: 70% 100%;
+        /*margin-left:24%;*/
+    }
+    .fruitcolor:nth-of-type(odd) .fruitwave{
+        margin:0 24% 0 0;
+    }
+    .fruitcolor:nth-last-of-type(1) .fruitbody {
+        height: 70%
+    }
+    .fruitcolor:nth-last-of-type(1) .fruitwave {
+        height:30%;
+        margin:0 28% 0 0;
+    }
+    #mixer {
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+    .fruitwave{
+        animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1.000) 3s;
+        animation-iteration-count: infinite;
+        transform-origin: 50% 50%;
+        -webkit-animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1.000) 3s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-transform-origin: 50% 50%;
+        -moz-animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1.000) 3s;
+        -moz-animation-iteration-count: infinite;
+        -moz-transform-origin: 50% 50%;
+        -o-animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1.000) 3s;
+        -o-animation-iteration-count: infinite;
+        -o-transform-origin: 50% 50%;
+        -ms-animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1.000) 3s;
+        -ms-animation-iteration-count: infinite;
+        -ms-transform-origin: 50% 50%;
+    }
+
+    @keyframes animationFrames{
+        0% {
+            transform:  translate(-110px,0px)  ;
+        }
+        50% {
+            transform:  translate(110px,0px)  ;
+        }
+        100% {
+            transform:  translate(-110px,0px)  ;
+        }
+    }
+
+    @-moz-keyframes animationFrames{
+        0% {
+            -moz-transform:  translate(-110px,0px)  ;
+        }
+        50% {
+            -moz-transform:  translate(110px,0px)  ;
+        }
+        100% {
+            -moz-transform:  translate(-110px,0px)  ;
+        }
+    }
+
+    @-webkit-keyframes animationFrames {
+        0% {
+            -webkit-transform:  translate(-110px,0px)  ;
+        }
+        50% {
+            -webkit-transform:  translate(110px,0px)  ;
+        }
+        100% {
+            -webkit-transform:  translate(-110px,0px)  ;
+        }
+    }
+
+    @-o-keyframes animationFrames {
+        0% {
+            -o-transform:  translate(-110px,0px)  ;
+        }
+        50% {
+            -o-transform:  translate(110px,0px)  ;
+        }
+        100% {
+            -o-transform:  translate(-110px,0px)  ;
+        }
+    }
+
+    @-ms-keyframes animationFrames {
+        0% {
+            -ms-transform:  translate(-110px,0px)  ;
+        }
+        50% {
+            -ms-transform:  translate(110px,0px)  ;
+        }
+        100% {
+            -ms-transform:  translate(-110px,0px)  ;
+        }
+    }
+    .fruitcolor:nth-of-type(odd) .fruitwave{
+        animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1.000) 3.2s;
+        animation-iteration-count: infinite;
+        transform-origin: 50% 50%;
+        -webkit-animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1.000) 3.2s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-transform-origin: 50% 50%;
+        -moz-animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1.000) 3.2s;
+        -moz-animation-iteration-count: infinite;
+        -moz-transform-origin: 50% 50%;
+        -o-animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1.000) 3.2s;
+        -o-animation-iteration-count: infinite;
+        -o-transform-origin: 50% 50%;
+        -ms-animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1.000) 3.2s;
+        -ms-animation-iteration-count: infinite;
+        -ms-transform-origin: 50% 50%;
+    }
+
+    @keyframes animationFramesOdd{
+        0% {
+            transform:  translate(110px,0px)  ;
+        }
+        50% {
+            transform:  translate(-10px,0px)  ;
+        }
+        100% {
+            transform:  translate(110px,0px)  ;
+        }
+    }
+
+    @-moz-keyframes animationFramesOdd{
+        0% {
+            -moz-transform:  translate(110px,0px)  ;
+        }
+        50% {
+            -moz-transform:  translate(-10px,0px)  ;
+        }
+        100% {
+            -moz-transform:  translate(110px,0px)  ;
+        }
+    }
+
+    @-webkit-keyframes animationFramesOdd {
+        0% {
+            -webkit-transform:  translate(110px,0px)  ;
+        }
+        50% {
+            -webkit-transform:  translate(-10px,0px)  ;
+        }
+        100% {
+            -webkit-transform:  translate(110px,0px)  ;
+        }
+    }
+
+    @-o-keyframes animationFramesOdd {
+        0% {
+            -o-transform:  translate(110px,0px)  ;
+        }
+        50% {
+            -o-transform:  translate(-10px,0px)  ;
+        }
+        100% {
+            -o-transform:  translate(110px,0px)  ;
+        }
+    }
+
+    @-ms-keyframes animationFramesOdd {
+        0% {
+            -ms-transform:  translate(110px,0px)  ;
+        }
+        50% {
+            -ms-transform:  translate(-10px,0px)  ;
+        }
+        100% {
+            -ms-transform:  translate(110px,0px)  ;
+        }
+    }
+</style>
+
+<h1>Neuen Smoothie Hinzufügen</h1>
+<p>Erstellen sie einen neuen Smoothie</p>
+<div class="clearfix">
+    <div class="pull-left smoothie-config">
+        
+
+    </div>
+    <div class="pull-right" id="mixerwrapper">
+        <div class="fruitcolor">
+            <div class="fruitwave" style="background-color:pink"></div>
+            <div class="fruitbody" style="background-color:pink"></div>
+        </div>
+        <div class="fruitcolor">
+            <div class="fruitwave" style="background-color:green"></div>
+            <div class="fruitbody" style="background-color:green"></div>
+        </div>
+        <div class="fruitcolor">
+            <div class="fruitwave" style="background-color:yellow"></div>
+            <div class="fruitbody" style="background-color:yellow"></div>
+        </div>
+        <div class="fruitcolor">
+            <div class="fruitwave" style="background-color:violet"></div>
+            <div class="fruitbody" style="background-color:violet"></div>
+        </div>
+        <div class="fruitcolor">
+            <div class="fruitwave" style="background-color:turquoise"></div>
+            <div class="fruitbody" style="background-color:turquoise"></div>
+        </div>
+        <img src="/img/mixer.png" alt="the mixer" class="pull-right" id="mixer">
+    </div>
 </div>

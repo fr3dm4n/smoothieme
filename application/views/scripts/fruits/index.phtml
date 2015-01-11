@@ -4,12 +4,16 @@ echo $this->flashMessages();
 <div id="view-content">
 
 
-    <div class="panel panel-default">
-        <div class="panel-heading"><h1>Frucht Übersicht <a href="<?php echo $this->url(array(
+    <div class="panel panel-default  ">
+        <div class="panel-heading clearfix"><h1 class="pull-left">Frucht Übersicht</h1>
+            <div class="btn-group pull-right " role="group" aria-label="...">
+            <a href="<?php echo $this->url(array(
                     'controller' => "Fruits",
                     "action"     => "add"
-                )) ?>" data-target="#newFruit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    Neue Frucht</a></h1>
+                )) ?>" data-target="#newFruit" class=" btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="hidden-xs">Neue Frucht</span>
+            </a>
+            </div>
         </div>
 
         <table class="table table-striped">
@@ -53,8 +57,9 @@ echo $this->flashMessages();
                             "controller" => "fruits",
                             "action"     => "delete"
                         )) ?>" method="post">
-                            <button name="id" data-btn-ok-label="Ja" data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Nein" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" data-btn-cancel-class="btn-danger" value="<?php echo $fruit->getId() ?>" class="btn btn-danger fruit-delete" type="submit">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> L&ouml;schen
+                            <button data-toggle="confirmation" name="id" data-btn-ok-label="Ja" data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Nein" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" data-btn-cancel-class="btn-danger" value="<?php echo $fruit->getId() ?>" class="btn btn-danger fruit-delete" type="submit">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                <span class="hidden-xs">L&ouml;schen</span>
                             </button>
                         </form>
                     </td>

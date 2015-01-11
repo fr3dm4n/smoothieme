@@ -1,0 +1,30 @@
+#smoothies-index {
+   .fruits-of-smoothie{
+      list-style: none;
+      padding:0;
+      margin:0;
+      li{
+         clear:both;
+         img{
+            float:left;
+            width: 48px;
+            height: 48px;
+            margin: 0 5px 5px 0
+         }
+         span{
+            display: inline-block;
+            b{
+               float:left;
+            }
+            small{
+               color: #666;
+               float:left;
+               clear:left;
+            }
+
+
+         }
+
+      }
+   }
+}

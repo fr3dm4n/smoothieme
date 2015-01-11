@@ -1518,7 +1518,7 @@ hr {
 
 /* line 9, ../sass/bootstrap/_type.scss */
 h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h1, .h2, .h3, .h4, .panel-heading > h1, .h5, .h6 {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
@@ -1535,8 +1535,9 @@ h6 .small,
 .h1 small,
 .h1 .small, .h2 small,
 .h2 .small, .h3 small,
-.h3 .small, .h4 small,
-.h4 .small, .h5 small,
+.h3 .small, .h4 small, .panel-heading > h1 small,
+.h4 .small,
+.panel-heading > h1 .small, .h5 small,
 .h5 .small, .h6 small,
 .h6 .small {
   font-weight: normal;
@@ -1565,7 +1566,7 @@ h3 .small, .h3 small,
 }
 
 /* line 35, ../sass/bootstrap/_type.scss */
-h4, .h4,
+h4, .h4, .panel-heading > h1,
 h5, .h5,
 h6, .h6 {
   margin-top: 10px;
@@ -1573,8 +1574,9 @@ h6, .h6 {
 }
 /* line 41, ../sass/bootstrap/_type.scss */
 h4 small,
-h4 .small, .h4 small,
+h4 .small, .h4 small, .panel-heading > h1 small,
 .h4 .small,
+.panel-heading > h1 .small,
 h5 small,
 h5 .small, .h5 small,
 .h5 .small,
@@ -1600,7 +1602,7 @@ h3, .h3 {
 }
 
 /* line 50, ../sass/bootstrap/_type.scss */
-h4, .h4 {
+h4, .h4, .panel-heading > h1 {
   font-size: 18px;
 }
 
@@ -8246,12 +8248,12 @@ nav {
   font-size: 17px;
 }
 
-/* line 18, ../sass/_bootstrap4Zendform.scss */
+/* line 17, ../sass/_bootstrap4Zendform.scss */
 form ul.errors {
   padding: 0 5px;
   margin: 0;
 }
-/* line 21, ../sass/_bootstrap4Zendform.scss */
+/* line 20, ../sass/_bootstrap4Zendform.scss */
 form ul.errors li {
   font-size: small;
   font-weight: bold;
@@ -8482,4 +8484,14 @@ form ul.errors li {
 /* line 197, ../sass/_bootstrap-colorpicker.scss */
 .colorpicker-inline.colorpicker-visible {
   display: inline-block;
+}
+
+/* line 7, ../sass/bootstrap.scss */
+.panel-heading > h1 {
+  font-weight: bold;
+}
+
+/* line 11, ../sass/bootstrap.scss */
+.vcenter {
+  vertical-align: middle;
 }
