@@ -7,9 +7,9 @@
  * Copyright by Webtaurus. Alle Rechte vorbehalten!
  */
 class Application_Model_Row_Smoothie extends Zend_Db_Table_Row_Abstract {
+    private $fruits = null;
+    private $customer=null;
 
-    private $fruits;
-    private $customer;
     /**
      * Liefert die Früchte zu einem Smoothie
      * @return Application_Model_Rowset_Fruits
