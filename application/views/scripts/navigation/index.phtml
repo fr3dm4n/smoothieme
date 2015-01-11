@@ -10,16 +10,8 @@
     </div>
     <div class="collapse navbar-collapse" id="example-navbar-collapse">
         <ul class="nav navbar-nav">
-            <li><a href="#">Mix It</a></li>
-            <li><a href="<?php
-                if(Zend_Auth::getInstance()->hasIdentity()) {
-                    if (Zend_Auth::getInstance()->getIdentity()->role === 'admin') {
-                        echo $this->url(array('controller' => "smoothies", 'action' => "index"));
-                    }else
-                        echo $this->url(array('controller' => "smoothies-user", 'action' => "index"));
-                        }else
-                    echo $this->url(array('controller' => "smoothies-user", 'action' => "index"));
-                ?>">Fertige Smoothies</a> </li>
+            <li><a href="<?php echo $this->url(array('controller' => "smoothies", 'action' => "add"));?>">Mix It</a></li>
+            <li><a href="<?php echo $this->url(array('controller' => "smoothies-user", 'action' => "index"));?>">Fertige Smoothies</a> </li>
         </ul>
         <?php
            if (Zend_Auth::getInstance()->hasIdentity()){
