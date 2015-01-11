@@ -79,6 +79,7 @@ class Application_Model_Account
     /**
      * @param mixed $account_id
      * @return $this
+     * @throws Exception
      */
     public function setId($account_id)
     {
@@ -86,7 +87,7 @@ class Application_Model_Account
             $this->id = $account_id;
         }
         else
-            echo "AccountID must be greater 0 or notNull!";
+            throw new Exception('AccountID must be greater 0 or notNull!');
         return $this;
     }
 
@@ -102,6 +103,7 @@ class Application_Model_Account
     /**
      * @param String $name
      * @return $this
+     * @throws Exception
      */
     public function setName($name)
     {
@@ -109,7 +111,7 @@ class Application_Model_Account
             $this->name = $name;
         }
         else
-            echo 'Name must be varchar and notNull!';
+            throw new Exception( 'Name must be varchar and notNull!');
         return $this;
     }
 
@@ -124,6 +126,7 @@ class Application_Model_Account
     /**
      * @param mixed $password
      * @return $this
+     * @throws Exception
      */
     public function setPassword($password)
     {
@@ -131,7 +134,7 @@ class Application_Model_Account
             $this->password = $password;
         }
         else
-            echo 'Password must be set!';
+            throw new Exception( 'Password must be set!');
         return $this;
     }
 
@@ -164,6 +167,7 @@ class Application_Model_Account
     /**
      * @param String $email
      * @return $this
+     * @throws Exception
      */
     public function setEmail($email)
     {
@@ -171,7 +175,7 @@ class Application_Model_Account
             $this->email = $email;
         }
         else
-            echo 'Email cannot be null';
+            throw new Exception( 'Email cannot be null');
         return $this;
     }
 

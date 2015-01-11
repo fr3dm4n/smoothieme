@@ -55,6 +55,7 @@ class Application_Model_Customer
     /**
      * @param int $accounts_id
      * @return int
+     * @throws Exception
      */
     public function setAccountsId($accounts_id)
     {
@@ -62,7 +63,7 @@ class Application_Model_Customer
             $this->accounts_id = $accounts_id;
         }
         else
-            echo 'AccountId cannot be null and must be greater than 0!';
+            throw new Exception('Invalid Accounts ID');
         return $this;
     }
 
@@ -115,6 +116,7 @@ class Application_Model_Customer
     /**
      * @param int $id
      * @return $this
+     * @throws Exception
      */
     public function setId($id)
     {
@@ -122,7 +124,7 @@ class Application_Model_Customer
             $this->id = $id;
         }
         else
-            echo 'CustomerId cannot be null';
+            throw new Exception('Invalid id- must be numeric and notNull');
         return $this;
     }
 
