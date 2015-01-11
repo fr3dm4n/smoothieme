@@ -25,6 +25,7 @@ echo $this->flashMessages();
         <tr>
             <th>Name</th>
             <th>Früchte</th>
+            <th>Größe</th>
             <th class="text-right">Preis</th>
             <th>Erstellt von</th>
             <th>&nbsp;</th>
@@ -44,7 +45,7 @@ echo $this->flashMessages();
         foreach ($this->smoothies as $smoothie) {
             ?>
             <tr>
-                <td><?php echo $smoothie->getName() ?></td>
+                <td class="text-primary"><?php echo $smoothie->getName() ?></td>
                 <td class="text-left">
                     <ul class="fruits-of-smoothie">
                         <?php foreach ($smoothie->getFruits() as $fruit) {
@@ -56,6 +57,9 @@ echo $this->flashMessages();
                             </span></li>
                         <?php } ?>
                     </ul>
+                </td>
+                <td class="text-left">
+                    <span class="h4"><?php echo $smoothie->getSize()?></span> <span class="text-info">( <?php echo Application_Model_Smoothie::$sizes[$smoothie->getSize()] ?>ml)</span>
                 </td>
                 <td class="text-right vcenter">&euro; <?php echo number_format($smoothie->getPrice(), 2, ".", ","); ?></td>
                 <td>
