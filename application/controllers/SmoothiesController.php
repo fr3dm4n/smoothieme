@@ -40,8 +40,10 @@ class SmoothiesController extends Zend_Controller_Action
         }else{
             $this->view->isAjax=false;
         }
+
         // Validiere Zugang
-        if (Zend_Auth::getInstance()->hasIdentity() && Zend_Auth::getInstance()->getIdentity()->role!=="admin") {
+        if (!Zend_Auth::getInstance()->hasIdentity() || Zend_Auth::getInstance()->getIdentity()->role!=="admin") {
+
             $this->_helper->flashMessenger
                 ->setNamespace("warning")
                 ->addMessage("Ihre Sitzung ist abgelaufen");
