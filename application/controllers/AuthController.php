@@ -23,7 +23,12 @@ class AuthController extends Zend_Controller_Action
         if ($request->isPost()) {
             if ($loginForm->isValid($request->getPost())) {
                 if ($this->_process($loginForm->getValues()['login'])) {
-                    $this->_helper->redirector('index', 'index');
+                    $lasturl = $loginForm->getValue('lasturl');
+                    if($lasturl!= null) {
+                        $this->redirect($lasturl);
+                    }
+                    else
+                        $this->redirect('/');
                 }
             }
         }

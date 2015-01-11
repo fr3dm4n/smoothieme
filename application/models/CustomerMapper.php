@@ -25,7 +25,7 @@ class Application_Model_CustomerMapper
 
     public function save(Application_Model_Customer $customer) {
         $data = array (
-            'customer_id' => $customer->getCustomerId(),
+            'customer_id' => $customer->getId(),
             'accounts_id' => $customer->getAccountsId(),
             'surname' => $customer->getSurname(),
             'lastname' => $customer->getLastname(),
@@ -34,7 +34,7 @@ class Application_Model_CustomerMapper
             'birthdate' => $customer->getBirthdate(),
         );
 
-        if (null === ($id = $customer->getCustomerId())) {
+        if (null === ($id = $customer->getId())) {
             unset ( $data ['id'] );
             $this->getDbTable ()->insert ( $data );
         } else {
@@ -50,9 +50,30 @@ class Application_Model_CustomerMapper
             return;
         }
         $row = $result->current ();
-        $customer->setCustomerId ( $row->kundennr )->setAccountsId($row->account_nr)
+        $customer->setId ( $row->kundennr )->setAccountsId($row->account_nr)
             ->setSurname( $row->vorname )->setLastname ( $row->nachname)->setGender( $row->Geschlecht )
             -> setTelephone($row->Telefon)->setBirthdate($row->Geburtsdatum);
+    }
+
+    public function getCustomerByAccId($id){
+
+        $select = $this->getDbTable()->select()->where('accounts_ID = ?', $id);
+        $row = $this->getDbTable()->fetchRow($select);
+
+        if ($row === null) {
+            return null;
+        }
+
+        $user = new Application_Model_Customer();
+        $user->setId($row->ID)
+            ->setAccountsId($row->accounts_ID)
+            ->setSurname($row->surname)
+            ->setLastname($row->lastname)
+            ->setGender($row->gender)
+            ->setTelephone($row->tel)
+            ->setBirthdate($row->birthdate);
+
+        return $user;
     }
 
 

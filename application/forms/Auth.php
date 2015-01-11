@@ -34,6 +34,10 @@ class Application_Form_Auth extends Twitter_Bootstrap_Form
                 'size' => 30            )
         );
 
+        $this->addElement('hidden', 'lasturl', array(
+            'value' => Zend_Controller_Front::getInstance()->getRequest()->getRequestUri(),
+        ));
+
         $this->addElement('submit', 'login', array(
                 'ignore' => true,
                 'label' => 'Anmelden',

@@ -1,4 +1,27 @@
 <br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Checkout</b> and script/action name <b>index</b></p>
+<div class="container">
+	<div class="panel panel-default">
+	<div class="panel-heading"><h1>Ihre Bestellübersicht</h1></div>
+	<div class="panel-body">
+	<table class="table table-striped">
+		<thead>
+		<tr>
+			<th>Smoothiename</th>
+			<th>Menge</th>
+			<th>Beschreibung</th>
+			<th>Preis</th>
+		</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>DeR WACHMACHER</td>
+				<td>122</td>
+				<td>Beschreibung xy</td>
+				<td>16516€</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	</div>
+		<a class="btn btn-default" href="<?php echo $this->url(array('controller' => "checkout","action" => "send-mail"))?>" role="button">Bestellung abschließen</a>
 </div>

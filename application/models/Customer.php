@@ -3,7 +3,7 @@
 class Application_Model_Customer
 {
 
-    protected $customer_id;
+    protected $id;
     protected $accounts_id;
     protected $surname;
     protected $lastname;
@@ -58,7 +58,7 @@ class Application_Model_Customer
      */
     public function setAccountsId($accounts_id)
     {
-        if($accounts_id != null && $accounts_id > 0 && is_integer($accounts_id)) {
+        if($accounts_id != null && $accounts_id > 0 && is_numeric($accounts_id)) {
             $this->accounts_id = $accounts_id;
         }
         else
@@ -81,11 +81,7 @@ class Application_Model_Customer
      */
     public function setBirthdate($birthdate)
     {
-        if($birthdate != null){
-            $this->birthdate = $birthdate;
-        }
-        else
-            echo 'Birthdate cannot be null';
+        $this->birthdate = $birthdate;
         return $this;
     }
 
@@ -111,19 +107,19 @@ class Application_Model_Customer
     /**
      * @return mixed
      */
-    public function getCustomerId()
+    public function getId()
     {
-        return $this->customer_id;
+        return $this->id;
     }
 
     /**
-     * @param int $customer_id
+     * @param int $id
      * @return $this
      */
-    public function setCustomerId($customer_id)
+    public function setId($id)
     {
-        if($customer_id != null && is_integer($customer_id)) {
-            $this->customer_id = $customer_id;
+        if($id != null && is_numeric($id)) {
+            $this->id = $id;
         }
         else
             echo 'CustomerId cannot be null';

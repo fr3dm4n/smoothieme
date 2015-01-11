@@ -11,30 +11,42 @@ class CheckoutController extends Zend_Controller_Action
     public function indexAction()
     {
         // action body
+        $cart = Zend_Registry::get("cart");
+        $cart->getCartContents();
+
+
+
     }
 
     public function sendMailAction()
     {
 
         $config = array('auth' => 'login',
-            'username' => 'user',
-            'password' => 'password',
-            'ssl' => 'tls',
-            'port' => 587);
+            'username' => 'smoothieme@itsh-solution.de',
+            'password' => 'smoo1234',
+            'ssl' => 'ssl',
+            'port' => 465);
 
         $user = Zend_Auth::getInstance()->getStorage()->read();
+
+        $mapper = new Application_Model_CustomerMapper();
+
+        $customer = $mapper->getCustomerByAccId($user->ID);
+        $lastname = $customer->getLastname();
+
         $email = $user->email;
+        $this->view->email = $email;
         $name =  $user->name;
 
-        $tr = new Zend_Mail_Transport_Sendmail('sadeq1989@gmail.com');
+        $tr = new Zend_Mail_Transport_Sendmail('smoothieme@itsh-solution.de');
         Zend_Mail::setDefaultTransport($tr);
-        $trsmtp = new Zend_Mail_Transport_Smtp('smtp.gmail.com',$config);
+        $trsmtp = new Zend_Mail_Transport_Smtp('smtprelaypool.ispgateway.de',$config);
         Zend_Mail::setDefaultTransport($trsmtp);
 
         if($user != null) {
-            $mail = new Zend_Mail();
-            $mail->setBodyText('Vielen Dank für Ihre Bestellung bei Smoothieme. Dies ist eine Bestätigungsemail.')
-                ->setFrom('sadeq1989@gmail.com', 'SmoothieMe Shop')
+            $mail = new Zend_Mail('UTF-8');
+            $mail->setBodyHtml('Hallo Herr '.$lastname. '<br> Vielen Dank für Ihre Bestellung bei Smoothieme. <br> Dies ist eine Automatisch generierte Email, bitte anworten Sie nicht darauf. <br> Mit freundlichen Grüßen <br> Ihr Smoothieme Team')
+                ->setFrom('smoothieme@itsh-solution.de', 'SmoothieMe Shop')
                 ->addTo($email, $name)
                 ->setSubject('Ihre Bestellung bei Smoothieme')
                 ->send();
@@ -42,6 +54,8 @@ class CheckoutController extends Zend_Controller_Action
         else
             echo "Die Email konnte nicht versendet werden!";
     }
+
+
 
 }
 
