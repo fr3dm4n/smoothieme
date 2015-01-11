@@ -43,6 +43,21 @@ class Application_Model_SmoothieMapper
         $smoothie->setId($row->ID)
             ->setName($row->name)
             ->setSize($row->size);
+
+        //Füge Früchte ein
+        $fruits=$result->current()->getFruits()->getAsArray();
+
+        foreach($fruits as $fruit){
+            $smoothie->addFruits($fruit["amount"],$fruit["fruit"]);
+        }
+
+        //Füge Customer ein
+        $customerRow=$result->current()->getCustomer();
+        if(!is_null($customerRow)){
+            $customer=new Application_Model_Customer($customerRow->toArray());
+            $smoothie->setCustomer($customer);
+        }
+
         return $result;
     }
 
@@ -72,8 +87,6 @@ class Application_Model_SmoothieMapper
                 $customer=new Application_Model_Customer($customerRow->toArray());
                 $smoothie->setCustomer($customer);
             }
-
-
 
             $entries[] = $smoothie;
         }
