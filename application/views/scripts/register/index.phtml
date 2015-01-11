@@ -1,11 +1,13 @@
 <?php
 $form = $this->registerForm;
-?>
 
-<form enctype="application/x-www-form-urlencoded" method="
-<?php echo $form->getAttribs()["method"] ?>" name="
-<?php echo $form->getAttribs()["name"] ?>" id="
-<?php echo $form->getAttribs()["name"] ?>">
+//Nicht ausgegebene Ereignisse des aktuellen Requests
+if ($this->unfullfilledRequiredments) {
+    echo $this->flashMessages(true);
+} else {
+    echo $this->flashMessages();
+}
+?>
 
     <div class="container">
         <h1>Registerungsformular</h1>
