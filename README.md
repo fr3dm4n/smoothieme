@@ -1,12 +1,12 @@
 
-# Smoothieme
-![logo](/public/smoothiemelogo_small.png)
+# ![Smoothieme](/public/img/smoothiemelogo_small.png)
+
 Smoothieme ist ein Studien-Projekt, das 2014/15 im Rahmen der Vorlesung Webtechnologie entstanden ist.
 Ziel war es einen Shop-System zu entwickeln, das auf den Vertrieb von Smoothies optimiert ist.
 
 
-## Dokumentation
-In [docs] finden Sie Spezifikation und Präsentions-Daten
+## Dokumentation + Präsentation
+In [/docs] finden Sie Spezifikation und Präsentions-Daten
 
 ## Installation
 ### Per Git
