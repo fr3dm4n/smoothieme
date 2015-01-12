@@ -56,6 +56,9 @@
           <actionMethod actionName="index"/>
           <actionMethod actionName="clear"/>
           <actionMethod actionName="change"/>
+          <actionMethod actionName="sub"/>
+          <actionMethod actionName="add"/>
+          <actionMethod actionName="remove"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
