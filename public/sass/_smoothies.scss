@@ -14,6 +14,7 @@
          span{
             display: inline-block;
             b{
+               font-weight:normal;
                float:left;
             }
             small{
@@ -25,6 +26,120 @@
 
          }
 
+      }
+   }
+}
+// Neue Smoothies
+#newSmoothie{
+
+   .fruit-slide-row{
+      img{
+         width: 48px;
+         clear:left;
+         float:left;
+         margin: 5px 15px 0 5px
+      }
+      .fruit-slider{
+         width: 100%
+      }
+      .fruit-value{
+         width: 4em;
+         text-align: left;
+         display:inline-block;
+         &:after{
+            content:"%";
+         }
+      }
+      .remove-fruit{
+         margin-left: 30px
+      }
+   }
+   // Abstand nach oben, für einige Elemente
+   .top-buffer {
+      margin-top: 20px;
+   }
+   .bootstrap-select{
+      width: 100%
+   }
+   #mixerwrapper {
+      width: 50%;
+      padding-top: 10%;
+      position: relative;
+   }
+
+   .fruitcolor {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      overflow: hidden;
+
+
+      .fruitbody {
+         height: 80%;
+      }
+      .fruitwave {
+         @include box-shadow(inset 0px 5px 5px 0px rgba(224, 224, 224, 0.2));
+         @include border-top-left-radius( 60% 100%);
+         @include border-top-right-radius( 70% 100%);
+         height: 20%;
+      }
+      &:nth-of-type(odd) .fruitwave {
+         margin: 0 24% 0 0;
+      }
+      &:nth-last-of-type(1) {
+         .fruitbody {
+            height: 70%;
+         }
+         .fruitwave {
+            height: 30%;
+//            margin: 0 24% 0 0;
+         }
+      }
+   }
+
+   #mixer {
+      position: absolute;
+      top: 0;
+      width: 100%;
+   }
+
+   .fruitcolor:nth-of-type(even) .fruitwave {
+      @include animation(animationFrames cubic-bezier(0.645, 0.045, 0.355, 1) 3s);
+      @include animation-iteration-count(infinite);
+      @include transform-origin(50% 50%);
+   }
+
+   .fruitcolor:nth-of-type(odd) .fruitwave {
+      @include animation(animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1) 3.2s);
+      @include animation-iteration-count( infinite);
+      @include transform-origin( 50% 50%);
+   }
+
+   @include keyframes(animationFrames){
+      0% {
+         transform: translate(-23%, 0px);
+      }
+      50% {
+         transform: translate(23%, 0px);
+      }
+      100% {
+         transform: translate(-23%, 0px);
+      }
+   }
+
+
+
+   @include keyframes(animationFramesOdd) {
+      0% {
+         transform: translate(25%, 0px);
+      }
+      50% {
+         transform: translate(-3%, 0px);
+      }
+      100% {
+         transform: translate(25%, 0px);
       }
    }
 }

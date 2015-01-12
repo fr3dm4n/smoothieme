@@ -1,272 +1,92 @@
-<script>
-    $(document).ready(function () {
-        var img = $("#mixer");
-        console.log(img.width(), img.height());
-        $('#mixerwrapper').css({
-            width: img.width(),
-            height: (img.height() / 2)
-        });
+<?php
+$form = $this->smoothieForm;
+echo $this->flashMessages(true);
 
-    });
-</script>
-<style>
-    #mixerwrapper {
-        width: 50%;
+?>
 
-        padding-top: 10%;
-        position: relative;
+<div id="newSmoothie">
+    <h1>Neuer Smoothie </h1>
 
-    }
+    <form class="clearfix" enctype="application/x-www-form-urlencoded" action="<?php echo $form->getAttribs()["action"] ?>" method="<?php echo $form->getAttribs()["method"] ?>" name="<?php echo $form->getAttribs()["name"] ?>" id="<?php echo $form->getAttribs()["name"] ?>">
+        <div class="pull-left smoothie-config col-xs-6 col-md-6 col-sm-6">
+            <div class="row">
+                <div class="col-xs-7 col-md-7 col-sm-7 <?php echo $form->name->hasErrors() ? "has-error" : null; ?>">
+                    <?php echo $form->name ?>
+                </div>
 
-    .fruitcolor {
-        height: 20%; /* setzt der Hase*/
-        display: block;
-        position: absolute;
-        bottom:0;
-        right:0;
-        width:100%;
-        overflow: hidden;
-    }
-    .fruitcolor:nth-of-type(1){height:calc(100% * .77)}/*31%*/
-    .fruitcolor:nth-of-type(2){height:calc(69% * .77)} /*19%*/
-    .fruitcolor:nth-of-type(3){height:calc(50% * .77)}/*14%*/
-    .fruitcolor:nth-of-type(4){height:calc(36% * .77)}/*16%*/
-                                                        /*20%*/
+                <div class="col-xs-5 col-md-5 col-sm-5 <?php echo $form->name->hasErrors() ? "has-error" : null; ?>">
+                    <?php echo $form->size ?>
+                </div>
 
-    .fruitcolor .fruitbody {
-        height: 80%
-    }
+            </div>
+            <br>
 
-    .fruitcolor .fruitwave {
-        -webkit-box-shadow: inset 0px 5px 5px 0px rgba(224,224,224,0.2);
-        -moz-box-shadow: inset 0px 5px 5px 0px rgba(224,224,224,0.2);
-        box-shadow: inset 0px 5px 5px 0px rgba(224,224,224,0.2);
-        height: 20%;
-        -moz-border-top-left-radius: 50% 90%;
-        -webkit-border-top-left-radius: 40% 90%;
-        border-top-left-radius: 60% 100%;
-        -moz-border-top-right-radius: 50% 90%;
-        -webkit-border-top-right-radius: 40% 90%;
-        border-top-right-radius: 70% 100%;
-        /*margin-left:24%;*/
-    }
-    .fruitcolor:nth-of-type(odd) .fruitwave{
-        margin:0 24% 0 0;
-    }
-    .fruitcolor:nth-last-of-type(1) .fruitbody {
-        height: 70%
-    }
-    .fruitcolor:nth-last-of-type(1) .fruitwave {
-        height:30%;
-        margin:0 24% 0 0;
-    }
-    #mixer {
-        position: absolute;
-        top: 0;
-        width: 100%;
-    }
-    .fruitwave{
-        animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1.000) 3s;
-        animation-iteration-count: infinite;
-        transform-origin: 50% 50%;
-        -webkit-animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1.000) 3s;
-        -webkit-animation-iteration-count: infinite;
-        -webkit-transform-origin: 50% 50%;
-        -moz-animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1.000) 3s;
-        -moz-animation-iteration-count: infinite;
-        -moz-transform-origin: 50% 50%;
-        -o-animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1.000) 3s;
-        -o-animation-iteration-count: infinite;
-        -o-transform-origin: 50% 50%;
-        -ms-animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1.000) 3s;
-        -ms-animation-iteration-count: infinite;
-        -ms-transform-origin: 50% 50%;
-    }
+            <div class="row">
+                <div class="col-xs-7 col-md-7 col-sm-7">
+                    <button type="button" class="pull-left btn btn-success" data-toggle="modal" data-target=".insertnewFruit">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Frucht hinzufügen
+                    </button>
+                </div>
+                <div class="col-xs-5 col-md-5 col-sm-5 text-right">
+                    <?php echo preg_replace("/<dt[^>]+[^<]+<\/dt>/m", " ", $form->submit); ?>
+                </div>
+            </div>
+            <hr>
+            <div class="row  h4">
+                <div class="col-xs-12 col-md-12 col-sm-12 text-right">
+                    Preis &euro; <span id="summe">0,00</span>
+                </div>
+            </div>
+            <hr>
+            <div id="all-fruit-sliders">
 
-    @keyframes animationFrames{
-        0% {
-            transform:  translate(-110px,0px)  ;
-        }
-        50% {
-            transform:  translate(110px,0px)  ;
-        }
-        100% {
-            transform:  translate(-110px,0px)  ;
-        }
-    }
-
-    @-moz-keyframes animationFrames{
-        0% {
-            -moz-transform:  translate(-110px,0px)  ;
-        }
-        50% {
-            -moz-transform:  translate(110px,0px)  ;
-        }
-        100% {
-            -moz-transform:  translate(-110px,0px)  ;
-        }
-    }
-
-    @-webkit-keyframes animationFrames {
-        0% {
-            -webkit-transform:  translate(-110px,0px)  ;
-        }
-        50% {
-            -webkit-transform:  translate(110px,0px)  ;
-        }
-        100% {
-            -webkit-transform:  translate(-110px,0px)  ;
-        }
-    }
-
-    @-o-keyframes animationFrames {
-        0% {
-            -o-transform:  translate(-110px,0px)  ;
-        }
-        50% {
-            -o-transform:  translate(110px,0px)  ;
-        }
-        100% {
-            -o-transform:  translate(-110px,0px)  ;
-        }
-    }
-
-    @-ms-keyframes animationFrames {
-        0% {
-            -ms-transform:  translate(-110px,0px)  ;
-        }
-        50% {
-            -ms-transform:  translate(110px,0px)  ;
-        }
-        100% {
-            -ms-transform:  translate(-110px,0px)  ;
-        }
-    }
-    .fruitcolor:nth-of-type(odd) .fruitwave{
-        animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1.000) 3.2s;
-        animation-iteration-count: infinite;
-        transform-origin: 50% 50%;
-        -webkit-animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1.000) 3.2s;
-        -webkit-animation-iteration-count: infinite;
-        -webkit-transform-origin: 50% 50%;
-        -moz-animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1.000) 3.2s;
-        -moz-animation-iteration-count: infinite;
-        -moz-transform-origin: 50% 50%;
-        -o-animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1.000) 3.2s;
-        -o-animation-iteration-count: infinite;
-        -o-transform-origin: 50% 50%;
-        -ms-animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1.000) 3.2s;
-        -ms-animation-iteration-count: infinite;
-        -ms-transform-origin: 50% 50%;
-    }
-
-    @keyframes animationFramesOdd{
-        0% {
-            transform:  translate(110px,0px)  ;
-        }
-        50% {
-            transform:  translate(-10px,0px)  ;
-        }
-        100% {
-            transform:  translate(110px,0px)  ;
-        }
-    }
-
-    @-moz-keyframes animationFramesOdd{
-        0% {
-            -moz-transform:  translate(110px,0px)  ;
-        }
-        50% {
-            -moz-transform:  translate(-10px,0px)  ;
-        }
-        100% {
-            -moz-transform:  translate(110px,0px)  ;
-        }
-    }
-
-    @-webkit-keyframes animationFramesOdd {
-        0% {
-            -webkit-transform:  translate(110px,0px)  ;
-        }
-        50% {
-            -webkit-transform:  translate(-10px,0px)  ;
-        }
-        100% {
-            -webkit-transform:  translate(110px,0px)  ;
-        }
-    }
-
-    @-o-keyframes animationFramesOdd {
-        0% {
-            -o-transform:  translate(110px,0px)  ;
-        }
-        50% {
-            -o-transform:  translate(-10px,0px)  ;
-        }
-        100% {
-            -o-transform:  translate(110px,0px)  ;
-        }
-    }
-
-    @-ms-keyframes animationFramesOdd {
-        0% {
-            -ms-transform:  translate(110px,0px)  ;
-        }
-        50% {
-            -ms-transform:  translate(-10px,0px)  ;
-        }
-        100% {
-            -ms-transform:  translate(110px,0px)  ;
-        }
-    }
-</style>
-
-<h1>Neuen Smoothie Hinzufügen</h1>
-<p>Erstellen sie einen neuen Smoothie</p>
-<div class="clearfix">
-    <div class="pull-left smoothie-config">
-        <div class="dropdown">
-        <p>Wählen Sie eine Größe die der Smoothie haben soll:</p>
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                Größe
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">S (100 ml)</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">M (250 ml)</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">L (750 ml)</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">XL (1 l)</a></li>
-            </ul>
+            </div>
         </div>
-        &nbsp;
-        <div>
-        <p>Fügen Sie Früchte zu Ihrem Smoothie hinzu:</p>
-        <button type="button" class="btn btn-success btn-lg">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Frucht
-        </button>
+        <div class="pull-right" id="mixerwrapper">
+            <div class="fruitcolor">
+                <div class="fruitwave" style="background-color:pink"></div>
+                <div class="fruitbody" style="background-color:pink"></div>
+            </div>
+            <div class="fruitcolor">
+                <div class="fruitwave" style="background-color:green"></div>
+                <div class="fruitbody" style="background-color:green"></div>
+            </div>
+            <div class="fruitcolor">
+                <div class="fruitwave" style="background-color:yellow"></div>
+                <div class="fruitbody" style="background-color:yellow"></div>
+            </div>
+            <div class="fruitcolor">
+                <div class="fruitwave" style="background-color:violet"></div>
+                <div class="fruitbody" style="background-color:violet"></div>
+            </div>
+            <div class="fruitcolor">
+                <div class="fruitwave" style="background-color:turquoise"></div>
+                <div class="fruitbody" style="background-color:turquoise"></div>
+            </div>
+            <img src="/img/mixer.png" alt="the mixer" class="pull-right" id="mixer">
         </div>
-    </div>
-    <div class="pull-right" id="mixerwrapper">
-        <div class="fruitcolor">
-            <div class="fruitwave" style="background-color:pink"></div>
-            <div class="fruitbody" style="background-color:pink"></div>
+        <div class="modal fade insertnewFruit" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="mySmallModalLabel">Frucht für Smoothie wählen</h4>
+                    </div>
+                    <div class="modal-body">
+                        <select name="Fruit-to-add">
+                            <?php foreach ($this->fruits as $fruit) { ?>
+                                <option data-pic="<?php echo $fruit->getPicture() ?>" data-name="<?php echo $fruit->getName() ?>" data-color="<?php echo $fruit->getColor() ?>" data-price="<?php echo $fruit->getPrice() ?>" id="<?php echo $fruit->getID() ?>" value="<?php echo $fruit->getID() ?>" data-subtext="je 100ml"><?php echo $fruit->getName() ?>
+                                    - &euro; <?php echo number_format($fruit->getPrice(), 2, ",", ".") ?> </option>
+                            <?php } ?>
+                        </select>
+                        <button id="btn-add-fruit" type="button" class="btn center-block btn-primary top-buffer">
+                            Frucht hinzufügen
+                        </button>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="fruitcolor">
-            <div class="fruitwave" style="background-color:green"></div>
-            <div class="fruitbody" style="background-color:green"></div>
-        </div>
-        <div class="fruitcolor">
-            <div class="fruitwave" style="background-color:yellow"></div>
-            <div class="fruitbody" style="background-color:yellow"></div>
-        </div>
-        <div class="fruitcolor">
-            <div class="fruitwave" style="background-color:violet"></div>
-            <div class="fruitbody" style="background-color:violet"></div>
-        </div>
-        <div class="fruitcolor">
-            <div class="fruitwave" style="background-color:turquoise"></div>
-            <div class="fruitbody" style="background-color:turquoise"></div>
-        </div>
-        <img src="/img/mixer.png" alt="the mixer" class="pull-right" id="mixer">
-    </div>
+    </form>
 </div>

@@ -49,7 +49,7 @@ class Application_Model_Smoothie
     /**
      * @return mixed
      */
-    public function getId() {
+    public function getID() {
         return $this->ID;
     }
 

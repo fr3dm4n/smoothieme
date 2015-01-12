@@ -31,11 +31,12 @@ class Application_Model_FruitMapper
      * Select Frucht
      * @param                          $id
      * @param Application_Model_Fruit $fruit
+     * @return bool
      */
     public function find($id, Application_Model_Fruit $fruit) {
         $result = $this->getDbTable()->find($id);
         if (count($result)==0) {
-            return;
+            return false;
         }
         $row = $result->current();
 
