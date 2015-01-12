@@ -5,8 +5,27 @@ class Application_Form_Register extends Zend_Form
 
     public function init()
     {
-        // Set the method for the display form to POST
+        $this->setName("register");
+        $this->setIsArray(true);
+        $this->setAction("/register");
+
         $this->setMethod('post');
+
+        // Benutzername
+        $this->addElement('text', 'username', array(
+            'required'   => true,
+            'class' => 'form-control',
+            'placeholder'=> 'Benutzername',
+            'filters'    => array('StringTrim'),
+            'validators' => array(
+                array(
+                    'StringLength',
+                    false,
+                    [3, 70]
+                ),
+            )
+        ));
+
 
         // surname
         $this->addElement('text', 'surname', array(
@@ -21,8 +40,8 @@ class Application_Form_Register extends Zend_Form
                 array(
                     'StringLength',
                     false,
-                    [3,50]
-                )
+                    [3, 70]
+                ),
             ),
         ));
 
@@ -52,9 +71,7 @@ class Application_Form_Register extends Zend_Form
             'filters'    => array('StringTrim'),
             'validators' => array(
                 'emailAddress',
-                array(
-                    'massage' => 'Bitte gültige E-Mail eingeben'
-                )
+
             )
         ));
 
@@ -65,17 +82,21 @@ class Application_Form_Register extends Zend_Form
             'placeholder'=> 'Telefonnummer',
             'filters'    => array('StringTrim'),
             'validators' => array(
-                'email',
-            )
+                array(
+                    'validator' => "Regex",
+                    'options'=>array(
+                        'pattern' =>'/^[0-9\+]{9,15}$/',
+                        'messages' =>'Nur Ziffern eingeben'
+                    )
+                ),
+            ),
         ));
 
         // gender
         $this->addElement('radio', 'gender', array(
             'required'   => true,
             'filters'    => array('StringTrim'),
-            'validators' => array(
-                'gender',
-            ),
+
             'MultiOptions' => array(
                 'male'   => ' männlich     ',
                 'female' => ' weiblich'
@@ -83,29 +104,13 @@ class Application_Form_Register extends Zend_Form
             'Separator'  => ' '
         ));
 
-        // birthdate
-//        $this->addElement('select', 'birthdate', array(
-//            'required'   => true,
-//            'class' => 'form-control',
-//            'filters'    => array('StringTrim'),
-//            'validators' => array(
-//                'birthdate',
-//            ),
-//            'MultiOptions' => array(
-//                'a' => '01.01.2000',
-//                'b' => '31.12.2999'
-//            )
-//        ));
-
         // password
         $this->addElement('password', 'password', array(
             'required'   => true,
             'class' => 'form-control',
             'placeholder'=> 'Passwort',
             'filters'    => array('StringTrim'),
-            'validators' => array(
-                'password',
-            )
+
         ));
 
         // password #2
@@ -114,33 +119,20 @@ class Application_Form_Register extends Zend_Form
             'class' => 'form-control',
             'placeholder'=> 'Passwort wiederholen',
             'filters'    => array('StringTrim'),
-            'validators' => array(
-                'password2',
-            )
+
         ));
 
-        // Add a captcha
-        $this->addElement('captcha', 'captcha', array(
-            'required'   => true,
-            'class' => 'form-control',
-            'placeholder' => 'captcha',
-            'captcha'    => array(
-                'captcha' => 'Figlet',
-                'wordLen' => 5,
-                'timeout' => 300
-            )
-        ));
 
         // Add the submit button
-        $this->addElement('submit', 'submit', array(
+
+        $submit = new Twitter_Bootstrap_Form_Element_Submit('submit', array(
             'buttonType' => Twitter_Bootstrap_Form_Element_Submit::BUTTON_PRIMARY,
             'label'      => 'Registrieren',
-        ));
-
-        // And finally add some CSRF protection
-        $this->addElement('hash', 'csrf', array(
             'ignore' => true,
         ));
+        $this->addElement($submit, 'submit');
+
+
     }
 }
 

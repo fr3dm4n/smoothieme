@@ -83,7 +83,7 @@ class Application_Model_Account
      */
     public function setId($account_id)
     {
-        if($account_id > 1 && $account_id != null && is_integer($account_id)) {
+        if($account_id > 1 && $account_id != null && is_numeric($account_id)) {
             $this->id = $account_id;
         }
         else

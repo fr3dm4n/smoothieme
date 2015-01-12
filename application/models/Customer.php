@@ -124,7 +124,7 @@ class Application_Model_Customer
             $this->id = $id;
         }
         else
-            throw new Exception('Invalid id- must be numeric and notNull');
+            throw new Exception('Invalid id must be numeric and notNull');
         return $this;
     }
 

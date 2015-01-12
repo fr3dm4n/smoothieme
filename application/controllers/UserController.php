@@ -10,18 +10,17 @@ class UserController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $registerForm = new Application_Form_Register();
-        $registerForm->setName("register")
-            ->setMethod("post");
+        $req = $this->getRequest();
 
-        $this->view->registerForm = $registerForm;
+        $userForm = new Application_Form_User();
 
         if ($this->getRequest()->isPost()) {
             if ($form->isValid($request->getPost())) {
-                $comment = new Application_Model_Guestbook($form->getValues());
-                $mapper = new Application_Model_GuestbookMapper();
-                $mapper->save($comment);
-                return $this->_helper->redirector('index');
+                $user = new Application_Model_User($form->getValues());
+                $mapper = new Application_Model_UserMapper();
+
+                $this->_helper->flashMessenger->setNamespace("success")->addMessage($user->getName() . " gespeichtert");
+                return $this->_helper->redirector("index");
             }
         }
     }

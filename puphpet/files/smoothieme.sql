@@ -1,11 +1,11 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 10. Jan 2015 um 01:56
+-- Erstellungszeit: 12. Jan 2015 um 21:43
 -- Server Version: 5.5.40-0ubuntu0.14.04.1
--- PHP-Version: 5.5.9-1ubuntu4.5
+-- PHP-Version: 5.6.3-1+deb.sury.org~trusty+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `salt` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
 
 --
 -- Daten für Tabelle `accounts`
@@ -42,7 +42,9 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 
 INSERT INTO `accounts` (`ID`, `role`, `name`, `password`, `salt`, `email`) VALUES
 (1, 'admin', 'admin', 'ed1c972305635e5be40aa72f6c0c1bd84cb0a8d1', 'saltsaltsalt', 'sadeq1989@gmail.com'),
-(13, 'user', 'user', 'ed1c972305635e5be40aa72f6c0c1bd84cb0a8d1', 'saltsaltsalt', 'sadeq1989@gmail.com');
+(13, 'user', 'user', 'ed1c972305635e5be40aa72f6c0c1bd84cb0a8d1', 'saltsaltsalt', 'sadeq1989@gmail.com'),
+(32, 'user', 'hans', 'e5b087c9440784031f6013d27bc2f5de59f4e218', '54b430867409a4.86262029', 'kajfkl@skfjjklsjf.de'),
+(33, 'user', 'ahi', 'b9c9c415908a6ae54ae470cf03a6107ab7fd03b4', '54b430ce652588.04105699', 's.ahmet.kiyak@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -79,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `birthdate` date DEFAULT NULL,
   PRIMARY KEY (`ID`,`accounts_ID`),
   KEY `fk_customer_accounts1_idx` (`accounts_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Daten für Tabelle `customer`
@@ -87,7 +89,9 @@ CREATE TABLE IF NOT EXISTS `customer` (
 
 INSERT INTO `customer` (`ID`, `accounts_ID`, `surname`, `lastname`, `gender`, `tel`, `birthdate`) VALUES
 (4, 1, 'S', 'A', 'm', '123123', NULL),
-(5, 13, 'Franz', 'Müller', 'm', '12124124', NULL);
+(5, 13, 'Franz', 'Müller', 'm', '12124124', NULL),
+(15, 32, 'hansi', 'wursti', '', '012392893829893', NULL),
+(16, 33, 'berthold', 'ulrich', '', '012392893829893', NULL);
 
 -- --------------------------------------------------------
 
@@ -103,7 +107,16 @@ CREATE TABLE IF NOT EXISTS `fruits` (
   `description` text NOT NULL,
   `kcal` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Daten für Tabelle `fruits`
+--
+
+INSERT INTO `fruits` (`ID`, `name`, `color`, `price`, `description`, `kcal`) VALUES
+(1, 'aaa', '#10ae00', '1.0000000', 'f', 11),
+(2, 'dtud', '#10ae00', '1.0000000', 'h', 44),
+(3, 'dcr', '#653c85', '1.0000000', 'cc', 33);
 
 -- --------------------------------------------------------
 
@@ -171,12 +184,6 @@ CREATE TABLE IF NOT EXISTS `smoothies_has_orders` (
 --
 -- Constraints der exportierten Tabellen
 --
-
---
--- Constraints der Tabelle `accounts`
---
-ALTER TABLE `accounts`
-  ADD CONSTRAINT `accounts_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `customer` (`accounts_ID`) ON DELETE CASCADE;
 
 --
 -- Constraints der Tabelle `addresses`

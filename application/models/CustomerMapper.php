@@ -25,8 +25,8 @@ class Application_Model_CustomerMapper
 
     public function save(Application_Model_Customer $customer) {
         $data = array (
-            'customer_id' => $customer->getId(),
-            'accounts_id' => $customer->getAccountsId(),
+            'ID' => $customer->getId(),
+            'accounts_ID' => $customer->getAccountsId(),
             'surname' => $customer->getSurname(),
             'lastname' => $customer->getLastname(),
             'gender' => $customer->getGender(),
@@ -35,8 +35,9 @@ class Application_Model_CustomerMapper
         );
 
         if (null === ($id = $customer->getId())) {
-            unset ( $data ['id'] );
-            $this->getDbTable ()->insert ( $data );
+            unset ( $data ['ID'] );
+            $id = $this->getDbTable ()->insert ( $data );
+            $customer->setId($id['ID']);
         } else {
             $this->getDbTable ()->update ( $data, array (
                 'kundennr = ?' => $id
