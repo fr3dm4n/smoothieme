@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 12. Jan 2015 um 21:43
+-- Erstellungszeit: 12. Jan 2015 um 22:27
 -- Server Version: 5.5.40-0ubuntu0.14.04.1
 -- PHP-Version: 5.6.3-1+deb.sury.org~trusty+1
 
@@ -42,9 +42,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 
 INSERT INTO `accounts` (`ID`, `role`, `name`, `password`, `salt`, `email`) VALUES
 (1, 'admin', 'admin', 'ed1c972305635e5be40aa72f6c0c1bd84cb0a8d1', 'saltsaltsalt', 'sadeq1989@gmail.com'),
-(13, 'user', 'user', 'ed1c972305635e5be40aa72f6c0c1bd84cb0a8d1', 'saltsaltsalt', 'sadeq1989@gmail.com'),
-(32, 'user', 'hans', 'e5b087c9440784031f6013d27bc2f5de59f4e218', '54b430867409a4.86262029', 'kajfkl@skfjjklsjf.de'),
-(33, 'user', 'ahi', 'b9c9c415908a6ae54ae470cf03a6107ab7fd03b4', '54b430ce652588.04105699', 's.ahmet.kiyak@gmail.com');
+(13, 'user', 'user', 'ed1c972305635e5be40aa72f6c0c1bd84cb0a8d1', 'saltsaltsalt', 'sadeq1989@gmail.com');
 
 -- --------------------------------------------------------
 
