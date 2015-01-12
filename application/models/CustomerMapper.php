@@ -31,7 +31,6 @@ class Application_Model_CustomerMapper
             'lastname' => $customer->getLastname(),
             'gender' => $customer->getGender(),
             'tel' => $customer->getTelephone(),
-            'birthdate' => $customer->getBirthdate(),
         );
 
         if (null === ($id = $customer->getId())) {
@@ -53,7 +52,7 @@ class Application_Model_CustomerMapper
         $row = $result->current ();
         $customer->setId ( $row->kundennr )->setAccountsId($row->account_nr)
             ->setSurname( $row->vorname )->setLastname ( $row->nachname)->setGender( $row->Geschlecht )
-            -> setTelephone($row->Telefon)->setBirthdate($row->Geburtsdatum);
+            -> setTelephone($row->Telefon);
     }
 
     public function getCustomerByAccId($id){
@@ -71,8 +70,7 @@ class Application_Model_CustomerMapper
             ->setSurname($row->surname)
             ->setLastname($row->lastname)
             ->setGender($row->gender)
-            ->setTelephone($row->tel)
-            ->setBirthdate($row->birthdate);
+            ->setTelephone($row->tel);
 
         return $user;
     }
