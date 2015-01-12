@@ -1,17 +1,22 @@
 
 # Smoothieme
+![logo](/public/smoothiemelogo_small.png)
 Smoothieme ist ein Studien-Projekt, das 2014/15 im Rahmen der Vorlesung Webtechnologie entstanden ist.
 Ziel war es einen Shop-System zu entwickeln, das auf den Vertrieb von Smoothies optimiert ist.
 
+
+## Dokumentation
+In [docs] finden Sie Spezifikation und Präsentions-Daten
+
 ## Installation
 ### Per Git
-1. Prüfen Sie, dass die Systemvoraussetungen von Smoothieme gegeben sind, siehe: 
-    * PHPVersion > PHP 5.2.10
+1. Prüfen Sie, dass die Systemvoraussetzungen von Smoothieme gegeben sind: 
+    * PHP Version > PHP 5.2.10
     * PHP-PDO installiert inkl. Mysql-Adapter
     * Mysql-Server Version > 5.0
-    * Imagick / IMages-Magick-Erweiterung muss installiert sein um Bilder bearbeiten zu können
+    * Imagick / Images-Magic Erweiterung muss installiert sein um Bilder bearbeiten zu können
 
-2. Clonen sie das Repository
+2. Clonen Sie das Repository
      ```sh
        % git clone git@github.com:sadeq89/smoothieme.git
        % cd smoothieme
@@ -19,7 +24,7 @@ Ziel war es einen Shop-System zu entwickeln, das auf den Vertrieb von Smoothies 
     * Fügen Sie das Verzeichnis `library` zu `include_path` hinzu
     * Stellen Sie sicher, dass `public` das Document-Root ist
 
-3. Überprüfen und beenden Sie ihre Installation
+3. Überprüfen und beenden Sie die Installation
     * ... indem Sie `http://what-ever-your-domain-is.tld/install.php` im Browser aufrufen!
 
 4. Entfernen Sie `public/install.php`
