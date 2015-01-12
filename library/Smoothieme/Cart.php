@@ -138,4 +138,15 @@ class Smoothieme_Cart {
         }
         return $result;
     }
+
+    /**
+     * @param $key
+     * @param $amount
+     */
+    public function setAmount($key, $amount) {
+        $this->articles[$key]=$amount;
+        if ($this->articles[$key] < 1) {
+            unset($this->articles[$key]);
+        }
+    }
 }

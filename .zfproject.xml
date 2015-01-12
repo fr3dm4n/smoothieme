@@ -52,6 +52,11 @@
         <controllerFile controllerName="SmoothiesUser">
           <actionMethod actionName="index"/>
         </controllerFile>
+        <controllerFile controllerName="Cart">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="clear"/>
+          <actionMethod actionName="change"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Auth"/>
@@ -154,6 +159,21 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="SmoothiesUser">
             <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Cart">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Cart">
+            <viewScriptFile forActionName="add"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Cart">
+            <viewScriptFile forActionName="clear"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Cart">
+            <viewScriptFile forActionName="change"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Cart">
+            <viewScriptFile forActionName="remove"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

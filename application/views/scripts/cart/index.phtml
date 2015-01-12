@@ -1,0 +1,74 @@
+<?php
+
+?>
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading clearfix"><h1 class="pull-left">Warenkorb</h1>
+        <a class="btn-info pull-right btn btn-default" role="button" href="<?php echo $this->url(array("controller" => "register")) ?>">Weiter
+            zur Registrierung</a></div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th class=" text-left" width="97">Anzahl</th>
+            <th>Smoothie</th>
+            <th class="text-right" width="120">Einzel-Preis</th>
+            <th class="text-right" width="120">Preis</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr class="text-right h4">
+            <th colspan="2">
+                <form class="form-group" action="<?php echo $this->url(array(
+                    "controller" => "cart",
+                    "action"     => "clear"
+                )) ?>" method="post">
+                    <button class="btn btn-default">Warenkorb leeren</button>
+                </form>
+            </th>
+            <th class="text-right h4">Summe</th>
+            <th class="text-right h4"> &euro; <?php echo number_format($this->summe, 2, ",", "."); ?></th>
+        </tr>
+        </tfoot>
+        <tbody>
+
+        <?php
+        if ($this->cart->isEmpty()) {
+            ?>
+            <tr>
+                <td colspan="4">Der Warenkorb ist leer</td>
+            </tr><?php
+        }
+
+        foreach ($this->cartItems as $cartItem) {
+
+            ?>
+            <tr>
+                <td>
+                    <form class="form-group" action="<?php echo $this->url(array(
+                        "controller" => "cart",
+                        "action"     => "change"
+                    )) ?>" method="post">
+                    <input class="form-control" name="amount" value="<?php echo $cartItem["amount"] ?>" style="margin-bottom: 3px;" onblur="this.form.submit()"/>
+                    <input name="id" value="<?php echo $cartItem["smoothie"]->getID() ?>" style="margin-bottom: 3px;" type="hidden"/>
+                    <button class="btn btn-primary btn-xs" name="add" value="<?php echo $cartItem["smoothie"]->getID() ?>">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-primary btn-xs" name="sub" value="<?php echo $cartItem["smoothie"]->getID() ?>">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-danger btn-xs" name="remove" value="<?php echo $cartItem["smoothie"]->getID() ?>">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                        </form>
+                </td>
+                <td class="text-primary"><?php echo $cartItem["smoothie"]->getName() ?></td>
+                <td class="text-right"> &euro; <?php echo number_format($cartItem["smoothie"]->getPrice(), 2, ",", ".") ?></td>
+                <td class="text-right"> &euro; <?php echo number_format($cartItem["smoothie"]->getPrice() * $cartItem["amount"], 2, ",", ".") ?></td>
+            </tr>
+        <?php
+        }
+        ?>
+        </tbody>
+
+    </table>
+</div>

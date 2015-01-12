@@ -1,5 +1,5 @@
 <ul class="usermenu nav navbar-nav navbar-right">
-    <li><a href=""><span class="glyphicon glyphicon-shopping-cart"></span><?php echo Zend_Registry::get("cart")->getAmount();?></a></li>
+    <li><a href="<?php echo $this->url(array('controller' => "cart"))?>"><span class="glyphicon glyphicon-shopping-cart"></span><?php echo Zend_Registry::get("cart")->getAmount();?></a></li>
     <li><a href="<?php echo $this->url(array('controller' => "auth","action" => "logout"))?>"><b>Abmelden</b></a></li>
 
     <li class="dropdown">
