@@ -2,12 +2,6 @@
 $form = $this->registerForm;
 ?>
 
-<form enctype="application/x-www-form-urlencoded" method="
-<?php echo $form->getAttribs()["method"] ?>" name="
-<?php echo $form->getAttribs()["name"] ?>" id="
-<?php echo $form->getAttribs()["name"] ?>">
-
-
 <div class="row">
     <div class="col-sm-5 col-sm-offset-1">
         <h1>Profil</h1>
@@ -19,8 +13,16 @@ $form = $this->registerForm;
         <div><?php echo $form->email; ?></div>
         <div><?php echo $form->telephone; ?></div>
         <div><?php echo $form->gender; ?></div>
-
+        <a href="<?php echo $this->url(array(
+            'controller' => "user",
+            "action"     => "change"
+        )) ?>"
+           data-target="#newAddress" class="btn btn-success pull-right">
+            <span aria-hidden="true"></span>
+            Benutzerdaten ändern
+        </a>
         <br><br>
+
         <h3>Passwort ändern</h3>
         <div class="form-group">
             <label for="password">Aktuelles Passwort</label>
@@ -36,8 +38,16 @@ $form = $this->registerForm;
             <label for="password">Neues Passwort (wiederholen)</label>
             <input type="password" class="form-control">
         </div>
-        <button type="submit" class="btn btn-default"><a href="user/change">Passwort ändern</a></button>
-        <br><br><br>
+        <a href="<?php echo $this->url(array(
+                    'controller' => "user",
+                    "action"     => "change"
+                )) ?>"
+           data-target="#newAddress" class="btn btn-success pull-right">
+            <span aria-hidden="true"></span>
+                    Passwort ändern
+        </a>
+
+    <br><br><br>
 
         <h3>Adresse</h3>
  <!--        <div class="row">-->
@@ -69,11 +79,14 @@ $form = $this->registerForm;
 <!--        </div>-->
 <!--        <button type="submit" class="btn btn-default"><a href="../address/index">Adresse bearbeiten</a></button>-->
 <!--        </form>-->
-
-        <br><br>
-        <h3>Bestellungen</h3>
-    <br>
-    <p>noch keine Bestellungen vorhanden</p>
+        <a href="<?php echo $this->url(array(
+            'controller' => "user",
+            "action"     => "change"
+        )) ?>"
+           data-target="#newAddress" class="btn btn-success pull-right">
+            <span aria-hidden="true"></span>
+            Addresse ändern
+        </a>
     <br><br><br><br><br><br><br><br><br>
     </div>
 </div>
