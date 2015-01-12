@@ -17,7 +17,7 @@ class Zend_View_Helper_FlashMessages extends Zend_View_Helper_Abstract {
         $output = '';
         $flashMessenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
         $sucMess["ns"]="success";
-        $sucMess["title"]="Erfolg";
+        $sucMess["title"]="Super";
         $sucMess["typeClass"]="alert-success";
 
         $warnMess["ns"]="warning";
