@@ -9,7 +9,6 @@ class Application_Model_Customer
     protected $lastname;
     protected $gender;
     protected $telephone;
-    protected $birthdate;
 
     public function __construct(array $options = null) {
         if (is_array ( $options )) {
@@ -67,25 +66,6 @@ class Application_Model_Customer
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getBirthdate()
-    {
-        return $this->birthdate;
-    }
-
-    /**
-     * @param mixed $birthdate
-     *
-     * @return $this
-     */
-    public function setBirthdate($birthdate)
-    {
-        $this->birthdate = $birthdate;
-        return $this;
-    }
-
 
     /**
      * @return mixed
@@ -124,7 +104,7 @@ class Application_Model_Customer
             $this->id = $id;
         }
         else
-            throw new Exception('Invalid id- must be numeric and notNull');
+            throw new Exception('Invalid id must be numeric and notNull');
         return $this;
     }
 

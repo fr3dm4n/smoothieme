@@ -25,17 +25,18 @@ class Application_Model_AccountMapper
 
     public function save(Application_Model_Account $account) {
         $data = array (
-            'account_id' => $account->getAccountId(),
+            'id' => $account->getId(),
             'name' => $account->getName (),
-            'rolle' => $account->getRole(),
-            'passwort' => $account->getPassword(),
+            'role' => $account->getRole(),
+            'password' => $account->getPassword(),
             'salt'=> $account->getSalt(),
             'email'=>$account->getEmail()
         );
 
-        if (null === ($id = $account->getAccountId())) {
+        if (null === ($id = $account->getId())) {
             unset ( $data ['id'] );
-            $this->getDbTable ()->insert ( $data );
+            $id = $this->getDbTable ()->insert ( $data );
+            $account->setId($id);
         } else {
             $this->getDbTable ()->update ( $data, array (
                 'account_nr = ?' => $id

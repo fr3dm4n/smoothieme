@@ -88,7 +88,7 @@ class Application_Model_AddressMapper
      */
     public function getDbTable() {
         if (null === $this->_dbTable) {
-            $this->setDbTable('Application_Model_DbTable_Fruit');
+            $this->setDbTable('Application_Model_DbTable_Address');
         }
         return $this->_dbTable;
     }

@@ -4,8 +4,7 @@
 <div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading clearfix"><h1 class="pull-left">Warenkorb</h1>
-        <a class="btn-info pull-right btn btn-default" role="button" href="<?php echo $this->url(array("controller" => "register")) ?>">Weiter
-            zur Registrierung</a></div>
+       </div>
     <table class="table">
         <thead>
         <tr>
@@ -86,4 +85,8 @@
         </tbody>
 
     </table>
+
 </div>
+<p class="text-right">
+    <a class="btn-info btn btn-default" role="button" href="<?php echo $this->url(array("controller" => "checkout")) ?>">Weiter zur Kasse</a>
+</p>

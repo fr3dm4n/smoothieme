@@ -2,44 +2,63 @@
 
 class RegisterController extends Zend_Controller_Action
 {
-
     public function init()
     {
-        /* Initialize action controller here */
+
     }
 
     public function indexAction()
     {
-        $registerForm = new Application_Form_Register();
-        $registerForm->setName("register")
-            ->setMethod("post");
+        $CustomerMapper = new Application_Model_CustomerMapper();
+        $AccountMapper = new Application_Model_AccountMapper();
 
-        $this->view->registerForm = $registerForm;
+        $req = $this->getRequest();
+
+        // Formular bereitstellen
+        $registerForm = new Application_Form_Register();
 
         if ($this->getRequest()->isPost()) {
-            if ($form->isValid($request->getPost())) {
-                $comment = new Application_Model_Address($form->getValues());
-                $mapper  = new Application_Model_AddressMapper();
-                $mapper->save($comment);
-                return $this->_helper->redirector('index');
+
+            if ($registerForm->isValid($req->getPost())) {
+                $db = Zend_Db_Table_Abstract::getDefaultAdapter();
+
+                try {
+                    $db->beginTransaction();
+                    $account = new Application_Model_Account();
+                    $account->setName($registerForm->getValue("username"));
+                    $account->setRole('user');
+                    $account->setSalt(uniqid('', true));
+                    $account->setPassword(sha1($registerForm->getValue("password") . $account->getSalt()));
+                    $account->setEmail($registerForm->getValue("email"));
+
+                    $AccountMapper->save($account);
+
+                    $customer = new Application_Model_Customer();
+                    $customer->setAccountsId($account->getId());
+
+                    $customer->setSurname($registerForm->getValue('surname'))
+                        ->setLastname($registerForm->getValue('lastname'))
+                        ->setGender($registerForm->getValue('gender'))
+                        ->setTelephone($registerForm->getValue('telephone'));
+
+                    $CustomerMapper->save($customer);
+
+                    $db->commit();
+                } catch(Exception $e) {
+                    $db->rollBack();
+                    throw new Exception($e);
+                }
+
+                $this->_helper->flashMessenger->setNamespace("success");
+                $this->redirect("/");
             }
         }
+        $this->view->registerForm = $registerForm;
     }
 
     public function registerAction()
     {
-        $request = $this->getRequest();
-        $form    = new Application_Form_Register();
 
-        if ($this->getRequest()->isPost()) {
-            if ($form->isValid($request->getPost())) {
-                $comment = new Application_Model_Register($form->getValues());
-                $mapper  = new Application_Model_RegisterMapper();
-                $mapper->save($comment);
-                return $this->_helper->redirector('index');
-            }
-        }
-        $this->view->form = $form;
     }
 
 

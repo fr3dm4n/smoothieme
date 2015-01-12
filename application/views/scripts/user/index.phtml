@@ -1,5 +1,12 @@
 <?php
-$form = $this->registerForm;
+$form = $this->userForm;
+
+//Nicht ausgegebene Ereignisse des aktuellen Requests
+if ($this->unfullfilledRequiredments) {
+    echo $this->flashMessages(true);
+} else {
+    echo $this->flashMessages();
+}
 ?>
 
 <div class="row">
@@ -7,14 +14,14 @@ $form = $this->registerForm;
         <h1>Profil</h1>
         <h3>Persönliches</h3>
         <div class="row">
-            <div class="col-md-6"><?php echo $form->surname; ?></div>
+            <div class="col-md-6"><?php echo $Form->surname; ?></div>
             <div class="col-md-6"><?php echo $form->lastname; ?></div>
         </div>
         <div><?php echo $form->email; ?></div>
         <div><?php echo $form->telephone; ?></div>
         <div><?php echo $form->gender; ?></div>
         <a href="<?php echo $this->url(array(
-            'controller' => "user",
+            "controller" => "user",
             "action"     => "change"
         )) ?>"
            data-target="#newAddress" class="btn btn-success pull-right">

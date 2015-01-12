@@ -83,6 +83,7 @@
           <dbTableFile dbTableName="Fruits"/>
           <dbTableFile dbTableName="Addresses"/>
           <dbTableFile dbTableName="SmoothieHasFruits"/>
+          <dbTableFile dbTableName="Register"/>
         </dbTableDirectory>
         <modelFile modelName="SmoothieMapper"/>
         <modelFile modelName="Smoothie"/>
