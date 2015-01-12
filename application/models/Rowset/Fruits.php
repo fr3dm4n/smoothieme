@@ -9,9 +9,9 @@
 
 class Application_Model_Rowset_Fruits extends Zend_Db_Table_Rowset_Abstract {
     /**
-     * @return array the tags in an array
+     * @return array
      */
-    public function getAsArray()
+    public function getAmountPerSmoothie($smoothieID)
     {
         $fruits = array();
         $fruitEntry=[];
@@ -19,8 +19,9 @@ class Application_Model_Rowset_Fruits extends Zend_Db_Table_Rowset_Abstract {
             $fruit = $this->current();
             $fruitEntry["fruit"]= new Application_Model_Fruit($fruit->toArray());
             //Hole Abhängigkeiten aus Kreuztabelle
-            $amountRelation=$fruit->findDependentRowset('Application_Model_DbTable_SmoothieHasFruits',"Fruits")->toArray()[0];
-            $fruitEntry["amount"]=intval($amountRelation["ml"]);
+            $intersectionTable= new Application_Model_SmoothieHasFruitsMapper();
+            $amount=$intersectionTable->getAmount($smoothieID,$fruitEntry["fruit"]->getID());
+            $fruitEntry["amount"]=intval($amount);
             $fruits[]=$fruitEntry;
 
             $this->next();

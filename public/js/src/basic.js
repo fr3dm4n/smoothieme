@@ -4,4 +4,9 @@
  * Time: 20:39
  */
 
-console.log("Blasmusik2!");
+//Scripts für Frontend (Ohne login)
+$(document).ready(function(){
+    $("select").selectpicker();
+});
+
+

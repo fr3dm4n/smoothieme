@@ -6,32 +6,43 @@ class Application_Model_SmoothieMapper
     private $_dbTable;
 
 
-//    /**
-//     * Speichert/Ändert Artikel
-//     * @param Application_Model_Smoothie $smoothie
-//     */
-//    public function save(Application_Model_Smoothie $smoothie) {
-//        $data = array(
-//            'name' => $smoothie->getName(),
-//            'description' => $smoothie->getDescription(),
-//            'price' => $smoothie->getPrice(),
-//            'color' => $smoothie->getColor(),
-//            'kcal' => $smoothie->getKcal()
-//        );
-//
-//        $id=$smoothie->getId();
-//
-//        if (is_null($id)) {
-//            return $this->getDbTable()->insert($data);
-//        } else {
-//            $this->getDbTable()->update($data, array('ID = ?' => $id));
-//        }
-//    }
+    /**
+     * Speichert/Ändert Artikel
+     * @param Application_Model_Smoothie $smoothie
+     * @return mixed
+     */
+    public function save(Application_Model_Smoothie $smoothie) {
+        $customerID=is_null($smoothie->getCustomer())?null:$smoothie->getCustomer()->getId();
+        $data = array(
+            'name' => $smoothie->getName(),
+            'size' => $smoothie->getSize(),
+            'customer_ID' => $customerID
+        );
+        if(count($smoothie->getFruits())<1){
+            throw new InvalidArgumentException("Smoothies can not be saved without fruits");
+        }
+        $id=$smoothie->getID();
+
+
+        if (is_null($id)) {
+            $smoothieID=$this->getDbTable()->insert($data);
+            $smoothie->setID($smoothieID);
+
+        } else {
+            $this->getDbTable()->update($data, array('ID = ?' => $id));
+        }
+
+        $smoothieHasFruits=new Application_Model_SmoothieHasFruitsMapper();
+        $smoothieHasFruits->save($smoothie);
+
+        return $smoothie->getID();
+    }
 
     /**
      * Select Smoothie
      * @param                          $id
      * @param Application_Model_Smoothie $smoothie
+     * @return void|Zend_Db_Table_Rowset_Abstract
      */
     public function find($id, Application_Model_Smoothie $smoothie) {
         $result = $this->getDbTable()->find($id);
@@ -45,7 +56,7 @@ class Application_Model_SmoothieMapper
             ->setSize($row->size);
 
         //Füge Früchte ein
-        $fruits=$result->current()->getFruits()->getAsArray();
+        $fruits=$result->current()->getFruits()->getAmountPerSmoothie($row->ID);
 
         foreach($fruits as $fruit){
             $smoothie->addFruits($fruit["amount"],$fruit["fruit"]);
@@ -75,7 +86,7 @@ class Application_Model_SmoothieMapper
                 ->setSize($row->size);
 
             //Füge Früchte ein
-            $fruits=$resultSet->current()->getFruits()->getAsArray();
+            $fruits=$resultSet->current()->getFruits()->getAmountPerSmoothie($row->ID);
 
             foreach($fruits as $fruit){
                 $smoothie->addFruits($fruit["amount"],$fruit["fruit"]);
@@ -112,7 +123,7 @@ class Application_Model_SmoothieMapper
 
     /**
      * Liefert Tabelle
-     * @return mixed
+     * @return Zend_Db_Table_Abstract
      * @throws Exception
      */
     public function getDbTable() {
@@ -125,6 +136,7 @@ class Application_Model_SmoothieMapper
     /**
      * Löscht eine Frucht
      * @param $id
+     * @return int
      */
     public function delete($id) {
         return $this->getDbTable()->delete(array('ID = ?' => $id));

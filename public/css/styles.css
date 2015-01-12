@@ -68,15 +68,191 @@ form#fruits #price, form#fruits #kcal {
 }
 /* line 16, ../sass/_smoothies.scss */
 #smoothies-index .fruits-of-smoothie li span b {
+  font-weight: normal;
   float: left;
 }
-/* line 19, ../sass/_smoothies.scss */
+/* line 20, ../sass/_smoothies.scss */
 #smoothies-index .fruits-of-smoothie li span small {
   color: #666;
   float: left;
   clear: left;
 }
 
+/* line 36, ../sass/_smoothies.scss */
+#newSmoothie .fruit-slide-row img {
+  width: 48px;
+  clear: left;
+  float: left;
+  margin: 5px 15px 0 5px;
+}
+/* line 42, ../sass/_smoothies.scss */
+#newSmoothie .fruit-slide-row .fruit-slider {
+  width: 100%;
+}
+/* line 45, ../sass/_smoothies.scss */
+#newSmoothie .fruit-slide-row .fruit-value {
+  width: 4em;
+  text-align: left;
+  display: inline-block;
+}
+/* line 49, ../sass/_smoothies.scss */
+#newSmoothie .fruit-slide-row .fruit-value:after {
+  content: "%";
+}
+/* line 53, ../sass/_smoothies.scss */
+#newSmoothie .fruit-slide-row .remove-fruit {
+  margin-left: 30px;
+}
+/* line 58, ../sass/_smoothies.scss */
+#newSmoothie .top-buffer {
+  margin-top: 20px;
+}
+/* line 61, ../sass/_smoothies.scss */
+#newSmoothie .bootstrap-select {
+  width: 100%;
+}
+/* line 64, ../sass/_smoothies.scss */
+#newSmoothie #mixerwrapper {
+  width: 50%;
+  padding-top: 10%;
+  position: relative;
+}
+/* line 70, ../sass/_smoothies.scss */
+#newSmoothie .fruitcolor {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+}
+/* line 79, ../sass/_smoothies.scss */
+#newSmoothie .fruitcolor .fruitbody {
+  height: 80%;
+}
+/* line 82, ../sass/_smoothies.scss */
+#newSmoothie .fruitcolor .fruitwave {
+  -moz-box-shadow: inset 0px 5px 5px 0px rgba(224, 224, 224, 0.2);
+  -webkit-box-shadow: inset 0px 5px 5px 0px rgba(224, 224, 224, 0.2);
+  box-shadow: inset 0px 5px 5px 0px rgba(224, 224, 224, 0.2);
+  -moz-border-radius-topleft: 60% 100%;
+  -webkit-border-top-left-radius: 60% 100%;
+  border-top-left-radius: 60% 100%;
+  -moz-border-radius-topright: 70% 100%;
+  -webkit-border-top-right-radius: 70% 100%;
+  border-top-right-radius: 70% 100%;
+  height: 20%;
+}
+/* line 88, ../sass/_smoothies.scss */
+#newSmoothie .fruitcolor:nth-of-type(odd) .fruitwave {
+  margin: 0 24% 0 0;
+}
+/* line 92, ../sass/_smoothies.scss */
+#newSmoothie .fruitcolor:nth-last-of-type(1) .fruitbody {
+  height: 70%;
+}
+/* line 95, ../sass/_smoothies.scss */
+#newSmoothie .fruitcolor:nth-last-of-type(1) .fruitwave {
+  height: 30%;
+}
+/* line 102, ../sass/_smoothies.scss */
+#newSmoothie #mixer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+/* line 108, ../sass/_smoothies.scss */
+#newSmoothie .fruitcolor:nth-of-type(even) .fruitwave {
+  -moz-animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1) 3s;
+  -webkit-animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1) 3s;
+  animation: animationFrames cubic-bezier(0.645, 0.045, 0.355, 1) 3s;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 50% 50%;
+  -ms-transform-origin: 50% 50% 50%;
+  -webkit-transform-origin: 50% 50% 50%;
+  transform-origin: 50% 50% 50%;
+}
+/* line 114, ../sass/_smoothies.scss */
+#newSmoothie .fruitcolor:nth-of-type(odd) .fruitwave {
+  -moz-animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1) 3.2s;
+  -webkit-animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1) 3.2s;
+  animation: animationFramesOdd cubic-bezier(0.645, 0.045, 0.355, 1) 3.2s;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 50% 50%;
+  -ms-transform-origin: 50% 50% 50%;
+  -webkit-transform-origin: 50% 50% 50%;
+  transform-origin: 50% 50% 50%;
+}
+@-moz-keyframes animationFrames {
+  0% {
+    transform: translate(-23%, 0px);
+  }
+  50% {
+    transform: translate(23%, 0px);
+  }
+  100% {
+    transform: translate(-23%, 0px);
+  }
+}
+@-webkit-keyframes animationFrames {
+  0% {
+    transform: translate(-23%, 0px);
+  }
+  50% {
+    transform: translate(23%, 0px);
+  }
+  100% {
+    transform: translate(-23%, 0px);
+  }
+}
+@keyframes animationFrames {
+  0% {
+    transform: translate(-23%, 0px);
+  }
+  50% {
+    transform: translate(23%, 0px);
+  }
+  100% {
+    transform: translate(-23%, 0px);
+  }
+}
+@-moz-keyframes animationFramesOdd {
+  0% {
+    transform: translate(25%, 0px);
+  }
+  50% {
+    transform: translate(-3%, 0px);
+  }
+  100% {
+    transform: translate(25%, 0px);
+  }
+}
+@-webkit-keyframes animationFramesOdd {
+  0% {
+    transform: translate(25%, 0px);
+  }
+  50% {
+    transform: translate(-3%, 0px);
+  }
+  100% {
+    transform: translate(25%, 0px);
+  }
+}
+@keyframes animationFramesOdd {
+  0% {
+    transform: translate(25%, 0px);
+  }
+  50% {
+    transform: translate(-3%, 0px);
+  }
+  100% {
+    transform: translate(25%, 0px);
+  }
+}
 /* line 8, ../sass/styles.scss */
 body {
   padding: 70px 0;

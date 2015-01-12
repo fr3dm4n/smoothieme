@@ -17,7 +17,7 @@ class Application_Model_Row_Smoothie extends Zend_Db_Table_Row_Abstract {
     public function getFruits() {
         if (!$this->fruits) {
             $this->fruits = $this->findManyToManyRowset('Application_Model_DbTable_Fruit',   // match table
-                'Application_Model_DbTable_SmoothieHasFruits');  // join table
+                'Application_Model_DbTable_SmoothieHasFruits','Smoothie');  // join table
         }
         return $this->fruits;
     }

@@ -57,6 +57,7 @@
         <formFile formName="Auth"/>
         <formFile formName="Register"/>
         <formFile formName="Fruits"/>
+        <formFile formName="Smoothie"/>
       </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
@@ -80,6 +81,7 @@
         <modelFile modelName="Register"/>
         <modelFile modelName="AddressMapper"/>
         <modelFile modelName="Address"/>
+        <modelFile modelName="SmoothieHasFruitsMapper"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <viewsDirectory>
@@ -153,7 +155,7 @@
           <viewControllerScriptsDirectory forControllerName="SmoothiesUser">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
-          </viewScriptsDirectory>
+        </viewScriptsDirectory>
         <viewHelpersDirectory/>
         <viewFiltersDirectory enabled="false"/>
       </viewsDirectory>
