@@ -46,7 +46,13 @@ echo $this->flashMessages();
                             "controller" => "Address",
                             "action"     => "delete"
                         )) ?>" method="post">
-                            <button name="id" data-btn-ok-label="Ja" data-btn-ok-icon="glyphicon glyphicon-share-alt" data-btn-ok-class="btn-success" data-btn-cancel-label="Nein" data-btn-cancel-icon="glyphicon glyphicon-ban-circle" data-btn-cancel-class="btn-danger" value="<?php echo $fruit->getId() ?>" class="btn btn-danger fruit-delete" type="submit">
+                            <button name="id" data-btn-ok-label="Ja"
+                                    data-btn-ok-icon="glyphicon glyphicon-share-alt"
+                                    data-btn-ok-class="btn-success"
+                                    data-btn-cancel-label="Nein"
+                                    data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
+                                    data-btn-cancel-class="btn-danger" value="<?php echo $address->getId() ?>"
+                                    class="btn btn-danger fruit-delete" type="submit">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> L&ouml;schen
                             </button>
                         </form>

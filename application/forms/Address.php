@@ -26,7 +26,7 @@ class Application_Form_Address extends Twitter_Bootstrap_Form
                         'StringLength',
                         false,
                         [3, 70]
-                    )
+                    ),
                 ),
             ));
             $this->addElement('text', 'number', array(
@@ -37,7 +37,7 @@ class Application_Form_Address extends Twitter_Bootstrap_Form
                         'StringLength',
                         false,
                         [1, 4]
-                    )
+                    ),
                 ),
             ));
 
@@ -50,12 +50,12 @@ class Application_Form_Address extends Twitter_Bootstrap_Form
                         false,
                         [4, 5]
                     ),
-                    array(
+                   array(
                         'validator' => "Regex",
                         'options'=>array(
                             'pattern' =>'/^[0-9]+$/',
                             'messages' =>'Nur ganzzahlige Werte aus Ziffern'
-                        ),
+                        )
                     ),
                 ),
             ));
