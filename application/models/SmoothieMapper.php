@@ -13,6 +13,7 @@ class Application_Model_SmoothieMapper
      */
     public function save(Application_Model_Smoothie $smoothie) {
         $customerID=is_null($smoothie->getCustomer())?null:$smoothie->getCustomer()->getId();
+
         $data = array(
             'name' => $smoothie->getName(),
             'size' => $smoothie->getSize(),

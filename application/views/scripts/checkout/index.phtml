@@ -3,23 +3,33 @@
 	<div class="panel panel-default">
 	<div class="panel-heading"><h1>Ihre Bestellübersicht</h1></div>
 	<div class="panel-body">
+
 	<table class="table table-striped">
 		<thead>
 		<tr>
 			<th>Smoothiename</th>
 			<th>Menge</th>
-			<th>Beschreibung</th>
+			<th>Stückpreis</th>
 			<th>Preis</th>
 		</tr>
 		</thead>
 		<tbody>
+		<?php foreach($this->smoothies as $row){ ?>
 			<tr>
-				<td>DeR WACHMACHER</td>
-				<td>122</td>
-				<td>Beschreibung xy</td>
-				<td>16516€</td>
+				<td><?php echo $row["smoothie"]->getName();?></td>
+				<td><?php echo $row["amount"];?> Stk</td>
+				<td><?php echo number_format($row["smoothie"]->getPrice(),2,',',' ');?> €</td>
+				<td><?php echo number_format($row["pricetotal"],2,',',' ');?> €</td>
 			</tr>
+		<?php } ?>
+		<tr>
+			<td><strong>Gesamtpreis</strong></td>
+			<td></td>
+			<td></td>
+			<td><strong><?php echo number_format($this->orderprice,2,',',' ')?> €</strong></td>
+		</tr>
 		</tbody>
+
 	</table>
 	</div>
 	</div>

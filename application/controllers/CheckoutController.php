@@ -32,21 +32,24 @@ class CheckoutController extends Zend_Controller_Action
     public function indexAction()
     {
         // action body
-
+        $orderprice = 0;
         $cart = Zend_Registry::get("cart");
-        Zend_Debug::dump($cart);
-        $result= $cart->getCartContents();
+        $cartcontent= $cart->getCartContents();
         $mapper = new Application_Model_SmoothieMapper();
-        $smoothies = new Application_Model_Smoothie();
-        foreach($result as $id => $amount){
-            $smoo = $mapper->find($id,$smoothies);
-            $menge = $amount;
-            $name =  $smoothies->getName();
-            var_dump($name);
+        $smoothies = array();
+        foreach($cartcontent as $id => $amount){
+            $smoothie = new Application_Model_Smoothie();
+            $mapper->find($id,$smoothie);
+            $price =  $smoothie->getPrice();
+            $smoothies[] = array(
+                "smoothie"=>$smoothie,
+                "amount" => $amount,
+                "pricetotal"=>$price*$amount
+            ) ;
+            $orderprice += $price*$amount;
         }
-
-
-
+        $this->view->smoothies = $smoothies;
+        $this->view->orderprice = $orderprice;
     }
 
     public function sendMailAction()
