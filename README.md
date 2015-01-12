@@ -6,7 +6,7 @@ Ziel war es einen Shop-System zu entwickeln, das auf den Vertrieb von Smoothies 
 
 
 ## Dokumentation + Präsentation
-In [/docs] finden Sie Spezifikation und Präsentions-Daten
+In [/docs](/docs) finden Sie Spezifikation und Präsentions-Daten
 
 ## Installation
 ### Per Git
