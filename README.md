@@ -1,10 +1,37 @@
 
-#Smoothieme
+# Smoothieme
+Smoothieme ist ein Studien-Projekt, das 2014/15 im Rahmen der Vorlesung Webtechnologie entstanden ist.
+Ziel war es einen Shop-System zu entwickeln, das auf den Vertrieb von Smoothies optimiert ist.
 
-Master: [![Build Status](https://api.travis-ci.org/zendframework/zf1.png?branch=master)](https://travis-ci.org/zendframework/zf1)
+## Installation
+### Per Git
+1. Prüfen Sie, dass die Systemvoraussetungen von Smoothieme gegeben sind, siehe: 
+    * PHPVersion > PHP 5.2.10
+    * PHP-PDO installiert inkl. Mysql-Adapter
+    * Mysql-Server Version > 5.0
+    * Imagick / IMages-Magick-Erweiterung muss installiert sein um Bilder bearbeiten zu können
 
-Linksammlung
-=================
+2. Clonen sie das Repository
+     ```sh
+       % git clone git@github.com:sadeq89/smoothieme.git
+       % cd smoothieme
+       ```
+    * Fügen Sie das Verzeichnis `library` zu `include_path` hinzu
+    * Stellen Sie sicher, dass `public` das Document-Root ist
+
+3. Überprüfen und beenden Sie ihre Installation
+    * ... indem Sie `http://what-ever-your-domain-is.tld/install.php` im Browser aufrufen!
+
+4. Entfernen Sie `public/install.php`
+   
+
+
+
+
+## Weiterführende Informationen für Entwicklung
+
+### Linksammlung
+
 [Vid-tut-1](http://cloud.webtaurus.de/public.php?service=files&t=ccaaf656da37b05e06f46dba3afbbf55)
 ___ACHTUNG:___ Dieses Fenster bzgl. Line-endings wie gesehen bestätigen:
 ![Alt text](/docs/git_phpstorm_autocrlf.png)
