@@ -18,13 +18,12 @@ class RegisterController extends Zend_Controller_Action
 
         if ($this->getRequest()->isPost()) {
             if ($form->isValid($request->getPost())) {
-                $comment = new Application_Model_Guestbook($form->getValues());
-                $mapper  = new Application_Model_GuestbookMapper();
+                $comment = new Application_Model_Address($form->getValues());
+                $mapper  = new Application_Model_AddressMapper();
                 $mapper->save($comment);
                 return $this->_helper->redirector('index');
             }
         }
-
     }
 
     public function registerAction()
@@ -45,6 +44,3 @@ class RegisterController extends Zend_Controller_Action
 
 
 }
-
-
-
