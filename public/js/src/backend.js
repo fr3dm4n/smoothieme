@@ -279,8 +279,14 @@ $(document).ready(function () {
 
         $(".fruit-slider").val(defaultValue);
         initSliders();
-
         adjustSum();
+
+        $('[data-prev="fruit'+id+'"]')
+            .parents(".slider")
+            .find(".slider-selection, .slider-handle")
+            .css("background",color);
+
+
     };
 
     $("#btn-add-fruit").on("click",function(){
