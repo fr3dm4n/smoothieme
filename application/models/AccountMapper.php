@@ -39,7 +39,7 @@ class Application_Model_AccountMapper
             $account->setId($id);
         } else {
             $this->getDbTable ()->update ( $data, array (
-                'account_nr = ?' => $id
+                'ID = ?' => $id
             ) );
         }
     }
@@ -50,7 +50,13 @@ class Application_Model_AccountMapper
             return;
         }
         $row = $result->current ();
-        $account->setAccountId ($row->account_nr)->setName ( $row->name )->setRole ( $row->role )->setPassword ( $row->password )->setSalt($row->salt)->setEmail($row->email);
+
+        $account->setId($row->ID)
+            ->setName ( $row->name )
+            ->setRole ( $row->role )
+            ->setPassword ( $row->password )
+            ->setSalt($row->salt)
+            ->setEmail($row->email);
     }
 
     /**

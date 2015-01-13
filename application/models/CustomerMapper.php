@@ -39,7 +39,7 @@ class Application_Model_CustomerMapper
             $customer->setId($id['ID']);
         } else {
             $this->getDbTable ()->update ( $data, array (
-                'kundennr = ?' => $id
+                'ID = ?' => $id
             ) );
         }
     }

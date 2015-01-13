@@ -69,6 +69,7 @@
         <formFile formName="Fruits"/>
         <formFile formName="Smoothie"/>
         <formFile formName="SmoothieUser"/>
+        <formFile formName="User"/>
       </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>

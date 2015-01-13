@@ -10,27 +10,80 @@ class UserController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $req = $this->getRequest();
+        if (Zend_Auth::getInstance()->hasIdentity()) {
+            $user = Zend_Auth::getInstance()->getStorage()->read();
+            $id = $user->ID;
 
-        $userForm = new Application_Form_User();
+            $customermodel = new Application_Model_Customer();
 
-        if ($this->getRequest()->isPost()) {
-            if ($form->isValid($request->getPost())) {
-                $user = new Application_Model_User($form->getValues());
-                $mapper = new Application_Model_UserMapper();
 
-                $this->_helper->flashMessenger->setNamespace("success")->addMessage($user->getName() . " gespeichtert");
-                return $this->_helper->redirector("index");
-            }
-        }
+            $userForm = new Application_Form_User();
+
+            $mapper = new Application_Model_CustomerMapper();
+
+            $customer = $mapper->getCustomerByAccId($id);
+            $username = $user->name;
+            $surname = $customer->getSurname();
+            $lastname = $customer->getLastname();
+            $email = $user->email;
+            $telephone = $customer->getTelephone();
+
+            $userForm->setDefault('username', $username)->setDefault('surname', $surname)->setDefault('lastname', $lastname)
+                ->setDefault('email', $email)->setDefault('telephone', $telephone);
+
+            $this->view->userForm = $userForm;
+        } else
+            $this->redirect("/");
     }
 
     public function changeAction()
     {
-        // action body
+        $user = Zend_Auth::getInstance()->getStorage()->read();
+        $id = $user->ID;
+
+        $CustomerMapper = new Application_Model_CustomerMapper();
+        $AccountMapper = new Application_Model_AccountMapper();
+
+        $account = new Application_Model_Account();
+        $AccountMapper->find($user->ID, $account);
+
+        $customer = $CustomerMapper->getCustomerByAccId($account->getId());
+
+        $userForm = new Application_Form_User();
+        $req = $this->getRequest();
+
+        if ($req->isPost()) {
+
+            if ($userForm->isValid($req->getPost())) {
+
+                $db = Zend_Db_Table_Abstract::getDefaultAdapter();
+                try {
+                    $db->beginTransaction();
+
+                    $account->setEmail($userForm->getValue("email"));
+
+                    $AccountMapper->save($account);
+
+                    $customer->setSurname($userForm->getValue('surname'))
+                        ->setLastname($userForm->getValue('lastname'))
+                        ->setTelephone($userForm->getValue('telephone'));
+
+
+                    $CustomerMapper->save($customer);
+
+                    $db->commit();
+                } catch (Exception $e) {
+                    $db->rollBack();
+                    throw new Exception($e);
+                }
+
+            }
+
+        }
+
+        $this->view->userForm = $userForm;
+
     }
-
-
 }
 
 

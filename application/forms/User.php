@@ -1,29 +1,22 @@
 <?php
 
-class Application_Form_Register extends Zend_Form
+class Application_Form_User extends Zend_Form
 {
 
     public function init()
     {
-        $this->setName("register");
+        $this->setName("user");
         $this->setIsArray(true);
-        $this->setAction("/register");
+        $this->setAction("/user/change");
 
         $this->setMethod('post');
 
         // Benutzername
         $this->addElement('text', 'username', array(
-            'required' => true,
+            'attribs'    => array('disabled' => 'disabled'),
             'class' => 'form-control',
             'placeholder' => 'Benutzername',
             'filters' => array('StringTrim'),
-            'validators' => array(
-                array(
-                    'StringLength',
-                    false,
-                    [3, 70]
-                ),
-            )
         ));
 
 
@@ -71,7 +64,6 @@ class Application_Form_Register extends Zend_Form
             'filters' => array('StringTrim'),
             'validators' => array(
                 'emailAddress',
-
             )
         ));
 
@@ -92,16 +84,13 @@ class Application_Form_Register extends Zend_Form
             ),
         ));
 
-        // gender
-        $this->addElement('radio', 'gender', array(
-            'required' => true,
-            'filters' => array('StringTrim'),
+        // Add the submit button
 
-            'MultiOptions' => array(
-                'male' => ' männlich     ',
-                'female' => ' weiblich'
-            ),
-            'Separator' => ' '
+        $submit = new Twitter_Bootstrap_Form_Element_Submit('submit', array(
+            'buttonType' => Twitter_Bootstrap_Form_Element_Submit::BUTTON_PRIMARY,
+            'label'      => 'Benutzerdaten ändern',
+            'ignore' => true,
         ));
+        $this->addElement($submit, 'submit');
     }
 }
