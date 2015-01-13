@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 12. Jan 2015 um 22:27
+-- Erstellungszeit: 13. Jan 2015 um 02:32
 -- Server Version: 5.5.40-0ubuntu0.14.04.1
 -- PHP-Version: 5.6.3-1+deb.sury.org~trusty+1
 
@@ -124,15 +124,27 @@ INSERT INTO `fruits` (`ID`, `name`, `color`, `price`, `description`, `kcal`) VAL
 
 CREATE TABLE IF NOT EXISTS `orders` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `delivery_address` bigint(20) unsigned NOT NULL,
-  `invoice_address` bigint(20) unsigned NOT NULL,
+  `delivery_address` bigint(20) unsigned DEFAULT NULL,
+  `invoice_address` bigint(20) unsigned DEFAULT NULL,
   `delivery_method` enum('bike','post') NOT NULL,
   `payment_method` enum('rechnung','nachnahme','paypal') NOT NULL,
+  `account_ID` bigint(20) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`),
   KEY `delivery_address` (`delivery_address`),
-  KEY `send-bill-to_idx` (`invoice_address`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `send-bill-to_idx` (`invoice_address`),
+  KEY `account_ID` (`account_ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+
+--
+-- Daten für Tabelle `orders`
+--
+
+INSERT INTO `orders` (`ID`, `delivery_address`, `invoice_address`, `delivery_method`, `payment_method`, `account_ID`) VALUES
+(9, NULL, NULL, '', 'rechnung', 0),
+(10, NULL, NULL, '', 'rechnung', 0),
+(11, NULL, NULL, '', 'rechnung', 13),
+(12, NULL, NULL, '', 'rechnung', 13);
 
 -- --------------------------------------------------------
 
@@ -147,7 +159,14 @@ CREATE TABLE IF NOT EXISTS `smoothies` (
   `customer_ID` bigint(20) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `customer_ID` (`customer_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Daten für Tabelle `smoothies`
+--
+
+INSERT INTO `smoothies` (`ID`, `size`, `name`, `customer_ID`) VALUES
+(1, 'S', 'lilagrünerMonster', 5);
 
 -- --------------------------------------------------------
 
@@ -164,6 +183,15 @@ CREATE TABLE IF NOT EXISTS `smoothies_has_fruits` (
   KEY `fk_smoothie_has_fruits_smoothie1_idx` (`smoothie_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `smoothies_has_fruits`
+--
+
+INSERT INTO `smoothies_has_fruits` (`smoothie_ID`, `fruit_ID`, `ml`) VALUES
+(1, 1, 16),
+(1, 2, 42),
+(1, 3, 42);
+
 -- --------------------------------------------------------
 
 --
@@ -178,6 +206,16 @@ CREATE TABLE IF NOT EXISTS `smoothies_has_orders` (
   KEY `fk_smoothies_has_orders_orders1_idx` (`orders_ID`),
   KEY `fk_smoothies_has_orders_smoothies1_idx` (`smoothies_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `smoothies_has_orders`
+--
+
+INSERT INTO `smoothies_has_orders` (`smoothies_ID`, `orders_ID`, `count`) VALUES
+(1, 9, 4),
+(1, 10, 2),
+(1, 11, 2),
+(1, 12, 3);
 
 --
 -- Constraints der exportierten Tabellen

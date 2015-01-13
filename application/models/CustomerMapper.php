@@ -50,9 +50,12 @@ class Application_Model_CustomerMapper
             return;
         }
         $row = $result->current ();
-        $customer->setId ( $row->kundennr )->setAccountsId($row->account_nr)
-            ->setSurname( $row->vorname )->setLastname ( $row->nachname)->setGender( $row->Geschlecht )
-            -> setTelephone($row->Telefon);
+        $customer->setId ( $row->kundennr )
+            ->setAccountsId($row->account_nr)
+            ->setSurname( $row->vorname )
+            ->setLastname ( $row->nachname)
+            ->setGender( $row->Geschlecht )
+            ->setTelephone($row->Telefon);
     }
 
     public function getCustomerByAccId($id){

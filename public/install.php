@@ -82,7 +82,7 @@ $dbport=$configs["resources.db.params.port"];
 </nav>
 
 <div class="scrollspy">
-    <h2 id="one">1. Überprüfung technischen Umgebung</h2>
+    <h2 id="one">1. Überprüfung der techn. Umgebung</h2>
     <?php if (!extension_loaded('imagick') && !class_exists("Imagick")) { ?>
         <div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove"></span> IMagick ist nicht installiert</div>
     <?php }else{ ?>

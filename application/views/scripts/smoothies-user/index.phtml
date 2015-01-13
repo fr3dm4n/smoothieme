@@ -24,7 +24,7 @@ echo $this->flashMessages();
 			$mapper = new Application_Model_CustomerMapper();
 			$customer = $mapper->getCustomerByAccId($user->ID);
 			$fullname = $customer->getSurname() . " " . $customer->getLastname();
-			var_dump($fullname);
+
 		}
 
 		if (count($this->smoothies) < 1) {
