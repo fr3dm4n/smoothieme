@@ -6,7 +6,7 @@ class Application_Model_AddressMapper
 
 
     /**
-     * Speichert/Ändert Artikel
+     * Speichert/Ändert Adressen
      * @param Application_Model_Address $address
      */
     public function save(Application_Model_Address $address) {
@@ -27,7 +27,7 @@ class Application_Model_AddressMapper
     }
 
     /**
-     * Select Artikel
+     * Select Adress
      * @param                           $id
      * @param Application_Model_Address $address
      */
@@ -46,7 +46,7 @@ class Application_Model_AddressMapper
     }
 
     /**
-     * Gibt alle Artikel aus
+     * Gibt alle Adressen aus
      * @return array
      */
     public function fetchAll() {
@@ -94,7 +94,7 @@ class Application_Model_AddressMapper
     }
 
     /**
-     * Löscht eine Frucht
+     * Löscht eine Adresse
      * @param $id
      */
     public function delete($id) {

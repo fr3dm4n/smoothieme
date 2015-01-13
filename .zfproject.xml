@@ -84,6 +84,7 @@
           <dbTableFile dbTableName="Addresses"/>
           <dbTableFile dbTableName="SmoothieHasFruits"/>
           <dbTableFile dbTableName="Register"/>
+          <dbTableFile dbTableName="Order"/>
         </dbTableDirectory>
         <modelFile modelName="SmoothieMapper"/>
         <modelFile modelName="Smoothie"/>
@@ -94,6 +95,8 @@
         <modelFile modelName="AddressMapper"/>
         <modelFile modelName="Address"/>
         <modelFile modelName="SmoothieHasFruitsMapper"/>
+        <modelFile modelName="Order"/>
+        <modelFile modelName="OrderMapper"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <viewsDirectory>
